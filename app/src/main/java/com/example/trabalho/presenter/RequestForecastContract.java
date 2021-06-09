@@ -8,16 +8,19 @@ import com.example.trabalho.models.Forecast;
 import java.util.Date;
 import java.util.List;
 
-public class TripDetailsContract {
+public class RequestForecastContract {
 
-    public interface TripDetailsView {
+    public interface RequestForecastView {
         public void bindList(List<Forecast> forecastArrayList);
         public void showToast(String message);
         public Context getContext();
     }
 
-    public interface TripDetailsInterfacePresenter {
+    public interface RequestForecastPresenter {
         public void start();
+        public void sendError(String errorMessage);
+        public void getForecast(List<Forecast> forecastArrayList, String type);
         public Forecast findForecast(Date date) throws Exception;
+
     }
 }
