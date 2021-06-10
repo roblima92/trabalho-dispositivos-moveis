@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Trabalho</string>
+    <string name="icon">Ícone</string>
+    <string name="background">Imagem de fundo</string>
 </resources>

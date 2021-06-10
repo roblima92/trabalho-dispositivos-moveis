@@ -14,19 +14,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Trabalho">
-        <activity android:name=".TripDetailsActivity"></activity>
-        <activity android:name=".TripActivity" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/AppTheme.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TripDetailsActivity" />
+        <activity android:name=".TripActivity" />
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity" android:parentActivityName="com.example.trabalho.SplashScreen" />
     </application>
 
 </manifest>
