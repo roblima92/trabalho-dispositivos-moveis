@@ -10,21 +10,18 @@
     <!-- Background -->
     <ImageView
         android:id="@+id/background_splash_screen"
-        android:layout_width="536dp"
-        android:layout_height="1125dp"
+        android:layout_width="550dp"
+        android:layout_height="1000dp"
         android:contentDescription="@string/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.054"
+        app:layout_constraintVertical_bias="0.029"
         app:srcCompat="@drawable/background_splash_screen" />
 
     <!-- Logo -->
-
-    <!-- Title -->
-
     <ImageView
         android:id="@+id/app_icon"
         android:layout_width="100dp"
@@ -37,6 +34,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/app_icon" />
 
+    <!-- Title -->
     <TextView
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
