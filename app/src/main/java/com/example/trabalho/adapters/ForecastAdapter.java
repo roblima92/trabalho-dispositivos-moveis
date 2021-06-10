@@ -10,18 +10,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trabalho.R;
 import com.example.trabalho.models.Forecast;
+import com.example.trabalho.databinding.ShowForecastBinding;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder> {
     private List<Forecast> forecastList;
 
     public class ForecastViewHolder extends RecyclerView.ViewHolder {
-        public View viewForecast;
-        public ForecastViewHolder(@NonNull View itemView) {
-            super(itemView);
+        public ShowForecastBinding viewForecast;
+
+        public ForecastViewHolder(@NonNull ShowForecastBinding itemView) {
+            super(itemView.getRoot());
             this.viewForecast = itemView;
         }
     }
@@ -33,26 +34,15 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
     @NonNull
     @Override
     public ForecastViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_forecast, parent, false);
+        ShowForecastBinding v = null;
+        v = ShowForecastBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new ForecastViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ForecastViewHolder holder, int position) {
         Forecast obj = (Forecast) this.forecastList.get(position);
-        SimpleDateFormat brazilianFormat = new SimpleDateFormat("dd/MM/yyyy");
-
-        TextView date = holder.viewForecast.findViewById(R.id.labelForecastDate);
-        TextView pressure = holder.viewForecast.findViewById(R.id.labelForecastPressure);
-        TextView humidity = holder.viewForecast.findViewById(R.id.labelForecastHumidity);
-        TextView max = holder.viewForecast.findViewById(R.id.labelForecastMax);
-        TextView min = holder.viewForecast.findViewById(R.id.labelForecastMin);
-
-        date.setText("Data: " + brazilianFormat.format(obj.getDate()));
-        pressure.setText("Pressão: " + obj.getPressure() + " hPa");
-        humidity.setText("Umidade: " + obj.getHumidity() + "%");
-        max.setText("Máxima de: " + obj.getMax());
-        min.setText("Mínima de: " + obj.getMin());
+        holder.viewForecast.setForecastModel(obj);
     }
 
     @Override

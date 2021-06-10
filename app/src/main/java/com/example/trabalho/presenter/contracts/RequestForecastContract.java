@@ -1,4 +1,4 @@
-package com.example.trabalho.presenter;
+package com.example.trabalho.presenter.contracts;
 
 import android.content.Context;
 import android.os.Parcelable;
@@ -12,15 +12,12 @@ public class RequestForecastContract {
 
     public interface RequestForecastView {
         public void bindList(List<Forecast> forecastArrayList);
-        public void showToast(String message);
-        public Context getContext();
     }
 
     public interface RequestForecastPresenter {
-        public void start();
-        public void sendError(String errorMessage);
+        public void sendErrorForecast(String errorMessage);
         public void getForecast(List<Forecast> forecastArrayList, String type);
-        public Forecast findForecast(Date date) throws Exception;
+        public Forecast findForecast(Date date, String type) throws Exception;
 
     }
 }

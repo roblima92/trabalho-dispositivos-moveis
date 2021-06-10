@@ -1,6 +1,5 @@
 package com.example.trabalho.services;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 
@@ -14,7 +13,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.trabalho.models.Forecast;
 import com.example.trabalho.models.Weather;
-import com.example.trabalho.presenter.RequestForecastContract;
+import com.example.trabalho.presenter.contracts.RequestForecastContract;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,12 +49,12 @@ public class OpenWeather implements Response.Listener<JSONObject>,
     }
 
     public void startByCity(String country, String city) {
-        String url = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "," + country + "&cnt=16&appid=8118ed6ee68db2debfaaa5a44c832918";
+        String url = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "," + country + "&cnt=16&appid=8118ed6ee68db2debfaaa5a44c832918&lang=pt_br";
         this.start(url);
     }
 
     public void startByCoordinates(double lat, double lon) {
-        String url = "https://api.openweathermap.org/data/2.5/forecast/daily?lat="+lat+"&lon="+lon+"&cnt=16&appid=8118ed6ee68db2debfaaa5a44c832918";
+        String url = "https://api.openweathermap.org/data/2.5/forecast/daily?lat="+lat+"&lon="+lon+"&cnt=16&appid=8118ed6ee68db2debfaaa5a44c832918&lang=pt_br";
         this.start(url);
     }
 
@@ -83,8 +82,8 @@ public class OpenWeather implements Response.Listener<JSONObject>,
 
                 Forecast obj = new Forecast(
                         brazilianFormat.parse(brazilianFormat.format(Date.from(instant))),
-                        maxForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(),
-                        minForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue(),
+                        (int) Math.round(maxForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()),
+                        (int) Math.round(minForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()),
                         json.getInt("pressure"),
                         json.getInt("humidity"),
                         weather);
@@ -100,6 +99,6 @@ public class OpenWeather implements Response.Listener<JSONObject>,
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        this.forecastPresenter.sendError("Ocorreu um erro ao tentar buscar a temperatura da cidade informada");
+        this.forecastPresenter.sendErrorForecast("Ocorreu um erro ao tentar buscar a temperatura da cidade informada");
     }
 }

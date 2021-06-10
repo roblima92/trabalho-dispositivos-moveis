@@ -8,8 +8,8 @@ import java.util.Date;
 
 public class Forecast implements Parcelable {
     private Date date;
-    private double max;
-    private double min;
+    private int max;
+    private int min;
     private int pressure;
     private int humidity;
     private Weather weather;
@@ -18,11 +18,11 @@ public class Forecast implements Parcelable {
         return date;
     }
 
-    public double getMax() {
+    public int getMax() {
         return max;
     }
 
-    public double getMin() {
+    public int getMin() {
         return min;
     }
 
@@ -41,7 +41,7 @@ public class Forecast implements Parcelable {
         return brazilianFormat.format(this.date);
     }
 
-    public Forecast(Date date, double max, double min, int pressure, int humidity, Weather weather) {
+    public Forecast(Date date, int max, int min, int pressure, int humidity, Weather weather) {
         this.date = date;
         this.max = max;
         this.min = min;
@@ -52,8 +52,8 @@ public class Forecast implements Parcelable {
 
     protected Forecast(Parcel in) {
         date = (Date) in.readSerializable();
-        max = in.readDouble();
-        min = in.readDouble();
+        max = in.readInt();
+        min = in.readInt();
         humidity = in.readInt();
         pressure = in.readInt();
         weather = in.readParcelable(getClass().getClassLoader());
@@ -79,8 +79,8 @@ public class Forecast implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeSerializable(date);
-        parcel.writeDouble(max);
-        parcel.writeDouble(min);
+        parcel.writeInt(max);
+        parcel.writeInt(min);
         parcel.writeInt(pressure);
         parcel.writeInt(humidity);
         weather.writeToParcel(parcel, i);

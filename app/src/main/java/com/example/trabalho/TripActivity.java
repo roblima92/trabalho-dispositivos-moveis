@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.trabalho.models.Trip;
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,6 +21,16 @@ public class TripActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip);
+
+        // Precisa transferir a responsabilidade para a presenter e adicionar databinding
+        EditText departureDate = (EditText) findViewById(R.id.inputDepartureDate);
+        EditText arrivalDate = (EditText) findViewById(R.id.inputArrivalDate);
+
+        SimpleMaskFormatter smf = new SimpleMaskFormatter("NN/NN/NNNN");
+        MaskTextWatcher mtw = new MaskTextWatcher(departureDate, smf);
+        MaskTextWatcher mtw2 = new MaskTextWatcher(arrivalDate, smf);
+        departureDate.addTextChangedListener(mtw);
+        arrivalDate.addTextChangedListener(mtw2);
     }
 
     public void submit(View view) throws ParseException {

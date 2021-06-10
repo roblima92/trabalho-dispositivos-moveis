@@ -36,10 +36,10 @@
             android:id="@+id/labelDetailsPressureHumidityWeatherArrival"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="33dp"
-            android:layout_marginLeft="33dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="28dp"
-            android:text="@{`Pressão / umidade: ` + forecastArrival.pressure + ` hPa / ` + forecastArrival.humidity}"
+            android:text="@{`P / U: ` + forecastArrival.pressure + `hPa / ` + forecastArrival.humidity + `%`}"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/labelDetailsArrivalDate"
             app:layout_constraintTop_toBottomOf="@+id/labelWeatherArrival" />
@@ -60,10 +60,10 @@
             android:id="@+id/labelDetailsPressureHumidityWeatherDeparture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="33dp"
-            android:layout_marginLeft="33dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="28dp"
-            android:text="@{`Pressão / umidade: ` + forecastDeparture.pressure + ` hPa / ` + forecastDeparture.humidity}"
+            android:text="@{`P / U: ` + forecastDeparture.pressure + `hPa / ` + forecastDeparture.humidity + `%`}"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/labelDetailsDepartureDate"
             app:layout_constraintTop_toBottomOf="@+id/labelWeatherDeparture" />
@@ -75,7 +75,7 @@
             android:layout_marginStart="54dp"
             android:layout_marginLeft="54dp"
             android:layout_marginTop="12dp"
-            android:text="@{`Máxima: ` + forecastDeparture.max}"
+            android:text="@{`Máxima: ` + forecastDeparture.max + `°`}"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/labelDetailsMinWeatherDeparture"
             app:layout_constraintTop_toBottomOf="@+id/labelDetailsPressureHumidityWeatherDeparture" />
@@ -87,7 +87,7 @@
             android:layout_marginStart="54dp"
             android:layout_marginLeft="54dp"
             android:layout_marginTop="12dp"
-            android:text="@{`Máxima: ` + forecastArrival.max}"
+            android:text="@{`Máxima: ` + forecastArrival.max + `°`}"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/labelDetailsMinWeatherArrival"
             app:layout_constraintTop_toBottomOf="@+id/labelDetailsPressureHumidityWeatherArrival" />
@@ -99,7 +99,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="12dp"
-            android:text="@{`Mínima: ` + forecastDeparture.min}"
+            android:text="@{`Mínima: ` + forecastDeparture.min + `°`}"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/labelDetailsDepartureDate" />
@@ -111,7 +111,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="12dp"
-            android:text="@{`Mínima: ` + forecastArrival.min}"
+            android:text="@{`Mínima: ` + forecastArrival.min + `°`}"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/labelDetailsArrivalDate" />
@@ -154,11 +154,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewForecast"
-            android:layout_width="357dp"
-            android:layout_height="371dp"
+            android:layout_width="327dp"
+            android:layout_height="372dp"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="40dp"
             android:layout_marginRight="40dp"
             app:layout_constraintEnd_toEndOf="parent"
