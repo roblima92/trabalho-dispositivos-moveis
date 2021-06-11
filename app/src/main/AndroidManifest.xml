@@ -23,12 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity" android:theme="@style/AppTheme.Fullscreen" />
         <activity android:name=".TripDetailsActivity" />
         <activity android:name=".TripActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
     </application>
 
 </manifest>
