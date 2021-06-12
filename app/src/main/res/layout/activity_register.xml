@@ -13,17 +13,6 @@ xmlns:tools="http://schemas.android.com/tools">
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--    <Spinner-->
-        <!--        android:id="@+id/select_profile"-->
-        <!--        android:layout_width="306dp"-->
-        <!--        android:layout_height="65dp"-->
-        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintHorizontal_bias="0.476"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        app:layout_constraintTop_toBottomOf="@+id/editCity"-->
-        <!--        app:layout_constraintVertical_bias="0.192" />-->
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editName"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"

@@ -27,9 +27,10 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     ImageView imageRegister;
     Button submitRegister;
-    TextView editCity;
     TextView editName;
-    Spinner selectProfile;
+    TextView editPhone;
+    TextView editEmail;
+    TextView editPassword;
 
 
     @Override
@@ -60,8 +61,9 @@ public class RegisterActivity extends AppCompatActivity {
         // Create a new user with a first and last name
         Map<String, Object> user = new HashMap<>();
         user.put("name", editName.getText().toString());
-        user.put("city", editCity.getText().toString());
-        user.put("profile", selectProfile.getSelectedItem().toString());
+        user.put("email", editEmail.getText().toString());
+        user.put("phone", editPhone.getText().toString());
+        user.put("password", editPassword.getText().toString());
 
 // Add a new document with a generated ID
         db.collection("user")
@@ -69,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Intent intent = new Intent(getBaseContext(), TripActivity.class);
+                        Intent intent = new Intent(getBaseContext(), HomeActivity.class);
                         startActivity(intent);
                     }
                 })
