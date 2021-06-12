@@ -48,5 +48,4 @@ public class TripActivity extends AppCompatActivity {
         intent.putExtra("objTrip", trip);
         startActivity(intent);
     }
-
 }
