@@ -8,4 +8,12 @@
     <string name="register_button">Cadastrar</string>
     <string name="email">E-mail</string>
     <string name="password">Senha</string>
+    <string name="show_password">Exibir senha</string>
+    <string name="hide_password">Ocultar senha</string>
+    <string name="welcome">Bem-vindo (a)</string>
+    <string name="forecast">Previsão do tempo</string>
+    <string name="my_profile">Meu perfil</string>
+    <string name="new_trip">Nova viagem</string>
+    <string name="my_trips">Minhas viagens</string>
+    <string name="logout">Sair</string>
 </resources>
