@@ -29,6 +29,7 @@
         <activity android:name=".TripActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".SignInActivity" />
     </application>
 
 </manifest>
