@@ -39,20 +39,12 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
 
-//        imageRegister = findViewById(R.id.imageRegister);
-//        submitRegister = findViewById(R.id.SubmitRegister);
-//        selectProfile = findViewById(R.id.select_profile);
-//        editCity = findViewById(R.id.editCity);
-//        editName = findViewById(R.id.editName);
-
-//        String[] array = new String[] {
-//                getString(Profile.SIMPLE.getName()),
-//                getString(Profile.SURF.getName())
-//        };
-
-//        SpinnerAdapter spinnerAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, array);
-
-//        selectProfile.setAdapter(spinnerAdapter);
+        submitRegister = findViewById(R.id.SubmitRegister);
+        editPhone = findViewById(R.id.editPhone);
+        editName = findViewById(R.id.editName);
+        editEmail = findViewById(R.id.editEmail);
+        editPassword = findViewById(R.id.editPassword);
+        imageRegister = findViewById(R.id.imageRegister);
     }
 
     public void register(View view){

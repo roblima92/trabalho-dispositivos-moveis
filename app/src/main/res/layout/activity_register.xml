@@ -11,7 +11,8 @@ xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/background_color">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editName"
@@ -82,7 +83,7 @@ xmlns:tools="http://schemas.android.com/tools">
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/fui_ic_github_white_24dp" />
+            app:srcCompat="@drawable/teste" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
