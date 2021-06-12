@@ -1,52 +1,49 @@
 package com.example.trabalho;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
+import com.example.trabalho.databinding.ActivityTripBinding;
 import com.example.trabalho.models.Trip;
-import com.github.rtoshiro.util.format.SimpleMaskFormatter;
-import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+import com.example.trabalho.presenter.TripPresenter;
+import com.example.trabalho.presenter.contracts.ActivityContract;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+public class TripActivity extends AppCompatActivity implements ActivityContract.ActivityView {
 
-public class TripActivity extends AppCompatActivity {
+    private ActivityContract.ActivityFormPresenter tripPresenter;
+    private ActivityTripBinding tripBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip);
 
-        // Precisa transferir a responsabilidade para a presenter e adicionar databinding
-        EditText departureDate = (EditText) findViewById(R.id.inputDepartureDate);
-        EditText arrivalDate = (EditText) findViewById(R.id.inputArrivalDate);
+        tripPresenter = new TripPresenter(this);
 
-        SimpleMaskFormatter smf = new SimpleMaskFormatter("NN/NN/NNNN");
-        MaskTextWatcher mtw = new MaskTextWatcher(departureDate, smf);
-        MaskTextWatcher mtw2 = new MaskTextWatcher(arrivalDate, smf);
-        departureDate.addTextChangedListener(mtw);
-        arrivalDate.addTextChangedListener(mtw2);
+        tripBinding = DataBindingUtil.setContentView(this, R.layout.activity_trip);
+        tripBinding.setPresenter((TripPresenter) tripPresenter);
+        tripBinding.setTrip(new Trip());
+
+        ((TripPresenter) tripPresenter).tripBinding = tripBinding;
     }
 
-    public void submit(View view) throws ParseException {
-        EditText inputDepartureDate = (EditText) findViewById(R.id.inputDepartureDate);
-        EditText inputArrivalDate = (EditText) findViewById(R.id.inputArrivalDate);
-        EditText inputCity = (EditText) findViewById(R.id.inputCity);
-        EditText inputCountry = (EditText) findViewById(R.id.inputCountry);
-
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        Date departureDate = format.parse(inputDepartureDate.getText().toString());
-        Date arrivalDate = format.parse(inputArrivalDate.getText().toString());
-
-        Trip trip = new Trip(departureDate, arrivalDate, inputCountry.getText().toString(), inputCity.getText().toString());
-        Intent intent = new Intent(getApplicationContext(), TripDetailsActivity.class);
-        intent.putExtra("objTrip", trip);
+    @Override
+    public void navigate(Intent intent) {
         startActivity(intent);
     }
 
+    @Override
+    public Context getContext() {
+        return this.getApplicationContext();
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(this.getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
 }
