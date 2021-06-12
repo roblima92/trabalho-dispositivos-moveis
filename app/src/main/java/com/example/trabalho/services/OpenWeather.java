@@ -2,6 +2,7 @@ package com.example.trabalho.services;
 
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -62,7 +63,6 @@ public class OpenWeather implements Response.Listener<JSONObject>,
     @Override
     public void onResponse(JSONObject response) {
         try {
-
             JSONArray forecasts = response.getJSONArray("list");
 
             SimpleDateFormat brazilianFormat = new SimpleDateFormat("dd/MM/yyyy");
