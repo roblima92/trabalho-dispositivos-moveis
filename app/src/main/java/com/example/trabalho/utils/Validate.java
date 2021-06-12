@@ -51,7 +51,7 @@ public class Validate {
     }
 
     public static Boolean dateCantBeGreaterThanAnotherDate(Date date1, Date date2, String message) throws Exception {
-        if (date1.compareTo(date2) >= 0) {
+        if (date1.compareTo(date2) > 0) {
             throw new Exception(message);
         }
         return true;
