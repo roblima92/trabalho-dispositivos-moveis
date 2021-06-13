@@ -1,19 +1,34 @@
 <resources>
+    <!-- General -->
     <string name="app_name">Trabalho</string>
     <string name="icon">Ícone</string>
     <string name="background">Imagem de fundo</string>
+    <string name="logout">Sair</string>
+
+    <!-- Login -->
     <string name="login">Login</string>
-    <string name="login_button">Entrar</string>
-    <string name="register">Cadastrar</string>
-    <string name="register_button">Cadastrar</string>
     <string name="email">E-mail</string>
+    <string name="email_placeholder">Insira seu e-mail</string>
     <string name="password">Senha</string>
+    <string name="password_placeholder">Insira sua senha</string>
     <string name="show_password">Exibir senha</string>
     <string name="hide_password">Ocultar senha</string>
+    <string name="login_button">Entrar</string>
+    <string name="register">Cadastrar</string>
+
+    <!-- Home -->
     <string name="welcome">Bem-vindo (a)</string>
     <string name="forecast">Previsão do tempo</string>
     <string name="my_profile">Meu perfil</string>
     <string name="new_trip">Nova viagem</string>
     <string name="my_trips">Minhas viagens</string>
-    <string name="logout">Sair</string>
+
+    <!-- New trip -->
+    <string name="current_city">CIDADE ATUAL</string>
+    <string name="departure_date">Data de partida</string>
+    <string name="destination">DESTINO</string>
+    <string name="destination_city">Cidade</string>
+    <string name="arrival_date">Data de chegada</string>
+    <string name="return_date">Data de retorno</string>
+    <string name="add_new_trip">Adicionar nova viagem</string>
 </resources>
