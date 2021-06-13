@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity implements ActivityContract.
                             user.setEmail((String) document.get("email"));
                             user.setPhone((String) document.get("phone"));
                             user.setGender((String) document.get("gender"));
-                            homePresenter = new HomePresenter(homeView);
+                            homePresenter = new HomePresenter(homeView, mAuth);
                             homeBinding = DataBindingUtil.setContentView(homeActivity, R.layout.activity_home);
                             homeBinding.setPresenter((HomePresenter) homePresenter);
                             homeBinding.setForecastActivity(ForecastActivity.class);
