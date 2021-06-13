@@ -2,6 +2,7 @@ package com.example.trabalho.services;
 
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -35,6 +36,7 @@ public class OpenWeather implements Response.Listener<JSONObject>,
     private RequestForecastContract.RequestForecastPresenter forecastPresenter;
     private Context context;
     private String type;
+    private RequestForecastContract.VolleyCallBack callBack;
 
     public OpenWeather(RequestForecastContract.RequestForecastPresenter forecastPresenter, Context context, String type) {
         this.forecastPresenter = forecastPresenter;
@@ -58,11 +60,22 @@ public class OpenWeather implements Response.Listener<JSONObject>,
         this.start(url);
     }
 
+    public void startByCoordinatesPromise(double lat, double lon, final RequestForecastContract.VolleyCallBack callBack) {
+        String url = "https://api.openweathermap.org/data/2.5/forecast/daily?lat="+lat+"&lon="+lon+"&cnt=16&appid=8118ed6ee68db2debfaaa5a44c832918&lang=pt_br";
+        this.callBack = callBack;
+        this.start(url);
+    }
+
+    public void startByCityPromise(String country, String city, final RequestForecastContract.VolleyCallBack callBack) {
+        String url = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "," + country + "&cnt=16&appid=8118ed6ee68db2debfaaa5a44c832918&lang=pt_br";
+        this.callBack = callBack;
+        this.start(url);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onResponse(JSONObject response) {
         try {
-
             JSONArray forecasts = response.getJSONArray("list");
 
             SimpleDateFormat brazilianFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -92,6 +105,7 @@ public class OpenWeather implements Response.Listener<JSONObject>,
             }
 
             this.forecastPresenter.getForecast(this.forecastArrayList, this.type);
+            if (callBack != null) callBack.onSuccess();
         } catch (JSONException | ParseException e) {
             e.printStackTrace();
         }

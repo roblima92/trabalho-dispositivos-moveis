@@ -1,20 +1,20 @@
 package com.example.trabalho;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.trabalho.presenter.contracts.ActivityContract;
 
-public class ProfileActivity extends AppCompatActivity implements ActivityContract.ActivityView {
+public class MyTripsActivity extends AppCompatActivity implements ActivityContract.ActivityView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_my_trips);
     }
 
     @Override

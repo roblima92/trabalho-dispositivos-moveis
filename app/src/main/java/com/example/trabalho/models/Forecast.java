@@ -3,10 +3,12 @@ package com.example.trabalho.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.trabalho.presenter.contracts.ModelContract;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Forecast implements Parcelable {
+public class Forecast implements Parcelable, ModelContract.Model {
     private Date date;
     private int max;
     private int min;

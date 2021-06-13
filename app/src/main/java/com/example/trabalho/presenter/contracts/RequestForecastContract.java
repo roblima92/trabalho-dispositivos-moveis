@@ -18,6 +18,9 @@ public class RequestForecastContract {
         public void sendErrorForecast(String errorMessage);
         public void getForecast(List<Forecast> forecastArrayList, String type);
         public Forecast findForecast(Date date, String type) throws Exception;
+    }
 
+    public interface VolleyCallBack {
+        void onSuccess();
     }
 }

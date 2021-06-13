@@ -1,7 +1,11 @@
 package com.example.trabalho.presenter;
 
 import android.app.Activity;
+import android.os.Build;
 
+import androidx.annotation.RequiresApi;
+
+import com.android.volley.Response;
 import com.example.trabalho.models.Forecast;
 import com.example.trabalho.models.LocationGeo;
 import com.example.trabalho.models.Trip;
@@ -10,6 +14,8 @@ import com.example.trabalho.presenter.contracts.RequestForecastContract;
 import com.example.trabalho.presenter.contracts.RequestLocationContract;
 import com.example.trabalho.services.Location;
 import com.example.trabalho.services.OpenWeather;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,6 +30,7 @@ public class TripDetailsPresenter implements RequestForecastContract.RequestFore
     private List<Forecast> forecastArrayList = new ArrayList<>();
     private List<Forecast> forecastActual = new ArrayList<>();
     private List<Forecast> forecastDestiny = new ArrayList<>();
+    private List<Forecast> forecastReturn = new ArrayList<>();
     private LocationGeo locationGeo;
 
     public TripDetailsPresenter(RequestForecastContract.RequestForecastView viewForecast,
@@ -40,11 +47,25 @@ public class TripDetailsPresenter implements RequestForecastContract.RequestFore
 
     @Override
     public void start() {
-        OpenWeather openWeatherActual = new OpenWeather(this, this.tripDetailsView.getContext(), "Actual");
-        openWeatherActual.startByCoordinates(locationGeo.getLatitude(), locationGeo.getLongitude());
 
-        OpenWeather openWeatherDestiny = new OpenWeather(this, this.tripDetailsView.getContext(), "Destiny");
-        openWeatherDestiny.startByCity(trip.getCountry(), trip.getCity());
+        RequestForecastContract.RequestForecastPresenter forecastPresenter = this;
+        OpenWeather openWeatherActual = new OpenWeather(forecastPresenter, this.tripDetailsView.getContext(), "Actual");
+        openWeatherActual.startByCoordinatesPromise(locationGeo.getLatitude(), locationGeo.getLongitude(), new RequestForecastContract.VolleyCallBack() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onSuccess() {
+                OpenWeather openWeatherDestiny = new OpenWeather(forecastPresenter, tripDetailsView.getContext(), "Destiny");
+                openWeatherDestiny.startByCityPromise(trip.getCountry(), trip.getCity(), new RequestForecastContract.VolleyCallBack() {
+                    @RequiresApi(api = Build.VERSION_CODES.O)
+                    @Override
+                    public void onSuccess() {
+                        if (trip.getReturnDate() != null) {
+                            getForecast(forecastActual, "Return");
+                        }
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -64,6 +85,9 @@ public class TripDetailsPresenter implements RequestForecastContract.RequestFore
             case "Destiny":
                 forecastAux = this.forecastDestiny;
                 break;
+            case "Return":
+                forecastAux = this.forecastReturn;
+                break;
         }
 
         for (Forecast forecast : forecastAux) {
@@ -80,8 +104,12 @@ public class TripDetailsPresenter implements RequestForecastContract.RequestFore
         this.start();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void getForecast(List<Forecast> forecasts, String type) {
+
+        // Check if departure date is the same than arrival date
+        Boolean sameDate = trip.getDepartureDate().compareTo(trip.getArrivalDate()) == 0;
 
         // Format forecasts arrayList
         if (forecasts == null || forecasts.size() == 0) {
@@ -92,18 +120,39 @@ public class TripDetailsPresenter implements RequestForecastContract.RequestFore
         if (type == "Destiny") {
             this.forecastDestiny = forecasts;
             for (Forecast forecast : forecasts) {
-                if (forecast.getDate().compareTo(trip.getArrivalDate()) >= 0 && findForecast(forecast.getDate(), "") == null) {
-                    this.forecastArrayList.add(forecast);
+                if (trip.getReturnDate() == null) {
+                    if (forecast.getDate().compareTo(trip.getArrivalDate()) >= 0 &&
+                            findForecast(forecast.getDate(), "") == null) {
+                        forecastArrayList.add(forecast);
+                    }
+                } else if (forecast.getDate().compareTo(trip.getArrivalDate()) >= 0 &&
+                        forecast.getDate().compareTo(trip.getReturnDate()) < 0 &&
+                        findForecast(forecast.getDate(), "") == null) {
+                    forecastArrayList.add(forecast);
                 }
             }
         } else if (type == "Actual") {
-            // insert forecasts from actual place in the first positions
-            int contActual = 0;
             this.forecastActual = forecasts;
             for (Forecast forecast : forecasts) {
-                if (forecast.getDate().compareTo(trip.getDepartureDate()) < 0 && findForecast(forecast.getDate(), "") == null) {
-                    this.forecastArrayList.add(contActual, forecast);
-                    contActual++;
+                if (sameDate) {
+                    if (forecast.getDate().compareTo(trip.getDepartureDate()) < 0 &&
+                            findForecast(forecast.getDate(), "") == null) {
+                        this.forecastArrayList.add(forecast);
+                    }
+                } else {
+                    if (forecast.getDate().compareTo(trip.getDepartureDate()) <= 0 &&
+                            findForecast(forecast.getDate(), "") == null) {
+                        this.forecastArrayList.add(forecast);
+                    }
+                }
+
+            }
+        } else if (type == "Return") {
+            this.forecastReturn = forecasts;
+            for (Forecast forecast : forecasts) {
+                if (forecast.getDate().compareTo(trip.getReturnDate()) >= 0 &&
+                        findForecast(forecast.getDate(), "") == null) {
+                    this.forecastArrayList.add(forecast);
                 }
             }
         }

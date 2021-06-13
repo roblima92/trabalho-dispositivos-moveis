@@ -59,6 +59,11 @@ public class TripDetailsActivity extends AppCompatActivity implements RequestFor
     }
 
     @Override
+    public void navigate(Intent intent) {
+        startActivity(intent);
+    }
+
+    @Override
     public void showToast(String message) {
         Toast.makeText(this.getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }

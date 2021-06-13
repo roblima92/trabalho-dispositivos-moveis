@@ -3,9 +3,11 @@ package com.example.trabalho.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.trabalho.presenter.contracts.ModelContract;
+
 import java.util.Date;
 
-public class Weather implements Parcelable {
+public class Weather implements Parcelable, ModelContract.Model {
     private int id;
     private String main;
     private String description;
