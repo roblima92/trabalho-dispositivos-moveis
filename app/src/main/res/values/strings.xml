@@ -6,7 +6,7 @@
     <string name="logout">Sair</string>
 
     <!-- Login -->
-    <string name="login">Login</string>
+    <string name="login">Faça seu login</string>
     <string name="email">E-mail</string>
     <string name="email_placeholder">Insira seu e-mail</string>
     <string name="password">Senha</string>
