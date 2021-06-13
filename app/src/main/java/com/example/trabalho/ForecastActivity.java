@@ -17,28 +17,6 @@ import com.example.trabalho.presenter.contracts.ActivityContract;
 import java.util.ArrayList;
 
 public class ForecastActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
-
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_forecast);
-//    }
-//
-//    @Override
-//    public Context getContext() {
-//        return this.getApplicationContext();
-//    }
-//
-//    @Override
-//    public void showToast(String message) {
-//        Toast.makeText(this.getApplicationContext(), message, Toast.LENGTH_LONG).show();
-//    }
-//
-//    @Override
-//    public void navigate(Intent intent) {
-//        startActivity(intent);
-//    }
-
     private MyRecyclerViewAdapter adapter;
 
     @Override

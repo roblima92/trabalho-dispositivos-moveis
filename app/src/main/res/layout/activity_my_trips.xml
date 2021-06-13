@@ -21,15 +21,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMyTrips"
-        android:layout_width="326dp"
-        android:layout_height="749dp"
-        android:layout_marginTop="30sp"
+        android:layout_width="329dp"
+        android:layout_height="667dp"
+        android:layout_marginTop="15sp"
         android:foregroundGravity="center"
         android:paddingTop="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.669" />
+        app:layout_constraintVertical_bias="0.197" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
