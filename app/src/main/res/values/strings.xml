@@ -3,35 +3,52 @@
     <string name="app_name">Trabalho</string>
     <string name="icon">Ícone</string>
     <string name="background">Imagem de fundo</string>
+    <string name="show_password">Exibir senha</string>
+    <string name="hide_password">Ocultar senha</string>
     <string name="logout">Sair</string>
 
     <!-- Login -->
-    <string name="login">Faça seu login</string>
-    <string name="email">E-mail</string>
-    <string name="email_placeholder">Insira seu e-mail</string>
-    <string name="password">Senha</string>
-    <string name="password_placeholder">Insira sua senha</string>
-    <string name="show_password">Exibir senha</string>
-    <string name="hide_password">Ocultar senha</string>
+    <string name="login_title">Faça seu login</string>
+    <string name="login_label_email">E-mail</string>
+    <string name="login_hint_email">Insira seu e-mail</string>
+    <string name="login_label_password">Senha</string>
+    <string name="login_hint_password">Insira sua senha</string>
     <string name="login_button">Entrar</string>
-    <string name="register">Cadastrar</string>
+    <string name="login_register_button">Cadastrar</string>
+
+    <!-- Register -->
+    <string name="register_label_name">Nome</string>
+    <string name="register_hint_name">Ex: Maria</string>
+    <string name="register_label_surname">Sobrenome</string>
+    <string name="register_hint_surname">Ex: Silva</string>
+    <string name="register_label_email">E-mail</string>
+    <string name="register_hint_email">Ex: mariasilva@email.com</string>
+    <string name="register_label_password">Senha</string>
+    <string name="register_hint_password">8-16 caracteres</string>
+    <string name="register_label_phone">Celular</string>
+    <string name="register_hint_phone">(51) 9XXXX-XXXX</string>
+    <string name="register_label_gender">Gênero</string>
+    <string name="register_label_female">Feminino</string>
+    <string name="register_label_male">Masculino</string>
+    <string name="register_button">Finalizar cadastro</string>
+
 
     <!-- Home -->
-    <string name="welcome">Bem-vindo (a)</string>
-    <string name="forecast">Previsão do tempo</string>
-    <string name="my_profile">Meu perfil</string>
-    <string name="new_trip">Nova viagem</string>
-    <string name="my_trips">Minhas viagens</string>
+    <string name="home_title">Boas vindas</string>
+    <string name="home_label_forecast">Previsão do tempo</string>
+    <string name="home_label_profile">Meu perfil</string>
+    <string name="home_label_new_trip">Nova viagem</string>
+    <string name="home_label_my_trips">Minhas viagens</string>
 
     <!-- New trip -->
-    <string name="current_city">CIDADE ATUAL</string>
-    <string name="departure_date">Data de partida</string>
-    <string name="destination">DESTINO</string>
-    <string name="destination_city">Cidade</string>
-    <string name="city_hint">Ex: Buenos Aires, Argentina</string>
-    <string name="arrival_date">Data de chegada</string>
-    <string name="return_section">VOLTA</string>
-    <string name="switch_return">Retorno para cidade de partida</string>
-    <string name="return_date">Data de retorno</string>
-    <string name="add_new_trip">Adicionar nova viagem</string>
+    <string name="new_trip_current_city">CIDADE ATUAL</string>
+    <string name="new_trip_departure_date">Data de partida</string>
+    <string name="new_trip_destination_section">DESTINO</string>
+    <string name="new_trip_destination_city">Cidade</string>
+    <string name="new_trip_city_hint">Ex: Buenos Aires, Argentina</string>
+    <string name="new_trip_arrival_date">Data de chegada</string>
+    <string name="new_trip_return_section">VOLTA</string>
+    <string name="new_trip_switch_return">Retorno para cidade de partida</string>
+    <string name="new_trip_return_date">Data de retorno</string>
+    <string name="new_trip_button">Adicionar nova viagem</string>
 </resources>

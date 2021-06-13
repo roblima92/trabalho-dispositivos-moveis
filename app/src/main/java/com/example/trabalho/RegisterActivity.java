@@ -25,12 +25,12 @@ import java.util.Map;
 public class RegisterActivity extends AppCompatActivity {
 
 //    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    ImageView imageRegister;
-    Button submitRegister;
     TextView editName;
-    TextView editPhone;
+    TextView editSurname;
     TextView editEmail;
     TextView editPassword;
+    TextView editPhone;
+    Button submitRegister;
 
 
     @Override
@@ -38,13 +38,12 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
-        submitRegister = findViewById(R.id.SubmitRegister);
-        editPhone = findViewById(R.id.editPhone);
-        editName = findViewById(R.id.editName);
-        editEmail = findViewById(R.id.editEmail);
-        editPassword = findViewById(R.id.editPassword);
-        imageRegister = findViewById(R.id.imageRegister);
+        editName = findViewById(R.id.register_input_name);
+        editSurname = findViewById(R.id.register_input_surname);
+        editEmail = findViewById(R.id.register_input_email);
+        editPassword = findViewById(R.id.register_input_password);
+        editPhone = findViewById(R.id.register_input_phone);
+        submitRegister = findViewById(R.id.register_button);
     }
 
     public void register(View view){
@@ -53,9 +52,11 @@ public class RegisterActivity extends AppCompatActivity {
         // Create a new user with a first and last name
         Map<String, Object> user = new HashMap<>();
         user.put("name", editName.getText().toString());
+        user.put("surname", editSurname.getText().toString());
         user.put("email", editEmail.getText().toString());
-        user.put("phone", editPhone.getText().toString());
         user.put("password", editPassword.getText().toString());
+        user.put("phone", editPhone.getText().toString());
+
 
 // Add a new document with a generated ID
 //        db.collection("user")
