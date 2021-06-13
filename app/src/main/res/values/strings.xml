@@ -28,7 +28,10 @@
     <string name="departure_date">Data de partida</string>
     <string name="destination">DESTINO</string>
     <string name="destination_city">Cidade</string>
+    <string name="city_hint">Ex: Buenos Aires, Argentina</string>
     <string name="arrival_date">Data de chegada</string>
+    <string name="return_section">VOLTA</string>
+    <string name="switch_return">Retorno para cidade de partida</string>
     <string name="return_date">Data de retorno</string>
     <string name="add_new_trip">Adicionar nova viagem</string>
 </resources>
