@@ -3,7 +3,10 @@ package com.example.trabalho.presenter;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.example.trabalho.models.User;
 import com.example.trabalho.presenter.contracts.ActivityContract;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class HomePresenter implements ActivityContract.ActivityPresenter {
 

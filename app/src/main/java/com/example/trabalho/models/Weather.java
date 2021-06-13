@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.example.trabalho.presenter.contracts.ModelContract;
 
-import java.util.Date;
+import java.util.Map;
 
 public class Weather implements Parcelable, ModelContract.Model {
     private int id;
@@ -66,5 +66,10 @@ public class Weather implements Parcelable, ModelContract.Model {
         parcel.writeString(main);
         parcel.writeString(description);
         parcel.writeString(icon);
+    }
+
+    @Override
+    public Map<String, Object> getInstanceinMap() {
+        return null;
     }
 }

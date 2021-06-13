@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import com.example.trabalho.presenter.contracts.ModelContract;
 
+import java.util.Map;
+
 public class LocationGeo implements Parcelable, ModelContract.Model{
 
     private double latitude;
@@ -65,5 +67,10 @@ public class LocationGeo implements Parcelable, ModelContract.Model{
         parcel.writeFloat(speed);
         parcel.writeFloat(bearing);
         parcel.writeFloat(accuracy);
+    }
+
+    @Override
+    public Map<String, Object> getInstanceinMap() {
+        return null;
     }
 }
