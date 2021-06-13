@@ -44,7 +44,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.501"
-            app:srcCompat="@drawable/background_login_home" />
+            app:srcCompat="@drawable/bg_home" />
 
         <!-- Logout -->
         <ImageView
@@ -175,7 +175,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="32dp"
                 android:contentDescription="@string/icon"
-                app:srcCompat="@drawable/my_profile_icon" />
+                app:srcCompat="@drawable/profile_icon" />
         </androidx.cardview.widget.CardView>
 
         <!-- My profile text-->
