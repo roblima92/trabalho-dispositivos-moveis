@@ -83,7 +83,7 @@
             android:layout_marginRight="80dp"
             android:contentDescription="@string/welcome"
             android:gravity="center"
-            android:text="@{`Bem-vindo `+ user.name}"
+            android:text="@{user.welcomeMessage}"
             android:textColor="#FFFFFF"
             android:textSize="32sp"
             android:textStyle="bold"

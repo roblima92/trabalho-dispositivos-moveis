@@ -3,6 +3,7 @@ package com.example.trabalho.utils;
 import android.os.Build;
 import android.text.TextUtils;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
 import androidx.annotation.RequiresApi;
 
@@ -51,7 +52,15 @@ public class Validate {
         return true;
     }
 
-    public static boolean emailIsValid(EditText email) throws Exception {
+    public static Boolean radioGroupIsRequired(RadioGroup radioGroup, String campo) throws Exception {
+        int radioButtonId = radioGroup.getCheckedRadioButtonId();
+        if (radioButtonId == -1) {
+            throw new Exception("O campo "+ campo +" é obrigatório");
+        }
+        return true;
+    }
+
+    public static Boolean emailIsValid(EditText email) throws Exception {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +
                 "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
@@ -59,7 +68,16 @@ public class Validate {
 
         Pattern pat = Pattern.compile(emailRegex);
         if (!pat.matcher(email.getText().toString()).matches()) {
-            throw new Exception("O campo email é inválido");
+            throw new Exception("O email informado é inválido");
+        }
+        return true;
+    }
+
+    public static Boolean phoneIsValid(EditText phone) throws Exception {
+        String phoneRegex = "(\\(?\\d{2}\\)?\\s)?(\\d{4,5}\\-\\d{4})";
+        Pattern pat = Pattern.compile(phoneRegex);
+        if (!pat.matcher(phone.getText().toString()).matches()) {
+            throw new Exception("O celular informado é inválido");
         }
         return true;
     }

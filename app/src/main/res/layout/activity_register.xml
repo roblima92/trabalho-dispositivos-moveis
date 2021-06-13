@@ -2,12 +2,17 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:mask="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools">
-<data>
-    <variable
-        name="user"
-        type="com.example.trabalho.models.User" />
-</data>
+    <data>
+        <variable
+            name="user"
+            type="com.example.trabalho.models.User" />
+
+        <variable
+            name="presenter"
+            type="com.example.trabalho.presenter.RegisterPresenter" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,75 +20,130 @@ xmlns:tools="http://schemas.android.com/tools">
         android:background="@color/color_primary">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editName"
+            android:id="@+id/lastname_register_input"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_width="312dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="224dp"
+            android:layout_marginTop="20dp"
+            android:hint="Sobrenome"
+            android:text="@={user.lastName}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_register_input" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_register_input"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+            android:layout_width="312dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
             android:hint="Nome"
-            android:text="@{user.name}"
+            android:text="@={user.firstName}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editPhone"
+        <br.com.sapereaude.maskedEditText.MaskedEditText
+            android:id="@+id/phone_register_input"
             android:layout_width="312dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="68dp"
-            android:hint="Telefone"
-            android:text="@{user.phone}"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="phone"
+            android:text="@={user.phone}"
+            mask:mask="(##) #####-####"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editName" />
+            app:layout_constraintTop_toBottomOf="@+id/lastname_register_input" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editEmail"
+            android:id="@+id/email_register_input"
             android:layout_width="312dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="20dp"
             android:hint="Email"
-            android:text="@{user.email}"
+            android:text="@={user.email}"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editPhone" />
+            app:layout_constraintTop_toBottomOf="@+id/phone_register_input" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editPassword"
+            android:id="@+id/password_register_input"
             android:layout_width="312dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="20dp"
             android:hint="Senha"
-            android:text="@{user.password}"
+            android:text="@={user.password}"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/email_register_input" />
 
         <Button
             android:id="@+id/SubmitRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="56dp"
-            android:onClick="register"
+            android:onClick="@{(v) -> presenter.submit(user)}"
             android:text="Confirmar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.861"
+            app:layout_constraintHorizontal_bias="0.829"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editPassword"
-            app:layout_constraintVertical_bias="0.632" />
+            app:layout_constraintTop_toBottomOf="@+id/gender_register_group"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/imageRegister"
             android:layout_width="119dp"
             android:layout_height="130dp"
-            app:layout_constraintBottom_toTopOf="@+id/editName"
+            app:layout_constraintBottom_toTopOf="@+id/name_register_input"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.265"
             app:srcCompat="@drawable/teste" />
+
+        <RadioGroup
+            android:id="@+id/gender_register_group"
+            android:layout_width="312dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password_register_input">
+
+            <RadioButton
+                android:id="@+id/female_gender_register_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="20dp"
+                android:text="Feminino"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/male_gender_register_radio"
+                app:layout_constraintTop_toBottomOf="@+id/password_register_input" />
+
+            <RadioButton
+                android:id="@+id/male_gender_register_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="20dp"
+                android:text="Masculino"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password_register_input" />
+        </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

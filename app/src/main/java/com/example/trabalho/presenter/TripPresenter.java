@@ -27,9 +27,6 @@ public class TripPresenter implements ActivityContract.ActivityFormPresenter {
         this.tripView = tripView;
     }
 
-    @Override
-    public void start() { }
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void submit(ModelContract.Model trip) {

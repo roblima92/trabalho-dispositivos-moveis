@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "680086998201",
-    "project_id": "trabalho-b3aae",
-    "storage_bucket": "trabalho-b3aae.appspot.com"
+    "project_number": "2157236828",
+    "project_id": "trabalho-mobile-2b302",
+    "storage_bucket": "trabalho-mobile-2b302.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:680086998201:android:9e848c5e3bcf10e9b55f68",
+        "mobilesdk_app_id": "1:2157236828:android:8c248089db92eeaf1f8c99",
         "android_client_info": {
+
           "package_name": "com.example.trabalho"
         }
       },
       "oauth_client": [
         {
-          "client_id": "680086998201-tkbivqcdv3dr2fqqr3jccuctvhq7lc7n.apps.googleusercontent.com",
+          "client_id": "2157236828-e6h1jurjsl7crfrugpoo8jp4jael4huv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDoB4891BzRXWhIGIt1jFj8NrU6FNMfvH8"
+          "current_key": "AIzaSyANDsylyhxBDtRsZGq5u5bSwDmgCoNlW9w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "680086998201-tkbivqcdv3dr2fqqr3jccuctvhq7lc7n.apps.googleusercontent.com",
+              "client_id": "2157236828-e6h1jurjsl7crfrugpoo8jp4jael4huv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import com.example.trabalho.presenter.contracts.ModelContract;
 
 import java.util.Date;
+import java.util.Map;
 
 public class Trip implements Parcelable, ModelContract.Model {
     private Date departureDate;
@@ -88,5 +89,10 @@ public class Trip implements Parcelable, ModelContract.Model {
         parcel.writeSerializable(departureDate);
         parcel.writeSerializable(arrivalDate);
         parcel.writeSerializable(returnDate);
+    }
+
+    @Override
+    public Map<String, Object> getInstanceinMap() {
+        return null;
     }
 }

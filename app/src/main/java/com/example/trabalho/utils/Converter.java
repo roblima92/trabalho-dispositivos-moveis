@@ -5,6 +5,8 @@ import android.widget.EditText;
 import androidx.databinding.BindingConversion;
 import androidx.databinding.InverseMethod;
 
+import com.example.trabalho.models.User;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
