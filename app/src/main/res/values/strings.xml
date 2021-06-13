@@ -31,4 +31,18 @@
     <string name="arrival_date">Data de chegada</string>
     <string name="return_date">Data de retorno</string>
     <string name="add_new_trip">Adicionar nova viagem</string>
+
+<!--    Forecast-->
+    <string name="more_details">Mais detalhes</string>
+    <string name="today">Hoje</string>
+    <string name="next_days">APróximos dias</string>
+    <string name="see_more">Ver mais</string>
+    <string name="feeling">Sensação</string>
+    <string name="umidity">Umidade</string>
+    <string name="precipitation">Precipitação</string>
+    <string name="pressure">Pressão</string>
+    <string name="UV_index">Índice UV</string>
+
+<!--    My Trips-->
+    <string name="see_details">VER DETALHES</string>
 </resources>

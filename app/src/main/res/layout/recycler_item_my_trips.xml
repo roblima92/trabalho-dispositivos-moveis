@@ -75,15 +75,15 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="44dp"
-        android:layout_height="34dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_marginTop="28dp"
         android:foregroundGravity="center"
         app:layout_constraintEnd_toStartOf="@+id/textView20"
-        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintHorizontal_bias="0.851"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/app_icon" />
+        app:srcCompat="@drawable/airplane" />
 
     <Button
         android:id="@+id/add_new_trip_button"
@@ -92,7 +92,7 @@
         android:background="@drawable/button_my_trips"
         android:gravity="center"
         android:padding="8dp"
-        android:text="VER DETALHES"
+        android:text="@string/see_details"
         android:textColor="#FFFFFF"
         app:backgroundTint="#4A90E2"
         app:layout_constraintBottom_toBottomOf="@+id/view"
