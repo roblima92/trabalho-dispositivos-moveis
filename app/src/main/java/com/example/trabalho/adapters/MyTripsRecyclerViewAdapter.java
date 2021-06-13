@@ -13,7 +13,7 @@ import com.example.trabalho.R;
 
 import java.util.List;
 
-public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
+public class MyTripsRecyclerViewAdapter extends RecyclerView.Adapter<MyTripsRecyclerViewAdapter.ViewHolder> {
 
     private List<Integer> mViewColors;
     private List<String> mAnimals;
@@ -21,7 +21,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    public MyRecyclerViewAdapter(Context context, List<String> animals) {
+    public MyTripsRecyclerViewAdapter(Context context, List<String> animals) {
         this.mInflater = LayoutInflater.from(context);
 //        this.mViewColors = colors;
         this.mAnimals = animals;
@@ -31,7 +31,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.recycler_item_forecast, parent, false);
+        View view = mInflater.inflate(R.layout.recycler_item_my_trips, parent, false);
         return new ViewHolder(view);
     }
 

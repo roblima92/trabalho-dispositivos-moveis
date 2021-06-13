@@ -39,6 +39,7 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".ForecastActivity" />
+        <activity android:name=".MyTripsActivity" />
     </application>
 
 </manifest>
