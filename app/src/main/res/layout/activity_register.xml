@@ -17,7 +17,7 @@ xmlns:tools="http://schemas.android.com/tools">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color">
+        android:background="@color/color_primary">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/lastname_register_input"
