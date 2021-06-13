@@ -1,48 +1,55 @@
 package com.example.trabalho;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
+import androidx.databinding.DataBindingUtil;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.widget.Toast;
 
-public class HomeActivity extends AppCompatActivity {
+import com.example.trabalho.databinding.ActivityHomeBinding;
+import com.example.trabalho.models.User;
+import com.example.trabalho.presenter.HomePresenter;
+import com.example.trabalho.presenter.contracts.ActivityContract;
+
+public class HomeActivity extends AppCompatActivity implements ActivityContract.ActivityView {
+
+    private ActivityContract.ActivityPresenter homePresenter;
+    private ActivityHomeBinding homeBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        CardView weather = (CardView) findViewById(R.id.forecast_card);
-        CardView profile = (CardView) findViewById(R.id.my_profile_card);
-        CardView trip = (CardView) findViewById(R.id.new_trip_card);
-        CardView old_trips = (CardView) findViewById(R.id.my_trips_card);
+        Intent intent = getIntent();
+        User user = intent.getParcelableExtra("objUser");
 
-        weather.setOnClickListener(v -> openWeatherActivity(v));
-        profile.setOnClickListener(v -> openProfileActivity(v));
-        trip.setOnClickListener(v -> openTripActivity(v));
-        old_trips.setOnClickListener(v -> openOldTripsActivity(v));
+        homePresenter = new HomePresenter(this);
+        homeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        homeBinding.setPresenter((HomePresenter) homePresenter);
+        homeBinding.setForecastActivity(ForecastActivity.class);
+        homeBinding.setMyTripsActivity(MyTripsActivity.class);
+        homeBinding.setProfileActivity(ProfileActivity.class);
+        homeBinding.setNewTripActivity(TripActivity.class);
+
+        homeBinding.setUser(user);
     }
 
-    public void openWeatherActivity(View view) {
-        Intent intent = new Intent(this,WeatherActivity.class);
-        startActivity(intent);
+    @Override
+    public Context getContext() {
+        return this.getApplicationContext();
     }
 
-    public void openProfileActivity(View view) {
-        Intent intent = new Intent(this,ProfileActivity.class);
-        startActivity(intent);
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(this.getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
-    public void openTripActivity(View view) {
-        Intent intent = new Intent(this,TripActivity.class);
-        startActivity(intent);
-    }
-
-    public void openOldTripsActivity(View view) {
-        Intent intent = new Intent(this,OldTripsActivity.class);
+    @Override
+    public void navigate(Intent intent) {
         startActivity(intent);
     }
 }

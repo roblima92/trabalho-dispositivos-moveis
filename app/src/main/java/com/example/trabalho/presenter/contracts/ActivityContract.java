@@ -18,7 +18,7 @@ public class ActivityContract {
 
     public interface ActivityFormPresenter {
         public void start();
-        public void submit(Trip trip);
+        public void submit(ModelContract.Model model);
         public void validate() throws Exception;
     }
 }

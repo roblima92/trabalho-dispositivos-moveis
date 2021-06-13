@@ -108,7 +108,6 @@ public class TripDetailsPresenter implements RequestForecastContract.RequestFore
     @Override
     public void getForecast(List<Forecast> forecasts, String type) {
 
-        System.out.println(type);
         // Check if departure date is the same than arrival date
         Boolean sameDate = trip.getDepartureDate().compareTo(trip.getArrivalDate()) == 0;
 

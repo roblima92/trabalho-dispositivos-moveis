@@ -11,6 +11,7 @@ import com.example.trabalho.databinding.ActivityTripBinding;
 import com.example.trabalho.models.Trip;
 import com.example.trabalho.presenter.contracts.ActivityContract;
 
+import com.example.trabalho.presenter.contracts.ModelContract;
 import com.example.trabalho.utils.Validate;
 
 import java.util.Date;
@@ -31,12 +32,12 @@ public class TripPresenter implements ActivityContract.ActivityFormPresenter {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void submit(Trip trip) {
-        this.trip = trip;
+    public void submit(ModelContract.Model trip) {
+        this.trip = (Trip) trip;
         try {
             this.validate();
             Intent intent = new Intent(tripView.getContext(), TripDetailsActivity.class);
-            intent.putExtra("objTrip", trip);
+            intent.putExtra("objTrip", this.trip);
             tripView.navigate(intent);
         } catch (Exception e) {
             this.tripView.showToast(e.getMessage());

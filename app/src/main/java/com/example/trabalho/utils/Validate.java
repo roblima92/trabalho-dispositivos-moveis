@@ -15,6 +15,7 @@ import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class Validate {
@@ -46,6 +47,19 @@ public class Validate {
             String text = "O campo "+ label +" é obrigatório";
             editText.setError(text);
             throw new Exception(text);
+        }
+        return true;
+    }
+
+    public static boolean emailIsValid(EditText email) throws Exception {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (!pat.matcher(email.getText().toString()).matches()) {
+            throw new Exception("O campo email é inválido");
         }
         return true;
     }

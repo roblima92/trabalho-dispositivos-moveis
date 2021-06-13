@@ -1,7 +1,9 @@
 package com.example.trabalho;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,41 +11,46 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LoginActivity extends AppCompatActivity {
+import com.example.trabalho.databinding.ActivityHomeBinding;
+import com.example.trabalho.databinding.ActivityLoginBinding;
+import com.example.trabalho.models.Trip;
+import com.example.trabalho.models.User;
+import com.example.trabalho.presenter.HomePresenter;
+import com.example.trabalho.presenter.LoginPresenter;
+import com.example.trabalho.presenter.TripPresenter;
+import com.example.trabalho.presenter.contracts.ActivityContract;
+
+public class LoginActivity extends AppCompatActivity implements ActivityContract.ActivityView {
+
+    private ActivityContract.ActivityFormPresenter loginPresenter;
+    private ActivityLoginBinding loginBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button login = (Button) findViewById(R.id.login_button);
-        Button register = (Button) findViewById(R.id.register_button);
+        loginPresenter = new LoginPresenter(this);
 
-        login.setOnClickListener(v -> openHomeActivity(v));
-        register.setOnClickListener(v -> openRegisterActivity(v));
+        loginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        loginBinding.setPresenter((LoginPresenter) loginPresenter);
+        loginBinding.setUser(new User());
+
+        ((LoginPresenter) loginPresenter).loginBinding = loginBinding;
     }
 
-    public void openHomeActivity(View view) {
-        Intent intent = new Intent(this,HomeActivity.class);
-//        EditText loginName = (EditText)findViewById(R.id.editTextTextPersonName2);
-//        String qq = loginName.getText().toString();
-//        EditText password = (EditText)findViewById(R.id.editTextTextPassword);
-//        String ww = password.getText().toString();
-
-
-//        intent.putExtra("nome",loginName.getText().toString());
-
-
-//        if(qq.equals(ww)) {
-            startActivity(intent);
-//        }else{
-//            Toast.makeText(this,"User and password are different!!",Toast.LENGTH_LONG).show();
-//
-//        }
+    @Override
+    public Context getContext() {
+        return this.getApplicationContext();
     }
 
-    public void openRegisterActivity(View view) {
-        Intent intent = new Intent(this,RegisterActivity.class);
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(this.getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void navigate(Intent intent) {
         startActivity(intent);
     }
 }

@@ -3,7 +3,9 @@ package com.example.trabalho.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class LocationGeo implements Parcelable {
+import com.example.trabalho.presenter.contracts.ModelContract;
+
+public class LocationGeo implements Parcelable, ModelContract.Model{
 
     private double latitude;
     private double longitude;

@@ -3,9 +3,11 @@ package com.example.trabalho.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.trabalho.presenter.contracts.ModelContract;
+
 import java.util.Date;
 
-public class Trip implements Parcelable {
+public class Trip implements Parcelable, ModelContract.Model {
     private Date departureDate;
     private Date arrivalDate;
     private Date returnDate;
