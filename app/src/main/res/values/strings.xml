@@ -14,7 +14,7 @@
     <string name="show_password">Exibir senha</string>
     <string name="hide_password">Ocultar senha</string>
     <string name="login_button">Entrar</string>
-    <string name="register">Cadastrar</string>
+    <string name="register_button">Cadastrar</string>
 
     <!-- Home -->
     <string name="welcome">Bem-vindo (a)</string>
