@@ -67,7 +67,6 @@ public class RegisterPresenter implements ActivityContract.ActivityFormPresenter
                                         .addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
-                                                System.out.println("ERRO: "+e.getMessage());
                                                 registerView.showToast("Ops! Ocorreu um erro ao tentar realizar seu cadastro.");
                                             }
                                         });
@@ -77,7 +76,6 @@ public class RegisterPresenter implements ActivityContract.ActivityFormPresenter
                         }
             });
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             this.registerView.showToast(e.getMessage());
         }
     }

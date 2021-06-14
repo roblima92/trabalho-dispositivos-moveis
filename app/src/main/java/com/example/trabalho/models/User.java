@@ -47,7 +47,6 @@ public class User implements Parcelable, ModelContract.Model {
     }
 
     public String getLastName() {
-        System.out.println(lastName + " - " + name);
         if (lastName != null) return lastName;
         if (name == null) return name;
         String[] arrayNames = name.split(" ");
