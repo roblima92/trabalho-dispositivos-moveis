@@ -43,7 +43,7 @@ public class RegisterPresenter implements ActivityContract.ActivityFormPresenter
         this.user = (User) model;
         try {
             this.validate();
-            this.user.setGender(Helper.getRadioButtonSelectedOnRadioGroup(registerBinding.genderRegisterGroup));
+            this.user.setGender(Helper.getRadioButtonSelectedOnRadioGroup(registerBinding.registerLayoutGender));
             this.user.setName(this.user.getFirstName() + " " + this.user.getLastName());
 
             mAuth.createUserWithEmailAndPassword(this.user.getEmail(), this.user.getPassword())
@@ -84,13 +84,13 @@ public class RegisterPresenter implements ActivityContract.ActivityFormPresenter
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void validate() throws Exception {
-        Validate.fieldIsRequired(registerBinding.nameRegisterInput, "nome");
-        Validate.fieldIsRequired(registerBinding.lastnameRegisterInput, "sobrenome");
-        Validate.fieldIsRequired(registerBinding.emailRegisterInput, "email");
-        Validate.fieldIsRequired(registerBinding.passwordRegisterInput, "senha");
-        Validate.fieldIsRequired(registerBinding.phoneRegisterInput, "celular");
-        Validate.radioGroupIsRequired(registerBinding.genderRegisterGroup, "gênero");
-        Validate.emailIsValid(registerBinding.emailRegisterInput);
-        Validate.phoneIsValid(registerBinding.phoneRegisterInput);
+        Validate.fieldIsRequired(registerBinding.registerInputName, "nome");
+        Validate.fieldIsRequired(registerBinding.registerInputSurname, "sobrenome");
+        Validate.fieldIsRequired(registerBinding.registerInputEmail, "email");
+        Validate.fieldIsRequired(registerBinding.registerInputPassword, "senha");
+        Validate.fieldIsRequired(registerBinding.registerInputPhone, "celular");
+        Validate.radioGroupIsRequired(registerBinding.registerLayoutGender, "gênero");
+        Validate.emailIsValid(registerBinding.registerInputEmail);
+        Validate.phoneIsValid(registerBinding.registerInputPhone);
     }
 }

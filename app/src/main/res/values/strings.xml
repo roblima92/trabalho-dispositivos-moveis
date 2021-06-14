@@ -31,7 +31,6 @@
     <string name="register_label_female">Feminino</string>
     <string name="register_label_male">Masculino</string>
     <string name="register_button">Finalizar cadastro</string>
-    <string name="register_button">Cadastrar</string>
 
     <!-- Home -->
     <string name="home_title">Boas vindas</string>
