@@ -40,9 +40,4 @@ public class Helper {
         RadioButton radioButtonSelected = (RadioButton) radioGroup.getChildAt(radioButtonIndex);
         return radioButtonSelected.getText().toString();
     }
-
-    public static String getFormattedDate(Date date) {
-        SimpleDateFormat brazilianFormat = new SimpleDateFormat("dd/MM/yyyy");
-        return brazilianFormat.format(date);
-    }
 }

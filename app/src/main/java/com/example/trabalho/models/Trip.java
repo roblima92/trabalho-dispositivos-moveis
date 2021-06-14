@@ -44,6 +44,9 @@ public class Trip implements Parcelable, ModelContract.Model {
     }
 
     public String getPlace() {
+        if (city != null && country != null) {
+            return city + ", " + country.substring(0, 3).toUpperCase();
+        }
         return place;
     }
 

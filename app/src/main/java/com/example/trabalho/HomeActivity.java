@@ -26,44 +26,22 @@ public class HomeActivity extends AppCompatActivity implements ActivityContract.
 
     private ActivityContract.ActivityPresenter homePresenter;
     private ActivityHomeBinding homeBinding;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        try {
-            ActivityContract.ActivityView homeView = this;
-            Activity homeActivity = this;
-            DocumentReference userModel = db.collection("users").document(mAuth.getCurrentUser().getUid());
-            userModel.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            User user = new User();
-                            user.setName((String) document.get("name"));
-                            user.setEmail((String) document.get("email"));
-                            user.setPhone((String) document.get("phone"));
-                            user.setGender((String) document.get("gender"));
-                            homePresenter = new HomePresenter(homeView, mAuth);
-                            homeBinding = DataBindingUtil.setContentView(homeActivity, R.layout.activity_home);
-                            homeBinding.setPresenter((HomePresenter) homePresenter);
-                            homeBinding.setForecastActivity(ForecastActivity.class);
-                            homeBinding.setMyTripsActivity(MyTripsActivity.class);
-                            homeBinding.setProfileActivity(ProfileActivity.class);
-                            homeBinding.setNewTripActivity(NewTripActivity.class);
-                            homeBinding.setUser(user);
-                        }
-                    }
-                }
-            });
+        homePresenter = new HomePresenter(this);
+    }
 
-        } catch (Exception e) {
-            this.showToast("Ocorreu uma falha ao tentar buscar seus dados");
-        }
+    public void bindUser(User user) {
+        homeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        homeBinding.setPresenter((HomePresenter) homePresenter);
+        homeBinding.setForecastActivity(ForecastActivity.class);
+        homeBinding.setMyTripsActivity(MyTripsActivity.class);
+        homeBinding.setProfileActivity(ProfileActivity.class);
+        homeBinding.setNewTripActivity(NewTripActivity.class);
+        homeBinding.setUser(user);
     }
 
     @Override

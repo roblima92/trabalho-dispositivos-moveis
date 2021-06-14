@@ -6,33 +6,32 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        tools:context=".NewTripActivity">
+        tools:context=".MyTripsActivity">
 
         <ImageView
-            android:id="@+id/background_new_trip"
+            android:id="@+id/bg_my_trips"
             android:layout_width="550dp"
             android:layout_height="1000dp"
             android:contentDescription="@string/background"
-            android:src="@drawable/bg_new_trip"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bg_my_trips" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_my_trips"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginBottom="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMyTrips"
-            android:layout_width="329dp"
-            android:layout_height="667dp"
-            android:layout_marginTop="15sp"
-            android:foregroundGravity="center"
-            android:paddingTop="40sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.197" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

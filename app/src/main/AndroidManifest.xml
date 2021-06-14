@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyTripsActivityTest"></activity>
+        <activity android:name=".MyTripsActivity"></activity>
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/AppTheme.Fullscreen">
@@ -30,7 +30,7 @@
             android:name=".HomeActivity"
             android:theme="@style/AppTheme.Fullscreen" />
         <activity
-            android:name=".ProfileActivityTest"
+            android:name=".ProfileActivity"
             android:label="Meu perfil"
             android:parentActivityName=".HomeActivity" />
         <activity
@@ -43,9 +43,7 @@
             android:parentActivityName=".LoginActivity" />
         <activity android:name=".TripDetailsActivity" />
         <activity android:name=".TripActivity" />
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".ForecastActivity" />
-        <activity android:name=".MyTripsActivity" />
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.trabalho.databinding.ShowMyTripsBinding;
+import com.example.trabalho.databinding.LayoutMyTripsBinding;
 import com.example.trabalho.models.Trip;
 import com.example.trabalho.presenter.contracts.ModelContract;
 
@@ -16,9 +16,9 @@ public class MyTripsAdapter extends RecyclerView.Adapter<MyTripsAdapter.MyTripsV
     private List<ModelContract.Model> tripList;
 
     public class MyTripsViewHolder extends RecyclerView.ViewHolder {
-        public ShowMyTripsBinding viewMyTrips;
+        public LayoutMyTripsBinding viewMyTrips;
 
-        public MyTripsViewHolder(@NonNull ShowMyTripsBinding itemView) {
+        public MyTripsViewHolder(@NonNull LayoutMyTripsBinding itemView) {
             super(itemView.getRoot());
             this.viewMyTrips = itemView;
         }
@@ -31,8 +31,8 @@ public class MyTripsAdapter extends RecyclerView.Adapter<MyTripsAdapter.MyTripsV
     @NonNull
     @Override
     public MyTripsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ShowMyTripsBinding v = null;
-        v = ShowMyTripsBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        LayoutMyTripsBinding v = null;
+        v = LayoutMyTripsBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new MyTripsViewHolder(v);
     }
 
