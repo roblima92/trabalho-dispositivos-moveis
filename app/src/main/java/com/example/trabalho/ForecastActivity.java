@@ -40,7 +40,7 @@ public class ForecastActivity extends AppCompatActivity implements MyRecyclerVie
         animalNames.add("Goat");
 
         // set up the RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.rvAnimals);
+        RecyclerView recyclerView = findViewById(R.id.forecast_rv_today);
         LinearLayoutManager horizontalLayoutManager
                 = new LinearLayoutManager(ForecastActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(horizontalLayoutManager);

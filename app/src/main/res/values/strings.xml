@@ -26,7 +26,7 @@
     <string name="register_label_password">Senha</string>
     <string name="register_hint_password">8 &#8211; 16 caracteres</string>
     <string name="register_label_phone">Celular</string>
-    <string name="register_hint_phone">(51) 9XXXX-XXXX</string>
+    <string name="register_hint_phone">51 9XXXXXXXX</string>
     <string name="register_label_gender">Gênero</string>
     <string name="register_label_female">Feminino</string>
     <string name="register_label_male">Masculino</string>
