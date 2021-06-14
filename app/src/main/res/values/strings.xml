@@ -39,18 +39,6 @@
     <string name="home_label_new_trip">Nova viagem</string>
     <string name="home_label_my_trips">Minhas viagens</string>
 
-    <!-- Profile -->
-    <string name="profile_personal_section">Dados pessoais</string>
-    <string name="profile_label_name">Nome</string>
-    <string name="profile_label_surname">Sobrenome</string>
-    <string name="profile_label_gender">Gênero</string>
-    <string name="profile_contact_section">Informações de contato</string>
-    <string name="profile_label_email">E-mail</string>
-    <string name="profile_label_phone">Celular</string>
-    <string name="profile_security_section">Segurança</string>
-    <string name="profile_label_password">Senha</string>
-    <string name="profile_button">EDITAR</string>
-
     <!-- Forecast -->
     <string name="forecast_city">CIDADE ATUAL</string>
     <string name="forecast_temperature">20°</string>
@@ -76,6 +64,18 @@
     <string name="forecast_pressure_info">1017mbar</string>
     <string name="forecast_UV_index_info">0</string>
 
+    <!-- Profile -->
+    <string name="profile_personal_section">Dados pessoais</string>
+    <string name="profile_label_name">Nome</string>
+    <string name="profile_label_surname">Sobrenome</string>
+    <string name="profile_label_gender">Gênero</string>
+    <string name="profile_contact_section">Informações de contato</string>
+    <string name="profile_label_email">E-mail</string>
+    <string name="profile_label_phone">Celular</string>
+    <string name="profile_security_section">Segurança</string>
+    <string name="profile_label_password">Senha</string>
+    <string name="profile_button">EDITAR</string>
+
     <!-- New trip -->
     <string name="new_trip_current_city">CIDADE ATUAL</string>
     <string name="new_trip_departure_date">Data de partida</string>
@@ -89,7 +89,16 @@
     <string name="new_trip_button">Adicionar nova viagem</string>
 
     <!--    My Trips-->
+    <string name="my_trips_departure_city">Porto Alegre, BRA</string>
+    <string name="my_trips_arrival_city">Buenos Aires, ARG</string>
+    <string name="my_trips_departure_date">28/12/2019</string>
+    <string name="my_trips_arrival_date">28/12/2019</string>
+    <string name="my_trips_return_date">04/01/2020</string>
+    <string name="my_trips_see_details">VER DETALHES</string>
+
+    <!-- apagar esse -->
     <string name="see_details">VER DETALHES</string>
+
 
     <!--Register-->
     <string name="name">Nome</string>
