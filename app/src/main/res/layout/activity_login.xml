@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <import type="com.example.trabalho.utils.Helper"/>
+
         <variable
             name="presenter"
             type="com.example.trabalho.presenter.LoginPresenter" />
@@ -13,7 +15,7 @@
 
         <variable
             name="registerActivity"
-            type="com.example.trabalho.RegisterActivity" />
+            type="Class" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -146,7 +148,8 @@
             android:layout_marginRight="8dp"
             android:contentDescription="@string/show_password"
             android:visibility="visible"
-            android:onClick="@{(v) -> presenter.setVisiblePassword(loginShowPassword, loginHidePassword, loginInputPassword)}"
+            android:elevation="1dp"
+            android:onClick="@{(v) -> Helper.setVisiblePassword(loginShowPassword, loginHidePassword, loginInputPassword)}"
             app:layout_constraintBottom_toBottomOf="@+id/login_input_password"
             app:layout_constraintEnd_toEndOf="@+id/login_input_password"
             app:layout_constraintTop_toTopOf="@+id/login_input_password"
@@ -161,10 +164,11 @@
             android:layout_marginRight="8dp"
             android:contentDescription="@string/hide_password"
             android:visibility="invisible"
-            android:onClick="@{(v) -> presenter.setVisiblePassword(loginShowPassword, loginHidePassword, loginInputPassword)}"
-            app:layout_constraintBottom_toBottomOf="@+id/login_input_password"
-            app:layout_constraintEnd_toEndOf="@+id/login_input_password"
-            app:layout_constraintTop_toTopOf="@+id/login_input_password"
+            android:elevation="1dp"
+            android:onClick="@{(v) -> Helper.setVisiblePassword(loginShowPassword, loginHidePassword, loginInputPassword)}"
+            app:layout_constraintBottom_toBottomOf="@+id/password_input"
+            app:layout_constraintEnd_toEndOf="@+id/password_input"
+            app:layout_constraintTop_toTopOf="@+id/password_input"
             app:srcCompat="@drawable/visibility_off" />
 
         <!-- Login button -->

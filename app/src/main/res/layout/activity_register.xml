@@ -6,6 +6,9 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
     <variable
         name="user"
         type="com.example.trabalho.models.User" />
+    <variable
+        name="presenter"
+        type="com.example.trabalho.presenter.RegisterPresenter" />
 </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -134,6 +137,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:inputType="textEmailAddress"
             android:textColorHint="#80FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.158"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/register_label_email" />
 
@@ -235,9 +239,60 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             android:autofillHints="@string/register_hint_phone"
             android:inputType="phone"
             android:textColorHint="#80FFFFFF"
+            app:layout_constraintTop_toBottomOf="@+id/name_register_input"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/phone"
+            android:textColor="#7CFFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/phone_register_input"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.149"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lastname_register_input"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/email"
+            android:textColor="#7CFFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/email_register_input"
             app:layout_constraintTop_toBottomOf="@+id/register_label_phone" />
+            app:layout_constraintTop_toBottomOf="@+id/phone_register_input"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/password"
+            android:textColor="#7CFFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/password_register_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_register_input"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/SubmitRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="64dp"
+            android:onClick="@{(v) -> presenter.submit(user)}"
+            android:text="@string/confirm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.796"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <!-- Gender label -->
         <TextView

@@ -29,8 +29,8 @@
             android:inputType="date"
             android:text="@={Converter.dateToString(trip.returnDate)}"
             app:layout_constraintTop_toBottomOf="@+id/labelReturnDate"
-            mask:layout_constraintEnd_toEndOf="parent"
-            mask:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             mask:mask="##/##/####" />
 
         <EditText

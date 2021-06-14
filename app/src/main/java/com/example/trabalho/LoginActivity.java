@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements ActivityContract
         loginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         loginBinding.setPresenter((LoginPresenter) loginPresenter);
         loginBinding.setUser(new User());
+        loginBinding.setRegisterActivity(RegisterActivity.class);
 
         ((LoginPresenter) loginPresenter).loginBinding = loginBinding;
     }

@@ -55,6 +55,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:contentDescription="@string/logout"
+            android:onClick="@{() -> presenter.logout()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logout_icon" />
@@ -83,7 +84,7 @@
             android:layout_marginRight="80dp"
             android:contentDescription="@string/home_title"
             android:gravity="center"
-            android:text="@{`Bem-vindo `+ user.name}"
+            android:text="@{user.welcomeMessage}"
             android:textColor="#FFFFFF"
             android:textSize="32sp"
             android:textStyle="bold"

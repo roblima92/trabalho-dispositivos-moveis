@@ -35,6 +35,8 @@
         <activity android:name=".TripActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".ForecastActivity" />
+        <activity android:name=".MyTripsActivity" />
     </application>
 
 </manifest>

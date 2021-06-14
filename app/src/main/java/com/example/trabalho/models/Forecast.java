@@ -7,6 +7,7 @@ import com.example.trabalho.presenter.contracts.ModelContract;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 public class Forecast implements Parcelable, ModelContract.Model {
     private Date date;
@@ -86,5 +87,11 @@ public class Forecast implements Parcelable, ModelContract.Model {
         parcel.writeInt(pressure);
         parcel.writeInt(humidity);
         weather.writeToParcel(parcel, i);
+    }
+
+    @Override
+    public Map<String, Object> getInstanceinMap() {
+
+        return null;
     }
 }

@@ -31,7 +31,7 @@
     <string name="register_label_female">Feminino</string>
     <string name="register_label_male">Masculino</string>
     <string name="register_button">Finalizar cadastro</string>
-
+    <string name="register_button">Cadastrar</string>
 
     <!-- Home -->
     <string name="home_title">Boas vindas</string>
@@ -51,4 +51,34 @@
     <string name="new_trip_switch_return">Retorno para cidade de partida</string>
     <string name="new_trip_return_date">Data de retorno</string>
     <string name="new_trip_button">Adicionar nova viagem</string>
+
+    <string name="current_city">CIDADE ATUAL</string>
+    <string name="departure_date">Data de partida</string>
+    <string name="destination">DESTINO</string>
+    <string name="destination_city">Cidade</string>
+    <string name="arrival_date">Data de chegada</string>
+    <string name="return_date">Data de retorno</string>
+    <string name="add_new_trip">Adicionar nova viagem</string>
+
+<!--    Forecast-->
+    <string name="more_details">Mais detalhes</string>
+    <string name="today">Hoje</string>
+    <string name="next_days">Próximos dias</string>
+    <string name="see_more">Ver mais</string>
+    <string name="feeling">Sensação</string>
+    <string name="umidity">Umidade</string>
+    <string name="precipitation">Precipitação</string>
+    <string name="pressure">Pressão</string>
+    <string name="UV_index">Índice UV</string>
+
+<!--    My Trips-->
+    <string name="see_details">VER DETALHES</string>
+
+    <!--Register-->
+    <string name="name">Nome</string>
+    <string name="surname">Sobrenome</string>
+    <string name="phone">Telefone</string>
+    <string name="male">Masculino</string>
+    <string name="female">Feminino</string>
+    <string name="confirm">Confirmar</string>
 </resources>
