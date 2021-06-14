@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class User implements Parcelable, ModelContract.Model {
 
-    private int id;
+    private String uId;
     private String name;
     private String firstName;
     private String lastName;
@@ -46,7 +46,8 @@ public class User implements Parcelable, ModelContract.Model {
         this.firstName = firstName;
     }
 
-    public String getLastname() {
+    public String getLastName() {
+        System.out.println(lastName + " - " + name);
         if (lastName != null) return lastName;
         if (name == null) return name;
         String[] arrayNames = name.split(" ");
@@ -62,12 +63,12 @@ public class User implements Parcelable, ModelContract.Model {
         this.lastName = lastName;
     }
 
-    public int getId() {
-        return id;
+    public String getUid() {
+        return uId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUid(String id) {
+        this.uId = id;
     }
 
     public String getName() {
@@ -102,10 +103,6 @@ public class User implements Parcelable, ModelContract.Model {
         this.password = password;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -117,7 +114,7 @@ public class User implements Parcelable, ModelContract.Model {
     public User() {}
 
     protected User(Parcel in) {
-        this.id = in.readInt();
+        this.uId = in.readString();
         this.name = in.readString();
         this.gender = in.readString();
         this.firstName = in.readString();
@@ -146,7 +143,7 @@ public class User implements Parcelable, ModelContract.Model {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(this.id);
+        parcel.writeString(this.uId);
         parcel.writeString(this.name);
         parcel.writeString(this.gender);
         parcel.writeString(this.getFirstName());
@@ -162,7 +159,6 @@ public class User implements Parcelable, ModelContract.Model {
         user.put("email", this.email);
         user.put("phone", this.phone);
         user.put("gender", this.gender);
-        user.put("password", this.password);
         return user;
     }
 }

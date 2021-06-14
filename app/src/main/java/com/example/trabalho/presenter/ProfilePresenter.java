@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.example.trabalho.HomeActivity;
 import com.example.trabalho.LoginActivity;
+import com.example.trabalho.ProfileActivity;
 import com.example.trabalho.models.User;
 import com.example.trabalho.presenter.contracts.ActivityContract;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -16,14 +17,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
-public class HomePresenter implements ActivityContract.ActivityPresenter {
+public class ProfilePresenter implements ActivityContract.ActivityPresenter {
 
-    private ActivityContract.ActivityView homeView;
+    private ActivityContract.ActivityView profileView;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-    public HomePresenter(ActivityContract.ActivityView homeView) {
-        this.homeView = homeView;
+    public ProfilePresenter(ActivityContract.ActivityView profileView) {
+        this.profileView = profileView;
         this.start();
     }
 
@@ -42,21 +43,10 @@ public class HomePresenter implements ActivityContract.ActivityPresenter {
                         user.setEmail((String) document.get("email"));
                         user.setPhone((String) document.get("phone"));
                         user.setGender((String) document.get("gender"));
-                        ((HomeActivity) homeView).bindUser(user);
+                        ((ProfileActivity) profileView).bindUser(user);
                     }
                 }
             }
         });
     }
-
-    public void onClickCardView(Class activity) {
-        Intent intent = new Intent(this.homeView.getContext(), activity);
-        homeView.navigate(intent);
-    }
-
-    public void logout() {
-        mAuth.getInstance().signOut();
-        onClickCardView(LoginActivity.class);
-    }
-
 }

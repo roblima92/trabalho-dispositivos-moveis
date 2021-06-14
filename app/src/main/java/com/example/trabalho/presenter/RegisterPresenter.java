@@ -58,6 +58,7 @@ public class RegisterPresenter implements ActivityContract.ActivityFormPresenter
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
+                                                user.setUid(mAuth.getCurrentUser().getUid());
                                                 Intent intent = new Intent(registerView.getContext(), HomeActivity.class);
                                                 intent.putExtra("objUser", user);
                                                 registerView.navigate(intent);
