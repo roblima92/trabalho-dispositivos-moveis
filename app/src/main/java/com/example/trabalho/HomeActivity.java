@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity implements ActivityContract.
                             homeBinding.setForecastActivity(ForecastActivity.class);
                             homeBinding.setMyTripsActivity(MyTripsActivity.class);
                             homeBinding.setProfileActivity(ProfileActivity.class);
-                            homeBinding.setNewTripActivity(TripActivity.class);
+                            homeBinding.setNewTripActivity(NewTripActivity.class);
                             homeBinding.setUser(user);
                         }
                     }

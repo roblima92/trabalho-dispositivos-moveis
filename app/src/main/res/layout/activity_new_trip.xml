@@ -1,362 +1,383 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".NewTripActivity">
+    xmlns:mask="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.example.trabalho.utils.Converter"/>
+        <import type="com.example.trabalho.utils.Helper"/>
 
-    <ImageView
-        android:id="@+id/bg_new_trip"
-        android:layout_width="550dp"
-        android:layout_height="1000dp"
-        android:contentDescription="@string/background"
-        android:src="@drawable/bg_new_trip"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.501" />
+        <variable
+            name="trip"
+            type="com.example.trabalho.models.Trip" />
 
-    <TextView
-        android:id="@+id/new_trip_current_city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/new_trip_current_city"
-        android:text="@string/new_trip_current_city"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <variable
+            name="presenter"
+            type="com.example.trabalho.presenter.NewTripPresenter" />
 
-    <View
-        android:id="@+id/new_trip_current_city_divider"
-        android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:background="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_current_city" />
-
-    <TextView
-        android:id="@+id/new_trip_departure_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/new_trip_departure_date"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_current_city_divider" />
-
-    <EditText
-        android:id="@+id/new_trip_departure_date_input"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:autofillHints="@string/new_trip_departure_date"
-        android:hint="@string/new_trip_departure_date"
-        android:background="@drawable/black_opacity_35"
-        android:ems="10"
-        android:inputType="date"
-        android:paddingLeft="16dp"
-        android:paddingRight="32dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="32dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#80FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_departure_date" />
-
-    <ImageView
-        android:id="@+id/new_trip_calendar_departure_date"
-        android:layout_width="20dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/new_trip_departure_date"
-        android:src="@drawable/calendar_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/new_trip_departure_date_input"
-        app:layout_constraintEnd_toEndOf="@+id/new_trip_departure_date_input"
-        app:layout_constraintTop_toTopOf="@+id/new_trip_departure_date_input" />
-
-    <TextView
-        android:id="@+id/new_trip_destination_section"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/new_trip_destination_section"
-        android:text="@string/new_trip_destination_section"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_departure_date_input" />
-
-    <View
-        android:id="@+id/new_trip_destination_divider"
-        android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:background="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_destination_section" />
-
-    <TextView
-        android:id="@+id/new_trip_destination_city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/new_trip_destination_city"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_destination_divider" />
-
-    <AutoCompleteTextView
-        android:id="@+id/new_trip_destination_city_input"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:background="@drawable/black_opacity_35"
-        android:hint="@string/new_trip_city_hint"
-        android:paddingLeft="16dp"
-        android:paddingRight="32dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="32dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#80FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_destination_city" />
-
-    <ImageView
-        android:id="@+id/new_trip_pin"
-        android:layout_width="13dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/new_trip_destination_city"
-        android:src="@drawable/pin_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/new_trip_destination_city_input"
-        app:layout_constraintEnd_toEndOf="@+id/new_trip_destination_city_input"
-        app:layout_constraintTop_toTopOf="@+id/new_trip_destination_city_input" />
-
-    <TextView
-        android:id="@+id/new_trip_arrival_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/new_trip_arrival_date"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/new_trip_arrival_date_input"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_destination_city_input" />
-
-    <EditText
-        android:id="@+id/new_trip_arrival_date_input"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:autofillHints="@string/new_trip_arrival_date"
-        android:hint="@string/new_trip_arrival_date"
-        android:background="@drawable/black_opacity_35"
-        android:ems="10"
-        android:inputType="date"
-        android:paddingLeft="16dp"
-        android:paddingRight="32dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="32dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#80FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_arrival_date" />
-
-    <ImageView
-        android:id="@+id/new_trip_calendar_arrival_date"
-        android:layout_width="20dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/new_trip_arrival_date"
-        android:src="@drawable/calendar_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/new_trip_arrival_date_input"
-        app:layout_constraintEnd_toEndOf="@+id/new_trip_arrival_date_input"
-        app:layout_constraintTop_toTopOf="@+id/new_trip_arrival_date_input" />
-
-    <TextView
-        android:id="@+id/new_trip_return_section"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/new_trip_return_section"
-        android:text="@string/new_trip_return_section"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_arrival_date_input" />
-
-    <View
-        android:id="@+id/new_trip_return_divider"
-        android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:background="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_return_section" />
-
-    <Switch
-        android:id="@+id/new_trip_switch_return"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:text="@string/new_trip_switch_return"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_return_divider" />
-
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_switch_return">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".NewTripActivity">
+
+        <ImageView
+            android:id="@+id/bg_new_trip"
+            android:layout_width="550dp"
+            android:layout_height="1000dp"
+            android:contentDescription="@string/background"
+            android:src="@drawable/bg_new_trip"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.501" />
 
         <TextView
-            android:id="@+id/new_trip_return_date"
+            android:id="@+id/new_trip_current_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/new_trip_return_date"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/new_trip_current_city"
+            android:text="@string/new_trip_current_city"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/new_trip_return_date_input"
+        <View
+            android:id="@+id/new_trip_current_city_divider"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:background="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_trip_current_city" />
+
+        <TextView
+            android:id="@+id/new_trip_departure_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/new_trip_departure_date"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_trip_current_city_divider" />
+
+        <br.com.sapereaude.maskedEditText.MaskedEditText
+            android:id="@+id/new_trip_departure_date_input"
             android:layout_width="0dp"
             android:layout_height="48dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
             android:layout_marginTop="8dp"
-            android:autofillHints="@string/new_trip_return_date"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
             android:background="@drawable/black_opacity_35"
             android:ems="10"
-            android:hint="@string/new_trip_return_date"
             android:inputType="date"
-            android:paddingStart="16dp"
             android:paddingLeft="16dp"
-            android:paddingEnd="32dp"
             android:paddingRight="32dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="32dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#80FFFFFF"
+            android:text="@={Converter.dateToString(trip.departureDate)}"
+            mask:mask="##/##/####"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/new_trip_return_date" />
+            app:layout_constraintTop_toBottomOf="@+id/new_trip_departure_date" />
 
         <ImageView
-            android:id="@+id/new_trip_calendar_return_date"
+            android:id="@+id/new_trip_calendar_departure_date"
             android:layout_width="20dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            android:contentDescription="@string/new_trip_return_date"
+            android:contentDescription="@string/new_trip_departure_date"
             android:src="@drawable/calendar_icon"
-            app:layout_constraintBottom_toBottomOf="@+id/new_trip_return_date_input"
-            app:layout_constraintEnd_toEndOf="@+id/new_trip_return_date_input"
-            app:layout_constraintTop_toTopOf="@+id/new_trip_return_date_input" />
+            app:layout_constraintBottom_toBottomOf="@+id/new_trip_departure_date_input"
+            app:layout_constraintEnd_toEndOf="@+id/new_trip_departure_date_input"
+            app:layout_constraintTop_toTopOf="@+id/new_trip_departure_date_input" />
+
+        <TextView
+            android:id="@+id/new_trip_destination_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/new_trip_destination_section"
+            android:text="@string/new_trip_destination_section"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_trip_departure_date_input" />
+
+        <View
+            android:id="@+id/new_trip_destination_divider"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:background="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_trip_destination_section" />
+
+        <TextView
+            android:id="@+id/new_trip_destination_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/new_trip_destination_city"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_trip_destination_divider" />
+
+        <AutoCompleteTextView
+            android:id="@+id/new_trip_destination_city_input"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:background="@drawable/black_opacity_35"
+            android:hint="@string/new_trip_city_hint"
+            android:paddingLeft="16dp"
+            android:paddingRight="32dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="32dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#80FFFFFF"
+            android:text="@={trip.place}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_trip_destination_city" />
+
+        <ImageView
+            android:id="@+id/new_trip_pin"
+            android:layout_width="13dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/new_trip_destination_city"
+            android:src="@drawable/pin_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/new_trip_destination_city_input"
+            app:layout_constraintEnd_toEndOf="@+id/new_trip_destination_city_input"
+            app:layout_constraintTop_toTopOf="@+id/new_trip_destination_city_input" />
+
+        <TextView
+            android:id="@+id/new_trip_arrival_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/new_trip_arrival_date"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/new_trip_arrival_date_input"
+            app:layout_constraintTop_toBottomOf="@+id/new_trip_destination_city_input" />
+
+        <br.com.sapereaude.maskedEditText.MaskedEditText
+            android:id="@+id/new_trip_arrival_date_input"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:background="@drawable/black_opacity_35"
+            android:ems="10"
+            android:inputType="date"
+            android:paddingLeft="16dp"
+            android:paddingRight="32dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="32dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#80FFFFFF"
+            android:text="@={Converter.dateToString(trip.arrivalDate)}"
+            mask:mask="##/##/####"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_trip_arrival_date" />
+
+        <ImageView
+            android:id="@+id/new_trip_calendar_arrival_date"
+            android:layout_width="20dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/new_trip_arrival_date"
+            android:src="@drawable/calendar_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/new_trip_arrival_date_input"
+            app:layout_constraintEnd_toEndOf="@+id/new_trip_arrival_date_input"
+            app:layout_constraintTop_toTopOf="@+id/new_trip_arrival_date_input" />
+
+        <TextView
+            android:id="@+id/new_trip_return_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/new_trip_return_section"
+            android:text="@string/new_trip_return_section"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_trip_arrival_date_input" />
+
+        <View
+            android:id="@+id/new_trip_return_divider"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:background="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_trip_return_section" />
+
+        <Switch
+            android:id="@+id/new_trip_switch_return"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:text="@string/new_trip_switch_return"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:checked="@={trip.hasReturnDate}"
+            android:onCheckedChanged="@{() -> presenter.changeVisibleReturnDate(trip, newTripReturnDateConstraintLayout)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_trip_return_divider" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/new_trip_return_date_constraint_layout"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_trip_switch_return">
+
+            <TextView
+                android:id="@+id/new_trip_return_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/new_trip_return_date"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <br.com.sapereaude.maskedEditText.MaskedEditText
+                android:id="@+id/new_trip_return_date_input"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/black_opacity_35"
+                android:ems="10"
+                android:inputType="date"
+                android:paddingStart="16dp"
+                android:paddingLeft="16dp"
+                android:paddingEnd="32dp"
+                android:paddingRight="32dp"
+                android:text="@={Converter.dateToString(trip.returnDate)}"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#80FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/new_trip_return_date"
+                mask:mask="##/##/####" />
+
+            <ImageView
+                android:id="@+id/new_trip_calendar_return_date"
+                android:layout_width="20dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/new_trip_return_date"
+                android:src="@drawable/calendar_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/new_trip_return_date_input"
+                app:layout_constraintEnd_toEndOf="@+id/new_trip_return_date_input"
+                app:layout_constraintTop_toTopOf="@+id/new_trip_return_date_input" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/new_trip_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/primary_button"
+            android:insetLeft="1dp"
+            android:insetTop="1dp"
+            android:insetRight="1dp"
+            android:insetBottom="1dp"
+            android:padding="8dp"
+            android:text="@string/new_trip_button"
+            android:textColor="#FFFFFF"
+            android:onClick="@{() -> presenter.submit(trip)}"
+            app:backgroundTint="#4A90E2"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/new_trip_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/primary_button"
-        android:insetLeft="1dp"
-        android:insetTop="1dp"
-        android:insetRight="1dp"
-        android:insetBottom="1dp"
-        android:padding="8dp"
-        android:text="@string/new_trip_button"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="#4A90E2"
-        app:cornerRadius="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

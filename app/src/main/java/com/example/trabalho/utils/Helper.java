@@ -7,9 +7,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 
 import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -36,5 +39,10 @@ public class Helper {
         int radioButtonIndex = radioGroup.indexOfChild(radioButton);
         RadioButton radioButtonSelected = (RadioButton) radioGroup.getChildAt(radioButtonIndex);
         return radioButtonSelected.getText().toString();
+    }
+
+    public static String getFormattedDate(Date date) {
+        SimpleDateFormat brazilianFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return brazilianFormat.format(date);
     }
 }
