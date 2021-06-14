@@ -24,7 +24,7 @@
     <string name="register_label_email">E-mail</string>
     <string name="register_hint_email">Ex: mariasilva@email.com</string>
     <string name="register_label_password">Senha</string>
-    <string name="register_hint_password">8-16 caracteres</string>
+    <string name="register_hint_password">8 &#8211; 16 caracteres</string>
     <string name="register_label_phone">Celular</string>
     <string name="register_hint_phone">(51) 9XXXX-XXXX</string>
     <string name="register_label_gender">Gênero</string>
@@ -39,6 +39,43 @@
     <string name="home_label_new_trip">Nova viagem</string>
     <string name="home_label_my_trips">Minhas viagens</string>
 
+    <!-- Profile -->
+    <string name="profile_personal_section">Dados pessoais</string>
+    <string name="profile_label_name">Nome</string>
+    <string name="profile_label_surname">Sobrenome</string>
+    <string name="profile_label_gender">Gênero</string>
+    <string name="profile_contact_section">Informações de contato</string>
+    <string name="profile_label_email">E-mail</string>
+    <string name="profile_label_phone">Celular</string>
+    <string name="profile_security_section">Segurança</string>
+    <string name="profile_label_password">Senha</string>
+    <string name="profile_button">EDITAR</string>
+
+    <!-- Forecast -->
+    <string name="forecast_city">CIDADE ATUAL</string>
+    <string name="forecast_temperature">20°</string>
+    <string name="forecast_weather">Chuva leve</string>
+    <string name="forecast_see_more">Ver mais</string>
+    <string name="forecast_more_details">Mais detalhes</string>
+    <string name="forecast_today">Hoje</string>
+    <string name="forecast_next_days">Próximos dias</string>
+    <string name="forecast_today_weather">Hoje - Chuva leve</string>
+    <string name="forecast_today_temperature">27°/14°</string>
+    <string name="forecast_tomorrow_weather">Amanhã - Tempestade</string>
+    <string name="forecast_tomorrow_temperature">21°/8°</string>
+    <string name="forecast_after_weather">Qua - Nublado</string>
+    <string name="forecast_after_temperature">26°/12°</string>
+    <string name="forecast_feeling">Sensação</string>
+    <string name="forecast_umidity">Umidade</string>
+    <string name="forecast_precipitation">Precipitação</string>
+    <string name="forecast_pressure">Pressão</string>
+    <string name="forecast_UV_index">Índice UV</string>
+    <string name="forecast_feeling_info">26°</string>
+    <string name="forecast_umidity_info">64%</string>
+    <string name="forecast_precipitation_info">89%</string>
+    <string name="forecast_pressure_info">1017mbar</string>
+    <string name="forecast_UV_index_info">0</string>
+
     <!-- New trip -->
     <string name="new_trip_current_city">CIDADE ATUAL</string>
     <string name="new_trip_departure_date">Data de partida</string>
@@ -51,26 +88,7 @@
     <string name="new_trip_return_date">Data de retorno</string>
     <string name="new_trip_button">Adicionar nova viagem</string>
 
-    <string name="current_city">CIDADE ATUAL</string>
-    <string name="departure_date">Data de partida</string>
-    <string name="destination">DESTINO</string>
-    <string name="destination_city">Cidade</string>
-    <string name="arrival_date">Data de chegada</string>
-    <string name="return_date">Data de retorno</string>
-    <string name="add_new_trip">Adicionar nova viagem</string>
-
-<!--    Forecast-->
-    <string name="more_details">Mais detalhes</string>
-    <string name="today">Hoje</string>
-    <string name="next_days">Próximos dias</string>
-    <string name="see_more">Ver mais</string>
-    <string name="feeling">Sensação</string>
-    <string name="umidity">Umidade</string>
-    <string name="precipitation">Precipitação</string>
-    <string name="pressure">Pressão</string>
-    <string name="UV_index">Índice UV</string>
-
-<!--    My Trips-->
+    <!--    My Trips-->
     <string name="see_details">VER DETALHES</string>
 
     <!--Register-->
