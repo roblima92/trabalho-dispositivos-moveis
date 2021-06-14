@@ -18,6 +18,7 @@
             android:theme="@style/AppTheme.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -28,13 +29,20 @@
             android:name=".HomeActivity"
             android:theme="@style/AppTheme.Fullscreen" />
         <activity
+            android:name=".ProfileActivityTest"
+            android:label="Meu perfil"
+            android:parentActivityName=".HomeActivity" />
+        <activity
             android:name=".NewTripActivity"
-            android:parentActivityName="com.example.trabalho.HomeActivity"
-            android:label="Nova viagem" />
+            android:label="Nova viagem"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".RegisterActivity"
+            android:label="Cadastro"
+            android:parentActivityName=".LoginActivity" />
         <activity android:name=".TripDetailsActivity" />
         <activity android:name=".TripActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".RegisterActivity" />
         <activity android:name=".ForecastActivity" />
         <activity android:name=".MyTripsActivity" />
     </application>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivityTest">
+
+    <ImageView
+        android:id="@+id/bg_profile"
+        android:layout_width="550dp"
+        android:layout_height="1000dp"
+        android:contentDescription="@string/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_profile" />
+
+    <ImageView
+        android:id="@+id/personal_card"
+        android:layout_width="0dp"
+        android:layout_height="205dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:contentDescription="@string/profile_personal_section"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/black_opacity_35" />
+
+    <TextView
+        android:id="@+id/profile_personal_section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/profile_personal_section"
+        android:text="@string/profile_personal_section"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/personal_card"
+        app:layout_constraintTop_toTopOf="@+id/personal_card" />
+
+    <View
+        android:id="@+id/profile_personal_section_divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/personal_card"
+        app:layout_constraintStart_toStartOf="@+id/personal_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_personal_section" />
+
+    <TextView
+        android:id="@+id/profile_label_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/profile_label_name"
+        android:text="@string/profile_label_name"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/personal_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_personal_section_divider" />
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="2dp"
+        android:contentDescription="@string/profile_label_name"
+        android:text="Maria"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/personal_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_label_name" />
+
+    <TextView
+        android:id="@+id/profile_label_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/profile_label_surname"
+        android:text="@string/profile_label_surname"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/personal_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_name" />
+
+    <TextView
+        android:id="@+id/profile_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="2dp"
+        android:contentDescription="@string/profile_label_surname"
+        android:text="Silva"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/personal_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_label_surname" />
+
+    <TextView
+        android:id="@+id/profile_label_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/profile_label_gender"
+        android:text="@string/profile_label_gender"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/personal_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_surname" />
+
+    <TextView
+        android:id="@+id/profile_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="2dp"
+        android:contentDescription="@string/profile_label_gender"
+        android:text="Feminino"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/personal_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_label_gender" />
+
+    <ImageView
+        android:id="@+id/contact_card"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:contentDescription="@string/profile_contact_section"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/personal_card"
+        app:srcCompat="@drawable/black_opacity_35" />
+
+    <TextView
+        android:id="@+id/profile_contact_section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/profile_contact_section"
+        android:text="@string/profile_contact_section"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/contact_card"
+        app:layout_constraintTop_toTopOf="@+id/contact_card" />
+
+    <View
+        android:id="@+id/profile_contact_section_divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/contact_card"
+        app:layout_constraintStart_toStartOf="@+id/contact_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_contact_section" />
+
+    <TextView
+        android:id="@+id/profile_label_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/profile_label_email"
+        android:text="@string/profile_label_email"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/contact_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_contact_section_divider" />
+
+    <TextView
+        android:id="@+id/profile_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="2dp"
+        android:contentDescription="@string/profile_label_email"
+        android:text="mariasilva@email.com"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/contact_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_label_email" />
+
+    <TextView
+        android:id="@+id/profile_label_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/profile_label_phone"
+        android:text="@string/profile_label_phone"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/contact_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_email" />
+
+    <TextView
+        android:id="@+id/profile_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="2dp"
+        android:contentDescription="@string/profile_label_phone"
+        android:text="(51) 9XXXX-XXXX"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/contact_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_label_phone" />
+
+    <ImageView
+        android:id="@+id/profile_security_card"
+        android:layout_width="0dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:contentDescription="@string/profile_security_section"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contact_card"
+        app:srcCompat="@drawable/black_opacity_35" />
+
+    <TextView
+        android:id="@+id/profile_security_section"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/profile_security_section"
+        android:text="@string/profile_security_section"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/profile_security_card"
+        app:layout_constraintTop_toTopOf="@+id/profile_security_card" />
+
+    <View
+        android:id="@+id/profile_security_section_divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/profile_security_card"
+        app:layout_constraintStart_toStartOf="@+id/profile_security_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_security_section" />
+
+    <TextView
+        android:id="@+id/profile_label_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/profile_label_password"
+        android:text="@string/profile_label_password"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/profile_security_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_security_section_divider" />
+
+    <TextView
+        android:id="@+id/profile_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="2dp"
+        android:contentDescription="@string/profile_label_password"
+        android:text="************"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/profile_security_card"
+        app:layout_constraintTop_toBottomOf="@+id/profile_label_password" />
+
+    <Button
+        android:id="@+id/profile_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:background="@drawable/primary_button"
+        android:insetLeft="1dp"
+        android:insetTop="1dp"
+        android:insetRight="1dp"
+        android:insetBottom="1dp"
+        android:padding="8dp"
+        android:text="@string/profile_button"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#4A90E2"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_security_card" />
+</androidx.constraintlayout.widget.ConstraintLayout>
