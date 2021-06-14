@@ -54,12 +54,12 @@
     <string name="forecast_after_weather">Qua - Nublado</string>
     <string name="forecast_after_temperature">26°/12°</string>
     <string name="forecast_feeling">Sensação</string>
-    <string name="forecast_umidity">Umidade</string>
+    <string name="forecast_humidity">Umidade</string>
     <string name="forecast_precipitation">Precipitação</string>
     <string name="forecast_pressure">Pressão</string>
     <string name="forecast_UV_index">Índice UV</string>
     <string name="forecast_feeling_info">26°</string>
-    <string name="forecast_umidity_info">64%</string>
+    <string name="forecast_humidity_info">64%</string>
     <string name="forecast_precipitation_info">89%</string>
     <string name="forecast_pressure_info">1017mbar</string>
     <string name="forecast_UV_index_info">0</string>
