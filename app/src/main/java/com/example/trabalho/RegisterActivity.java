@@ -13,9 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//import com.google.firebase.firestore.DocumentReference;
-//import com.google.firebase.firestore.FirebaseFirestore;
-
 import com.example.trabalho.databinding.ActivityLoginBinding;
 import com.example.trabalho.databinding.ActivityRegisterBinding;
 import com.example.trabalho.models.User;
@@ -35,14 +32,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity implements ActivityContract.ActivityView {
-
-//    FirebaseFirestore db = FirebaseFirestore.getInstance();
-//    ImageView imageRegister;
-//    Button submitRegister;
-//    TextView editName;
-//    TextView editPhone;
-//    TextView editEmail;
-//    TextView editPassword;
 
     private ActivityContract.ActivityFormPresenter registerPresenter;
     private ActivityRegisterBinding registerBinding;
@@ -65,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity implements ActivityContr
     public Context getContext() {
         return this.getApplicationContext();
     }
-
+  
     @Override
     public void showToast(String message) {
         Toast.makeText(this.getApplicationContext(), message, Toast.LENGTH_LONG).show();

@@ -64,8 +64,8 @@ public class LoginPresenter implements ActivityContract.ActivityFormPresenter {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void validate() throws Exception {
-        Validate.fieldIsRequired(loginBinding.emailInput, "email");
-        Validate.fieldIsRequired(loginBinding.passwordInput, "senha");
-        Validate.emailIsValid(loginBinding.emailInput);
+        Validate.fieldIsRequired(loginBinding.loginInputEmail, "email");
+        Validate.fieldIsRequired(loginBinding.loginInputPassword, "senha");
+        Validate.emailIsValid(loginBinding.loginInputEmail);
     }
 }
