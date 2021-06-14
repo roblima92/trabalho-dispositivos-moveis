@@ -35,7 +35,7 @@
 <!--    Forecast-->
     <string name="more_details">Mais detalhes</string>
     <string name="today">Hoje</string>
-    <string name="next_days">APróximos dias</string>
+    <string name="next_days">Próximos dias</string>
     <string name="see_more">Ver mais</string>
     <string name="feeling">Sensação</string>
     <string name="umidity">Umidade</string>
@@ -45,4 +45,12 @@
 
 <!--    My Trips-->
     <string name="see_details">VER DETALHES</string>
+
+    <!--Register-->
+    <string name="name">Nome</string>
+    <string name="surname">Sobrenome</string>
+    <string name="phone">Telefone</string>
+    <string name="male">Masculino</string>
+    <string name="female">Feminino</string>
+    <string name="confirm">Confirmar</string>
 </resources>
