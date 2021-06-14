@@ -17,18 +17,20 @@ xmlns:tools="http://schemas.android.com/tools">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_primary">
+        android:background="@drawable/bg">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/lastname_register_input"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_width="312dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Sobrenome"
+            android:layout_height="35dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/black_opacity_35"
             android:text="@={user.lastName}"
+            android:textColor="#7CFFFFFF"
+            android:textColorHint="#7CFFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintHorizontal_bias="0.475"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name_register_input" />
 
@@ -36,89 +38,76 @@ xmlns:tools="http://schemas.android.com/tools">
             android:id="@+id/name_register_input"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_width="312dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="180dp"
-            android:hint="Nome"
+            android:layout_height="35dp"
+            android:layout_marginTop="92dp"
+            android:background="@drawable/black_opacity_35"
             android:text="@={user.firstName}"
+            android:textColor="#7CFFFFFF"
+            android:textColorHint="#7CFFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintHorizontal_bias="0.475"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <br.com.sapereaude.maskedEditText.MaskedEditText
             android:id="@+id/phone_register_input"
             android:layout_width="312dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="55dp"
+            android:background="@drawable/black_opacity_35"
             android:ems="10"
             android:inputType="phone"
             android:text="@={user.phone}"
-            mask:mask="(##) #####-####"
+            android:textColor="#7CFFFFFF"
+            android:textColorHint="#7CFFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lastname_register_input" />
+            app:layout_constraintTop_toBottomOf="@+id/lastname_register_input"
+            mask:mask="(##) #####-####" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_register_input"
             android:layout_width="312dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Email"
+            android:layout_height="35dp"
+            android:layout_marginTop="55dp"
+            android:background="@drawable/black_opacity_35"
             android:text="@={user.email}"
+            android:textColor="#7CFFFFFF"
+            android:textColorHint="#7CFFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phone_register_input" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_register_input"
             android:layout_width="312dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Senha"
-            android:text="@={user.password}"
+            android:layout_height="35dp"
+            android:layout_marginTop="55dp"
+            android:background="@drawable/black_opacity_35"
             android:inputType="textPassword"
+            android:text="@={user.password}"
+            android:textColor="#7CFFFFFF"
+            android:textColorHint="#7CFFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email_register_input" />
-
-        <Button
-            android:id="@+id/SubmitRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="56dp"
-            android:onClick="@{(v) -> presenter.submit(user)}"
-            android:text="Confirmar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.829"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gender_register_group"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <ImageView
-            android:id="@+id/imageRegister"
-            android:layout_width="119dp"
-            android:layout_height="130dp"
-            app:layout_constraintBottom_toTopOf="@+id/name_register_input"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.265"
-            app:srcCompat="@drawable/teste" />
 
         <RadioGroup
             android:id="@+id/gender_register_group"
             android:layout_width="312dp"
             android:layout_height="76dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/black_opacity_35"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/SubmitRegister"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintHorizontal_bias="0.475"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_register_input">
+            app:layout_constraintTop_toBottomOf="@+id/password_register_input"
+            app:layout_constraintVertical_bias="0.0">
 
             <RadioButton
                 android:id="@+id/female_gender_register_radio"
@@ -126,8 +115,10 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
                 android:layout_marginLeft="28dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/black_opacity_35"
                 android:text="Feminino"
+                android:textColor="#7CFFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/male_gender_register_radio"
@@ -139,11 +130,96 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:layout_height="wrap_content"
                 android:layout_marginStart="48dp"
                 android:layout_marginLeft="48dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/black_opacity_35"
                 android:text="Masculino"
+                android:textColor="#7CFFFFFF"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/password_register_input" />
         </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Nome"
+            android:textColor="#7CFFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/name_register_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="5dp"
+            android:text="Sobrenome"
+            android:textColor="#7CFFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/lastname_register_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_register_input"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Celular"
+            android:textColor="#7CFFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/phone_register_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.149"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lastname_register_input"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="E-mail"
+            android:textColor="#7CFFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/email_register_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone_register_input"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Senha"
+            android:textColor="#7CFFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/password_register_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_register_input"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/SubmitRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="64dp"
+            android:onClick="@{(v) -> presenter.submit(user)}"
+            android:text="Confirmar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.796"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
