@@ -23,12 +23,16 @@ public class Validate {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static Boolean stringIsDateValid(String dateString) throws Exception {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate localDate = LocalDate.parse(dateString, formatter);
-        if (localDate == null) {
-            throw new Exception("Data informada está inválida");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date date = format.parse(dateString);
+            if (date == null) {
+                throw new Exception("Data informada está inválida");
+            }
+            return true;
+        } catch (ParseException e) {
+            return null;
         }
-        return true;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

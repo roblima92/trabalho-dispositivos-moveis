@@ -17,13 +17,13 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Helper {
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     public static long getDaysBetweenTwoDates(Date date1, Date date2) {
-        LocalDate localDate1 = date1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate localDate2 = date2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return ChronoUnit.DAYS.between(localDate1, localDate2);
+        long diff = date1.getTime() - date2.getTime();
+        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
     }
 
     public static void setVisiblePassword(ImageView image1, ImageView image2, EditText passwordInput) {
