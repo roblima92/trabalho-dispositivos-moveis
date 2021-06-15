@@ -117,8 +117,6 @@ public class NewTripPresenter implements ActivityContract.ActivityFormPresenter,
 
     @Override
     public void getForecast(List<Forecast> forecastArrayList, String type) {
-        // Check if departure date is the same than arrival date
-        Boolean sameDate = trip.getDepartureDate().compareTo(trip.getArrivalDate()) == 0;
 
         // Format forecasts arrayList
         if (forecastArrayList == null || forecastArrayList.size() == 0) {
@@ -143,16 +141,11 @@ public class NewTripPresenter implements ActivityContract.ActivityFormPresenter,
         // insert home forecast at arraylist
         if (type == "home") {
             for (Forecast forecast : forecastArrayList) {
-                if (sameDate) {
-                    if (forecast.getDate().compareTo(trip.getDepartureDate()) < 0) {
-                        this.forecasthome.add(forecast);
-                    }
-                } else {
+                if (trip.getReturnDate() == null) {
                     if (forecast.getDate().compareTo(trip.getDepartureDate()) <= 0) {
                         this.forecasthome.add(forecast);
                     }
-                }
-                if (trip.getReturnDate() != null && forecast.getDate().compareTo(trip.getReturnDate()) >= 0) {
+                } else if (forecast.getDate().compareTo(trip.getReturnDate()) >= 0) {
                     this.forecasthome.add(forecast);
                 }
             }
