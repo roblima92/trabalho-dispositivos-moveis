@@ -52,7 +52,7 @@ public class LoginPresenter implements ActivityContract.ActivityFormPresenter {
                                 Intent intent = new Intent(loginView.getContext(), HomeActivity.class);
                                 loginView.navigate(intent);
                             } else {
-                                loginView.showToast("Usuário não encontrado");
+                                loginView.showToast("Dados inválidos");
                             }
                         }
                     });
