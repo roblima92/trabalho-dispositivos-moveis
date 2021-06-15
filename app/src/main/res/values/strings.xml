@@ -99,6 +99,20 @@
     <!-- apagar esse -->
     <string name="see_details">VER DETALHES</string>
 
+    <!-- Trip -->
+    <string name="trip_departure_city">CIDADE DA PARTIDA</string>
+    <string name="trip_arrival_city">DESTINO</string>
+    <string name="trip_departure_date">15/06/2021</string>
+    <string name="trip_departure_temperature">26°</string>
+    <string name="trip_departure_weather">Céu ensolarado</string>
+    <string name="trip_departure_min_label">Mínima</string>
+    <string name="trip_departure_min_value">14°</string>
+    <string name="trip_departure_max_label">Máxima</string>
+    <string name="trip_departure_max_value">27°</string>
+    <string name="trip_departure_humidity_label">Umidade</string>
+    <string name="trip_departure_humidity_value">76%</string>
+    <string name="trip_departure_pressure_label">Pressão</string>
+    <string name="trip_departure_pressure_value">1020mbar</string>
 
     <!--Register-->
     <string name="name">Nome</string>
