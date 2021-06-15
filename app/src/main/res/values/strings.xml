@@ -101,6 +101,7 @@
 
     <!-- Trip -->
     <string name="trip_departure_city">CIDADE DA PARTIDA</string>
+    <string name="trip_arrival_city">DESTINO</string>
     <string name="trip_departure_date">15/06/2021</string>
     <string name="trip_departure_temperature">26°</string>
     <string name="trip_departure_weather">Céu ensolarado</string>
