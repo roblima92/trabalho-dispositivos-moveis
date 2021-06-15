@@ -50,9 +50,11 @@ public class TripDetailsPresenter implements ActivityContract.ActivityPresenter 
                         Timestamp arrivalDateTimestamp = (Timestamp) document.get("arrivalDate");
                         Timestamp returnDateTimestamp = (Timestamp) document.get("returnDate");
 
+                        if (returnDateTimestamp != null) {
+                            trip.setReturnDate(returnDateTimestamp.toDate());
+                        }
                         trip.setDepartureDate(departureDateTimestamp.toDate());
                         trip.setArrivalDate(arrivalDateTimestamp.toDate());
-                        trip.setReturnDate(returnDateTimestamp.toDate());
                         trip.setVisitedPlace(document.get("visitedCity") + ", " + document.get("visitedCountry"));
                         trip.setVisitedCountry((String) document.get("visitedCountry"));
                         trip.setVisitedCity((String) document.get("visitedCity"));
