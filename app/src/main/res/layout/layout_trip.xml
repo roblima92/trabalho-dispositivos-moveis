@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
@@ -38,7 +39,7 @@
                     android:layout_gravity="center"
                     android:contentDescription="@string/trip_departure_date"
                     android:text="@{forecastModel.formattedDate}"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/color_texts"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -56,39 +57,40 @@
                         android:contentDescription="@string/trip_departure_temperature"
                         android:gravity="start"
                         android:text="@{forecastModel.average + `°`}"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/color_texts"
                         android:textSize="56sp"
                         android:textStyle="bold" />
 
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_height="match_parent">
 
                         <ImageView
                             android:id="@+id/trip_departure_icon"
                             android:layout_width="wrap_content"
-                            android:layout_height="70dp"
-                            android:layout_gravity="end"
-                            android:layout_marginEnd="28dp"
-                            android:layout_marginRight="28dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
                             android:contentDescription="@string/trip_departure_weather"
+                            app:layout_constraintEnd_toEndOf="@id/trip_departure_weather"
+                            app:layout_constraintStart_toStartOf="@id/trip_departure_weather"
+                            app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@drawable/app_icon" />
 
                         <TextView
                             android:id="@+id/trip_departure_weather"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginRight="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginRight="4dp"
                             android:contentDescription="@string/trip_departure_weather"
                             android:text="@{forecastModel.weather.description}"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/color_texts"
                             android:textSize="14sp"
-                            android:textStyle="normal" />
-
-                    </LinearLayout>
+                            android:textStyle="normal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/trip_departure_icon" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
 
@@ -110,7 +112,7 @@
                             android:layout_gravity="start"
                             android:contentDescription="@string/trip_departure_min_label"
                             android:text="@string/trip_departure_min_label"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/color_texts"
                             android:textSize="16sp"
                             android:textStyle="normal"
                             app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +125,7 @@
                             android:layout_gravity="end"
                             android:contentDescription="@string/trip_departure_min_value"
                             android:text="@{forecastModel.min + `°`}"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/color_texts"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +139,7 @@
                             android:layout_marginTop="8dp"
                             android:contentDescription="@string/trip_departure_max_label"
                             android:text="@string/trip_departure_max_label"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/color_texts"
                             android:textSize="16sp"
                             android:textStyle="normal"
                             app:layout_constraintStart_toStartOf="parent"
@@ -150,7 +152,7 @@
                             android:layout_marginTop="8dp"
                             android:contentDescription="@string/trip_departure_humidity_label"
                             android:text="@string/trip_departure_humidity_label"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/color_texts"
                             android:textSize="16sp"
                             android:textStyle="normal"
                             app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +165,7 @@
                             android:layout_marginTop="8dp"
                             android:contentDescription="@string/trip_departure_pressure_label"
                             android:text="@string/trip_departure_pressure_label"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/color_texts"
                             android:textSize="16sp"
                             android:textStyle="normal"
                             app:layout_constraintStart_toStartOf="parent"
@@ -177,7 +179,7 @@
                             android:layout_marginTop="8dp"
                             android:contentDescription="@string/trip_departure_max_value"
                             android:text="@{forecastModel.max + `°`}"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/color_texts"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -190,7 +192,7 @@
                             android:layout_marginTop="8dp"
                             android:contentDescription="@string/trip_departure_pressure_value"
                             android:text="@{forecastModel.pressure + `mBar`}"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/color_texts"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -203,7 +205,7 @@
                             android:layout_marginTop="8dp"
                             android:contentDescription="@string/trip_departure_humidity_value"
                             android:text="@{forecastModel.humidity + `%`}"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/color_texts"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"

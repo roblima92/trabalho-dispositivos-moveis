@@ -1,6 +1,6 @@
 <resources>
     <!-- General -->
-    <string name="app_name">Trabalho</string>
+    <string name="app_name">Jean, não passe frio</string>
     <string name="icon">Ícone</string>
     <string name="background">Imagem de fundo</string>
     <string name="show_password">Exibir senha</string>
