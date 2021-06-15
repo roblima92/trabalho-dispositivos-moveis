@@ -6,18 +6,11 @@ import androidx.databinding.DataBindingUtil;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.trabalho.databinding.ActivityHomeBinding;
 import com.example.trabalho.databinding.ActivityLoginBinding;
-import com.example.trabalho.models.Trip;
 import com.example.trabalho.models.User;
-import com.example.trabalho.presenter.HomePresenter;
 import com.example.trabalho.presenter.LoginPresenter;
-import com.example.trabalho.presenter.TripPresenter;
 import com.example.trabalho.presenter.contracts.ActivityContract;
 
 public class LoginActivity extends AppCompatActivity implements ActivityContract.ActivityView {
