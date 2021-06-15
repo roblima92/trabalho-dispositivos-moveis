@@ -38,12 +38,18 @@
             app:srcCompat="@drawable/bg_trip" />
 
         <ScrollView
+            android:id="@+id/trip_sv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp">
 
                 <TextView
                     android:id="@+id/trip_departure_city"
@@ -86,35 +92,34 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/trip_departure_city_divider">
-                </androidx.recyclerview.widget.RecyclerView>
+                    app:layout_constraintTop_toBottomOf="@+id/trip_departure_city_divider"></androidx.recyclerview.widget.RecyclerView>
 
                 <TextView
                     android:id="@+id/trip_arrival_city"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="24dp"
                     android:contentDescription="@string/trip_arrival_city"
                     android:text="@{trip.visitedPlace}"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginStart="48dp"
-                    android:layout_marginLeft="48dp"
-                    app:layout_constraintTop_toBottomOf="@+id/trip_rv_departure"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/trip_rv_departure" />
 
                 <View
                     android:id="@+id/trip_arrival_city_divider"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
-                    android:background="#FFFFFF"
                     android:layout_marginStart="48dp"
                     android:layout_marginLeft="48dp"
                     android:layout_marginEnd="56dp"
                     android:layout_marginRight="56dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="#FFFFFF"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/trip_arrival_city" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -126,10 +131,29 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="56dp"
                     android:layout_marginRight="56dp"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/trip_arrival_city_divider">
+
                 </androidx.recyclerview.widget.RecyclerView>
+
+                <Button
+                    android:id="@+id/trip_button_share"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginEnd="48dp"
+                    android:layout_marginRight="48dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/primary_button"
+                    android:backgroundTint="@color/colorAccent"
+                    android:text="@string/trip_button_share"
+                    app:backgroundTint="@color/color_accent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/trip_rv_arrival" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

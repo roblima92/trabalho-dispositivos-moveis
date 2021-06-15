@@ -17,8 +17,14 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/trip_card"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:backgroundTint="#00FFFFFF"
             android:tag="@{forecastModel}"
-            android:layout_height="wrap_content">
+            app:cardBackgroundColor="#00FFFFFF"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -62,7 +68,7 @@
                         <ImageView
                             android:id="@+id/trip_departure_icon"
                             android:layout_width="wrap_content"
-                            android:layout_height="50dp"
+                            android:layout_height="70dp"
                             android:layout_gravity="end"
                             android:layout_marginEnd="28dp"
                             android:layout_marginRight="28dp"
@@ -89,8 +95,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
                     android:background="@drawable/black_opacity_35"
+                    android:orientation="vertical"
                     android:padding="16dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout

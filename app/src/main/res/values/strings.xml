@@ -112,6 +112,7 @@
     <string name="trip_departure_humidity_value">76%</string>
     <string name="trip_departure_pressure_label">Pressão</string>
     <string name="trip_departure_pressure_value">1020mbar</string>
+    <string name="trip_button_share">Compartilhar viagem</string>
 
     <!--Register-->
     <string name="name">Nome</string>
