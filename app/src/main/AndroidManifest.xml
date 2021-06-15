@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyTripsActivity"></activity>
+        <activity android:name=".TripActivityTest" />
+        <activity android:name=".MyTripsActivity" />
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/AppTheme.Fullscreen">
