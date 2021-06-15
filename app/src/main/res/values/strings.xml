@@ -74,7 +74,6 @@
     <string name="profile_label_phone">Celular</string>
     <string name="profile_security_section">Segurança</string>
     <string name="profile_label_password">Senha</string>
-    <string name="profile_button">EDITAR</string>
 
     <!-- New trip -->
     <string name="new_trip_current_city">CIDADE ATUAL</string>

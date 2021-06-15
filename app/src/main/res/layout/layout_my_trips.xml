@@ -17,120 +17,122 @@
             type="com.example.trabalho.adapters.MyTripsAdapter" />
     </data>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_my_trips"
-        android:layout_width="280dp"
-        android:tag="@{tripModel}"
-        android:layout_height="110dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:background="@drawable/black_opacity_35"
-            android:contentDescription="@string/background"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_my_trips"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp"
+            android:tag="@{tripModel}">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/my_trips_departure_city"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:text="@{tripModel.visitedPlace}"
-                android:textColor="#FFFFFF"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/my_trips_airplane_icon"
-                android:contentDescription="@string/icon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toEndOf="@+id/my_trips_departure_city"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/airplane" />
-
-            <TextView
-                android:id="@+id/my_trips_arrival_city"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:text="@{tripModel.visitedPlace}"
-                android:textColor="#FFFFFF"
-                app:layout_constraintStart_toEndOf="@+id/my_trips_airplane_icon"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/my_trips_departure_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:text="@{Converter.dateToString(tripModel.departureDate)}"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="@+id/my_trips_return_date"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/my_trips_arrival_date" />
-
-            <TextView
-                android:id="@+id/my_trips_arrival_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:text="@{Converter.dateToString(tripModel.arrivalDate)}"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toTopOf="@+id/my_trips_return_date"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <TextView
-                android:id="@+id/my_trips_return_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginBottom="8dp"
-                android:text="@{Converter.dateToString(tripModel.returnDate)}"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toTopOf="@+id/my_trips_see_details"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <TextView
-                android:id="@+id/my_trips_see_details"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/button_my_trips"
-                app:backgroundTint="@color/color_accent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_height="match_parent"
+                android:background="@drawable/black_opacity_35"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/my_trips_see_details_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/my_trips_see_details"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:translationZ="90dp"
-                app:layout_constraintBottom_toBottomOf="@+id/my_trips_see_details"
-                app:layout_constraintEnd_toEndOf="@+id/my_trips_see_details"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/my_trips_see_details" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="8dp">
+
+                    <!-- android:text="@{tripModel.visitedPlace}" -->
+                    <TextView
+                        android:id="@+id/my_trips_departure_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@{tripModel.visitedPlace}"
+                        android:textColor="#FFFFFF"
+                        app:layout_constraintEnd_toEndOf="@id/my_trips_departure_date"
+                        app:layout_constraintStart_toStartOf="@id/my_trips_departure_date"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/my_trips_airplane_icon"
+                        android:layout_width="0dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="16dp"
+                        android:contentDescription="@string/icon"
+                        app:layout_constraintEnd_toStartOf="@id/my_trips_arrival_city"
+                        app:layout_constraintStart_toEndOf="@id/my_trips_departure_city"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/airplane" />
+
+                    <!-- android:text="@{tripModel.visitedPlace}" -->
+                    <TextView
+                        android:id="@+id/my_trips_arrival_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@{tripModel.visitedPlace}"
+                        android:textColor="#FFFFFF"
+                        app:layout_constraintEnd_toEndOf="@+id/my_trips_arrival_date"
+                        app:layout_constraintStart_toStartOf="@+id/my_trips_arrival_date"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- android:text="@{Converter.dateToString(tripModel.departureDate)}" -->
+                    <TextView
+                        android:id="@+id/my_trips_departure_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginLeft="48dp"
+                        android:text="@{Converter.dateToString(tripModel.departureDate)}"
+                        android:textColor="#FFFFFF"
+                        app:layout_constraintTop_toTopOf="@+id/my_trips_arrival_date"
+                        app:layout_constraintBottom_toBottomOf="@+id/my_trips_return_date"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <!-- android:text="@{Converter.dateToString(tripModel.arrivalDate)}" -->
+                    <TextView
+                        android:id="@+id/my_trips_arrival_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="48dp"
+                        android:layout_marginRight="48dp"
+                        android:text="@{Converter.dateToString(tripModel.arrivalDate)}"
+                        android:textColor="#FFFFFF"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/my_trips_arrival_city" />
+
+                    <!-- android:text="@{Converter.dateToString(tripModel.returnDate)}" -->
+                    <TextView
+                        android:id="@+id/my_trips_return_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="48dp"
+                        android:layout_marginRight="48dp"
+                        android:text="@{Converter.dateToString(tripModel.returnDate)}"
+                        android:textColor="#FFFFFF"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/my_trips_arrival_date" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/my_trips_see_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/button_my_trips"
+                    app:backgroundTint="@color/color_accent"
+                    android:text="@string/my_trips_see_details"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
 </layout>
