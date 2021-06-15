@@ -7,7 +7,7 @@ import com.example.trabalho.presenter.contracts.ModelContract;
 
 import java.util.Map;
 
-public class Weather implements Parcelable, ModelContract.Model {
+public class Weather implements Parcelable {
     private int id;
     private String main;
     private String description;
@@ -29,11 +29,28 @@ public class Weather implements Parcelable, ModelContract.Model {
         return icon;
     }
 
-    public Weather(int id, String main, String description, String icon) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public void setMain(String main) {
         this.main = main;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    //    int id, String main, String description, String icon
+    public Weather() {
+//        this.id = id;
+//        this.main = main;
+//        this.description = description;
+//        this.icon = icon;
     }
 
     protected Weather(Parcel in) {
@@ -68,8 +85,4 @@ public class Weather implements Parcelable, ModelContract.Model {
         parcel.writeString(icon);
     }
 
-    @Override
-    public Map<String, Object> getInstanceinMap() {
-        return null;
-    }
 }

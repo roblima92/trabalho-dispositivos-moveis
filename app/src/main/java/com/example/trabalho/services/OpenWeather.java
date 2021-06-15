@@ -82,24 +82,23 @@ public class OpenWeather implements Response.Listener<JSONObject>,
 
             for (int i = 0; i < forecasts.length(); i++) {
                 JSONObject json = forecasts.getJSONObject(i);
-                Weather weather = new Weather(
-                        json.getJSONArray("weather").getJSONObject(0).getInt("id"),
-                        json.getJSONArray("weather").getJSONObject(0).getString("main"),
-                        json.getJSONArray("weather").getJSONObject(0).getString("description"),
-                        json.getJSONArray("weather").getJSONObject(0).getString("icon")
-                );
+                Weather weather = new Weather();
+                weather.setId(json.getJSONArray("weather").getJSONObject(0).getInt("id"));
+                weather.setMain(json.getJSONArray("weather").getJSONObject(0).getString("main"));
+                weather.setDescription(json.getJSONArray("weather").getJSONObject(0).getString("description"));
+                weather.setIcon(json.getJSONArray("weather").getJSONObject(0).getString("icon"));
 
                 Instant instant = Instant.ofEpochSecond(Long.parseLong(json.getString("dt")));
                 BigDecimal maxForecast = new BigDecimal(json.getJSONObject("temp").getDouble("max") - CONSTANT_KELVIN);
                 BigDecimal minForecast = new BigDecimal(json.getJSONObject("temp").getDouble("min") - CONSTANT_KELVIN);
 
-                Forecast obj = new Forecast(
-                        brazilianFormat.parse(brazilianFormat.format(Date.from(instant))),
-                        (int) Math.round(maxForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()),
-                        (int) Math.round(minForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()),
-                        json.getInt("pressure"),
-                        json.getInt("humidity"),
-                        weather);
+                Forecast obj = new Forecast();
+                obj.setDate(brazilianFormat.parse(brazilianFormat.format(Date.from(instant))));
+                obj.setMax((int) Math.round(maxForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()));
+                obj.setMin((int) Math.round(minForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()));
+                obj.setHumidity(json.getInt("pressure"));
+                obj.setPressure(json.getInt("humidity"));
+                obj.setWeather(weather);
 
                 this.forecastArrayList.add(obj);
             }

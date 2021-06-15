@@ -3,166 +3,93 @@ package com.example.trabalho.presenter;
 import android.app.Activity;
 import android.os.Build;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import com.android.volley.Response;
+import com.example.trabalho.HomeActivity;
+import com.example.trabalho.TripActivity;
+import com.example.trabalho.TripDetailsActivity;
 import com.example.trabalho.models.Forecast;
+import com.example.trabalho.models.ForecastDocument;
 import com.example.trabalho.models.LocationGeo;
 import com.example.trabalho.models.Trip;
+import com.example.trabalho.models.User;
 import com.example.trabalho.presenter.contracts.ActivityContract;
+import com.example.trabalho.presenter.contracts.RequestFirestoreContract;
 import com.example.trabalho.presenter.contracts.RequestForecastContract;
 import com.example.trabalho.presenter.contracts.RequestLocationContract;
 import com.example.trabalho.services.Location;
 import com.example.trabalho.services.OpenWeather;
-
-import org.json.JSONObject;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TripDetailsPresenter implements RequestForecastContract.RequestForecastPresenter,
-        ActivityContract.ActivityPresenter, RequestLocationContract.RequestLocationPresenter {
+public class TripDetailsPresenter implements ActivityContract.ActivityPresenter {
 
-    private RequestForecastContract.RequestForecastView tripDetailsForecastView;
     private ActivityContract.ActivityView tripDetailsView;
     private Trip trip;
-    private List<Forecast> forecastArrayList = new ArrayList<>();
     private List<Forecast> forecastActual = new ArrayList<>();
     private List<Forecast> forecastDestiny = new ArrayList<>();
-    private List<Forecast> forecastReturn = new ArrayList<>();
-    private LocationGeo locationGeo;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-    public TripDetailsPresenter(RequestForecastContract.RequestForecastView viewForecast,
-                                ActivityContract.ActivityView view,
-                                Activity activity,
+    public TripDetailsPresenter(ActivityContract.ActivityView view,
                                 Trip trip) {
         this.tripDetailsView = view;
-        this.tripDetailsForecastView = viewForecast;
         this.trip = trip;
-
-        Location location = new Location(activity, this);
-        location.getLastLocation();
+        this.start();
     }
 
     @Override
     public void start() {
 
-        RequestForecastContract.RequestForecastPresenter forecastPresenter = this;
-        OpenWeather openWeatherActual = new OpenWeather(forecastPresenter, this.tripDetailsView.getContext(), "Actual");
-        openWeatherActual.startByCoordinatesPromise(locationGeo.getLatitude(), locationGeo.getLongitude(), new RequestForecastContract.VolleyCallBack() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
+        DocumentReference userModel = db.collection("trips").document(trip.getUid());
+        userModel.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess() {
-                OpenWeather openWeatherDestiny = new OpenWeather(forecastPresenter, tripDetailsView.getContext(), "Destiny");
-                openWeatherDestiny.startByCityPromise(trip.getCountry(), trip.getCity(), new RequestForecastContract.VolleyCallBack() {
-                    @RequiresApi(api = Build.VERSION_CODES.O)
-                    @Override
-                    public void onSuccess() {
-                        if (trip.getReturnDate() != null) {
-                            getForecast(forecastActual, "Return");
-                        }
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+
+                        Trip trip = new Trip();
+                        Timestamp departureDateTimestamp = (Timestamp) document.get("departureDate");
+                        Timestamp arrivalDateTimestamp = (Timestamp) document.get("arrivalDate");
+                        Timestamp returnDateTimestamp = (Timestamp) document.get("returnDate");
+
+                        trip.setDepartureDate(departureDateTimestamp.toDate());
+                        trip.setArrivalDate(arrivalDateTimestamp.toDate());
+                        trip.setReturnDate(returnDateTimestamp.toDate());
+                        trip.setVisitedPlace(document.get("visitedCity") + ", " + document.get("visitedCountry"));
+                        trip.setVisitedCountry((String) document.get("visitedCountry"));
+                        trip.setVisitedCity((String) document.get("visitedCity"));
+                        trip.setHomeCountry((String) document.get("homeCountry"));
+                        trip.setHomeCity((String) document.get("homeCity"));
+                        trip.setHomePlace(document.get("homeCity") + ", " + document.get("homeCountry"));
+
+                        trip.setUserUid((String) document.get("userUid"));
+
+                        List<Forecast> forecastDestine = document.toObject(ForecastDocument.class).forecastDestination;
+                        List<Forecast> forecastHome = document.toObject(ForecastDocument.class).forecastHome;
+
+                        ((TripDetailsActivity) tripDetailsView).bindTrip(
+                            trip,
+                            forecastHome,
+                            forecastDestine
+                        );
                     }
-                });
+                }
             }
         });
-    }
-
-    @Override
-    public Forecast findForecast(Date date, String type) {
-        if (forecastArrayList == null || forecastArrayList.size() == 0) {
-            return null;
-        }
-
-        List<Forecast> forecastAux = new ArrayList<>();
-        switch (type) {
-            case "":
-                forecastAux = this.forecastArrayList;
-                break;
-            case "Actual":
-                forecastAux = this.forecastActual;
-                break;
-            case "Destiny":
-                forecastAux = this.forecastDestiny;
-                break;
-            case "Return":
-                forecastAux = this.forecastReturn;
-                break;
-        }
-
-        for (Forecast forecast : forecastAux) {
-            if (forecast.getDate().compareTo(date) == 0) {
-                return forecast;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public void getLocation(LocationGeo locationGeo) {
-        this.locationGeo = locationGeo;
-        this.start();
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    @Override
-    public void getForecast(List<Forecast> forecasts, String type) {
-
-        // Check if departure date is the same than arrival date
-        Boolean sameDate = trip.getDepartureDate().compareTo(trip.getArrivalDate()) == 0;
-
-        // Format forecasts arrayList
-        if (forecasts == null || forecasts.size() == 0) {
-            this.sendErrorForecast("Nenhuma previsão de tempo foi retornada.");
-            return;
-        }
-
-        if (type == "Destiny") {
-            this.forecastDestiny = forecasts;
-            for (Forecast forecast : forecasts) {
-                if (trip.getReturnDate() == null) {
-                    if (forecast.getDate().compareTo(trip.getArrivalDate()) >= 0 &&
-                            findForecast(forecast.getDate(), "") == null) {
-                        forecastArrayList.add(forecast);
-                    }
-                } else if (forecast.getDate().compareTo(trip.getArrivalDate()) >= 0 &&
-                        forecast.getDate().compareTo(trip.getReturnDate()) < 0 &&
-                        findForecast(forecast.getDate(), "") == null) {
-                    forecastArrayList.add(forecast);
-                }
-            }
-        } else if (type == "Actual") {
-            this.forecastActual = forecasts;
-            for (Forecast forecast : forecasts) {
-                if (sameDate) {
-                    if (forecast.getDate().compareTo(trip.getDepartureDate()) < 0 &&
-                            findForecast(forecast.getDate(), "") == null) {
-                        this.forecastArrayList.add(forecast);
-                    }
-                } else {
-                    if (forecast.getDate().compareTo(trip.getDepartureDate()) <= 0 &&
-                            findForecast(forecast.getDate(), "") == null) {
-                        this.forecastArrayList.add(forecast);
-                    }
-                }
-
-            }
-        } else if (type == "Return") {
-            this.forecastReturn = forecasts;
-            for (Forecast forecast : forecasts) {
-                if (forecast.getDate().compareTo(trip.getReturnDate()) >= 0 &&
-                        findForecast(forecast.getDate(), "") == null) {
-                    this.forecastArrayList.add(forecast);
-                }
-            }
-        }
-
-        this.tripDetailsForecastView.bindList(this.forecastArrayList);
-    }
-
-    @Override
-    public void sendErrorForecast(String errorMessage) {
-        this.tripDetailsView.showToast(errorMessage);
     }
 
 }

@@ -24,11 +24,12 @@ public class NewTripActivity extends AppCompatActivity implements ActivityContra
         setContentView(R.layout.activity_new_trip);
 
         newTripPresenter = new NewTripPresenter(this);
+    }
 
+    public void bindTrip(Trip trip) {
         newTripBinding = DataBindingUtil.setContentView(this, R.layout.activity_new_trip);
         newTripBinding.setPresenter((NewTripPresenter) newTripPresenter);
-        newTripBinding.setTrip(new Trip());
-
+        newTripBinding.setTrip(trip);
         ((NewTripPresenter) newTripPresenter).newTripBinding = newTripBinding;
     }
 

@@ -40,7 +40,7 @@
             android:layout_marginTop="12dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@={trip.city}"
+            android:text="@={trip.visitedCity}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/labelCity" />
@@ -78,7 +78,7 @@
             android:layout_marginTop="11dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@={trip.country}"
+            android:text="@={trip.visitedCountry}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/labelCountry" />

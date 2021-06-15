@@ -8,11 +8,15 @@
             type="com.example.trabalho.models.Trip" />
 
         <variable
-            name="forecastDeparture"
+            name="presenter"
+            type="com.example.trabalho.presenter.TripDetailsPresenter" />
+
+        <variable
+            name="forecastHome"
             type="com.example.trabalho.models.Forecast" />
 
         <variable
-            name="forecastArrival"
+            name="forecastDestine"
             type="com.example.trabalho.models.Forecast" />
     </data>
 
@@ -21,159 +25,53 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/labelForecastWeather"
+            android:id="@+id/placeATeste"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:text="Previsão dos próximos dias"
-            android:textSize="16sp"
+            android:text="@={trip.homePlace}"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerViewForecastA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/labelDetailsMaxArrival" />
-
-        <TextView
-            android:id="@+id/labelDetailsPressureHumidityWeatherArrival"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="28dp"
-            android:text="@{`P / U: ` + forecastArrival.pressure + `hPa / ` + forecastArrival.humidity + `%`}"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/labelDetailsArrivalDate"
-            app:layout_constraintTop_toBottomOf="@+id/labelWeatherArrival" />
-
-        <TextView
-            android:id="@+id/labelDetailsArrivalDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="28dp"
-            android:text="@{`Data: ` + forecastArrival.formattedDate}"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/labelWeatherArrival" />
-
-        <TextView
-            android:id="@+id/labelDetailsPressureHumidityWeatherDeparture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="28dp"
-            android:text="@{`P / U: ` + forecastDeparture.pressure + `hPa / ` + forecastDeparture.humidity + `%`}"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/labelDetailsDepartureDate"
-            app:layout_constraintTop_toBottomOf="@+id/labelWeatherDeparture" />
-
-        <TextView
-            android:id="@+id/labelDetailsMaxWeatherDeparture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="54dp"
-            android:layout_marginLeft="54dp"
-            android:layout_marginTop="12dp"
-            android:text="@{`Máxima: ` + forecastDeparture.max + `°`}"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/labelDetailsMinWeatherDeparture"
-            app:layout_constraintTop_toBottomOf="@+id/labelDetailsPressureHumidityWeatherDeparture" />
-
-        <TextView
-            android:id="@+id/labelDetailsMaxArrival"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="54dp"
-            android:layout_marginLeft="54dp"
-            android:layout_marginTop="12dp"
-            android:text="@{`Máxima: ` + forecastArrival.max + `°`}"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/labelDetailsMinWeatherArrival"
-            app:layout_constraintTop_toBottomOf="@+id/labelDetailsPressureHumidityWeatherArrival" />
-
-        <TextView
-            android:id="@+id/labelDetailsMinWeatherDeparture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="12dp"
-            android:text="@{`Mínima: ` + forecastDeparture.min + `°`}"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/labelDetailsDepartureDate" />
-
-        <TextView
-            android:id="@+id/labelDetailsMinWeatherArrival"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="12dp"
-            android:text="@{`Mínima: ` + forecastArrival.min + `°`}"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/labelDetailsArrivalDate" />
-
-        <TextView
-            android:id="@+id/labelWeatherArrival"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:text="Previsão de tempo na chegada"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/labelDetailsMaxWeatherDeparture" />
-
-        <TextView
-            android:id="@+id/labelWeatherDeparture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:text="Previsão de tempo na partida"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/labelDetailsDestiny" />
-
-        <TextView
-            android:id="@+id/labelDetailsDepartureDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="28dp"
-            android:text="@{`Data: ` + forecastDeparture.formattedDate}"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/labelWeatherDeparture" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewForecast"
-            android:layout_width="327dp"
-            android:layout_height="372dp"
+            android:id="@+id/recyclerViewForecastA"
+            android:layout_width="271dp"
+            android:layout_height="211dp"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="132dp"
             android:layout_marginEnd="40dp"
             android:layout_marginRight="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/labelForecastWeather" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/labelDetailsDestiny"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewForecastB"
+            android:layout_width="271dp"
+            android:layout_height="211dp"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="28dp"
-            android:text="@{`Destino: ` + trip.city + `, ` + trip.country}"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/placeBTeste" />
+
+        <TextView
+            android:id="@+id/placeBTeste"
+            android:layout_width="59dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="176dp"
+            android:layout_marginLeft="176dp"
+            android:layout_marginTop="36dp"
+            android:text="@{trip.visitedPlace}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerViewForecastA" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
