@@ -1,5 +1,8 @@
 package com.example.trabalho.presenter;
 
+import android.content.Context;
+import android.content.Intent;
+
 import androidx.annotation.NonNull;
 
 import com.example.trabalho.TripDetailsActivity;
@@ -7,6 +10,7 @@ import com.example.trabalho.models.Forecast;
 import com.example.trabalho.models.ForecastDocument;
 import com.example.trabalho.models.Trip;
 import com.example.trabalho.presenter.contracts.ActivityContract;
+import com.example.trabalho.utils.Converter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
@@ -76,6 +80,30 @@ public class TripDetailsPresenter implements ActivityContract.ActivityPresenter 
                 }
             }
         });
+    }
+
+    public void shareDetails(Trip tripDetail) {
+        Context context = tripDetailsView.getContext();
+        String message = "Dados de minha viagem:" +
+                            "\nLugar: "+ tripDetail.getVisitedCity() + ", " + tripDetail.getVisitedCountry() +
+                            "\nData de partida: "+ Converter.dateToString(tripDetail.getDepartureDate()) +
+                            "\nData de chegada: "+ Converter.dateToString(tripDetail.getArrivalDate());
+
+        if (tripDetail.getReturnDate() != null) {
+            message = message + "\nData de retorno: "+ Converter.dateToString(tripDetail.getReturnDate());
+        }
+
+        message = message + "\n\nFrom Jean, não passe frio";
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, message);
+        sendIntent.setType("text/plain");
+
+        Intent chooser = Intent.createChooser(sendIntent, "Compartilhar minha viagem");
+
+        if (sendIntent.resolveActivity(context.getPackageManager()) != null) {
+            this.tripDetailsView.navigate(chooser);
+        }
     }
 
 }

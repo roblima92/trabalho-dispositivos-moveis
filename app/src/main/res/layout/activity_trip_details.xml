@@ -149,6 +149,7 @@
                     android:background="@drawable/primary_button"
                     android:backgroundTint="@color/colorAccent"
                     android:text="@string/trip_button_share"
+                    android:onClick="@{(v) -> presenter.shareDetails(trip)}"
                     app:backgroundTint="@color/color_accent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
