@@ -40,7 +40,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
     public void onBindViewHolder(@NonNull ForecastViewHolder holder, int position) {
         Forecast obj = (Forecast) this.forecastList.get(position);
         holder.viewForecast.setForecastModel(obj);
-        Picasso.get().load("http://openweathermap.org/img/w/"+obj.getWeather().getIcon() + ".png").resize(200, 200).into(holder.viewForecast.tripDepartureIcon);
+        Picasso.get().load("http://openweathermap.org/img/w/"+obj.getWeather().getIcon() + ".png").resize(350,350).into(holder.viewForecast.tripDepartureIcon);
     }
 
     @Override
