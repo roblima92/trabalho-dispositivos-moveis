@@ -78,15 +78,13 @@ public class NewTripPresenter implements ActivityContract.ActivityFormPresenter,
         Validate.fieldIsRequired(newTripBinding.newTripDepartureDateInput, "Data de partida");
         Validate.fieldIsRequired(newTripBinding.newTripArrivalDateInput, "Data de chegada");
         Validate.fieldIsRequired(newTripBinding.newTripDestinationCityInput, "Cidade, País");
-        if (trip.getDepartureDate() == null || !Validate.stringIsDateValid(newTripBinding.newTripDepartureDateInput.getText().toString())) {
+        if (trip.getDepartureDate() == null) {
             throw new Exception ("Data de partida inválida!");
         }
-        if (trip.getArrivalDate() == null || !Validate.stringIsDateValid(newTripBinding.newTripArrivalDateInput.getText().toString())) {
+        if (trip.getArrivalDate() == null) {
             throw new Exception ("Data de chegada inválida!");
         }
-        if (trip.getReturnDate() != null && !Validate.stringIsDateValid(newTripBinding.newTripReturnDateInput.getText().toString())) {
-            throw new Exception ("Data de retorno inválida!");
-        } else if (trip.getReturnDate() != null) {
+        if (trip.getReturnDate() != null) {
             Validate.dateCantBeGreaterThanAnotherDate(trip.getArrivalDate(), trip.getReturnDate(), "Data de retorno não pode ser anterior a data de chegada!");
         }
         Validate.dateCantBeGreaterThanAnotherDate(trip.getDepartureDate(), trip.getArrivalDate(), "Data de chegada não pode ser anterior a data de partida!");
