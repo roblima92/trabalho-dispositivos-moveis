@@ -13,7 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TripActivityTest" />
         <activity android:name=".MyTripsActivity" />
         <activity
             android:name=".SplashScreenActivity"
@@ -43,7 +42,6 @@
             android:label="Cadastro"
             android:parentActivityName=".LoginActivity" />
         <activity android:name=".TripDetailsActivity" />
-        <activity android:name=".TripActivity" />
         <activity android:name=".ForecastActivity" />
     </application>
 

@@ -1,25 +1,12 @@
 package com.example.trabalho.presenter;
 
-import android.app.Activity;
-import android.os.Build;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
-import com.example.trabalho.HomeActivity;
-import com.example.trabalho.TripActivity;
 import com.example.trabalho.TripDetailsActivity;
 import com.example.trabalho.models.Forecast;
 import com.example.trabalho.models.ForecastDocument;
-import com.example.trabalho.models.LocationGeo;
 import com.example.trabalho.models.Trip;
-import com.example.trabalho.models.User;
 import com.example.trabalho.presenter.contracts.ActivityContract;
-import com.example.trabalho.presenter.contracts.RequestFirestoreContract;
-import com.example.trabalho.presenter.contracts.RequestForecastContract;
-import com.example.trabalho.presenter.contracts.RequestLocationContract;
-import com.example.trabalho.services.Location;
-import com.example.trabalho.services.OpenWeather;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
@@ -27,11 +14,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class TripDetailsPresenter implements ActivityContract.ActivityPresenter {

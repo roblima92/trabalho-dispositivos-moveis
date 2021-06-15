@@ -46,8 +46,8 @@ public class TripDetailsActivity extends AppCompatActivity implements ActivityCo
         tripDetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_trip_details);
         tripDetailsBinding.setPresenter(tripDetailsPresenter);
         tripDetailsBinding.setTrip(trip);
-        bindList(forecastsHome, tripDetailsBinding.recyclerViewForecastA);
-        bindList(forecastsDestine, tripDetailsBinding.recyclerViewForecastB);
+        bindList(forecastsHome, tripDetailsBinding.tripRvDeparture);
+        bindList(forecastsDestine, tripDetailsBinding.tripRvArrival);
     }
 
     @Override

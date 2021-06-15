@@ -1,202 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="forecastModel"
+            type="com.example.trabalho.models.Forecast" />
+        <variable
+            name="forecastAdapter"
+            type="com.example.trabalho.adapters.ForecastAdapter" />
+    </data>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/trip_card"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/trip_card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/trip_departure_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:contentDescription="@string/trip_departure_date"
-                android:text="@string/trip_departure_date"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+            android:tag="@{forecastModel}"
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/trip_departure_temperature"
+                    android:id="@+id/trip_departure_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:contentDescription="@string/trip_departure_temperature"
-                    android:gravity="start"
-                    android:text="@string/trip_departure_temperature"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/trip_departure_date"
+                    android:text="@{forecastModel.formattedDate}"
                     android:textColor="#FFFFFF"
-                    android:textSize="56sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/trip_departure_icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:layout_gravity="end"
-                        android:layout_marginEnd="28dp"
-                        android:layout_marginRight="28dp"
-                        android:contentDescription="@string/trip_departure_weather"
-                        app:srcCompat="@drawable/app_icon" />
+                    android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/trip_departure_weather"
+                        android:id="@+id/trip_departure_temperature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginRight="8dp"
-                        android:contentDescription="@string/trip_departure_weather"
-                        android:text="@string/trip_departure_weather"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:contentDescription="@string/trip_departure_temperature"
+                        android:gravity="start"
+                        android:text="@{forecastModel.average + ``}"
                         android:textColor="#FFFFFF"
-                        android:textSize="14sp"
-                        android:textStyle="normal" />
+                        android:textSize="56sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/trip_departure_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="28dp"
+                            android:layout_marginRight="28dp"
+                            android:contentDescription="@string/trip_departure_weather"
+                            app:srcCompat="@drawable/app_icon" />
+
+                        <TextView
+                            android:id="@+id/trip_departure_weather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:contentDescription="@string/trip_departure_weather"
+                            android:text="@{forecastModel.weather.description}"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@drawable/black_opacity_35"
+                    android:padding="16dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/trip_departure_min_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:contentDescription="@string/trip_departure_min_label"
+                            android:text="@string/trip_departure_min_label"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="normal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/trip_departure_min_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:contentDescription="@string/trip_departure_min_value"
+                            android:text="@{forecastModel.min + ``}"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/trip_departure_max_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginTop="8dp"
+                            android:contentDescription="@string/trip_departure_max_label"
+                            android:text="@string/trip_departure_max_label"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="normal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/trip_departure_min_label" />
+
+                        <TextView
+                            android:id="@+id/trip_departure_humidity_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:contentDescription="@string/trip_departure_humidity_label"
+                            android:text="@string/trip_departure_humidity_label"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="normal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/trip_departure_max_label" />
+
+                        <TextView
+                            android:id="@+id/trip_departure_pressure_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:contentDescription="@string/trip_departure_pressure_label"
+                            android:text="@string/trip_departure_pressure_label"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="normal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/trip_departure_humidity_label" />
+
+                        <TextView
+                            android:id="@+id/trip_departure_max_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="8dp"
+                            android:contentDescription="@string/trip_departure_max_value"
+                            android:text="@{forecastModel.max + ``}"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/trip_departure_min_value" />
+
+                        <TextView
+                            android:id="@+id/trip_departure_pressure_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:contentDescription="@string/trip_departure_pressure_value"
+                            android:text="@{forecastModel.pressure + ``}"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/trip_departure_humidity_value" />
+
+                        <TextView
+                            android:id="@+id/trip_departure_humidity_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:contentDescription="@string/trip_departure_humidity_value"
+                            android:text="@{forecastModel.humidity + ``}"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/trip_departure_max_value" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/black_opacity_35"
-                android:padding="16dp">
+        </androidx.cardview.widget.CardView>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/trip_departure_min_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:contentDescription="@string/trip_departure_min_label"
-                        android:text="@string/trip_departure_min_label"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="normal"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/trip_departure_min_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:contentDescription="@string/trip_departure_min_value"
-                        android:text="@string/trip_departure_min_value"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/trip_departure_max_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_marginTop="8dp"
-                        android:contentDescription="@string/trip_departure_max_label"
-                        android:text="@string/trip_departure_max_label"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="normal"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/trip_departure_min_label" />
-
-                    <TextView
-                        android:id="@+id/trip_departure_humidity_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:contentDescription="@string/trip_departure_humidity_label"
-                        android:text="@string/trip_departure_humidity_label"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="normal"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/trip_departure_max_label" />
-
-                    <TextView
-                        android:id="@+id/trip_departure_pressure_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:contentDescription="@string/trip_departure_pressure_label"
-                        android:text="@string/trip_departure_pressure_label"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="normal"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/trip_departure_humidity_label" />
-
-                    <TextView
-                        android:id="@+id/trip_departure_max_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginTop="8dp"
-                        android:contentDescription="@string/trip_departure_max_value"
-                        android:text="@string/trip_departure_max_value"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/trip_departure_min_value" />
-
-                    <TextView
-                        android:id="@+id/trip_departure_pressure_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:contentDescription="@string/trip_departure_pressure_value"
-                        android:text="@string/trip_departure_pressure_value"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/trip_departure_humidity_value" />
-
-                    <TextView
-                        android:id="@+id/trip_departure_humidity_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:contentDescription="@string/trip_departure_humidity_value"
-                        android:text="@string/trip_departure_humidity_value"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/trip_departure_max_value" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-</LinearLayout>
+    </LinearLayout>
+</layout>

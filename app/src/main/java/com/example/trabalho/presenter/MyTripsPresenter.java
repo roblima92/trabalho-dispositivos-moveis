@@ -1,7 +1,10 @@
 package com.example.trabalho.presenter;
 
+import android.content.Intent;
+
 import androidx.annotation.NonNull;
 
+import com.example.trabalho.TripDetailsActivity;
 import com.example.trabalho.models.Trip;
 import com.example.trabalho.presenter.contracts.ActivityContract;
 import com.example.trabalho.presenter.contracts.ModelContract;
@@ -49,10 +52,14 @@ public class MyTripsPresenter implements ActivityContract.ActivityPresenter {
                             trip.setDepartureDate(departureDateTimestamp.toDate());
                             trip.setArrivalDate(arrivalDateTimestamp.toDate());
                             trip.setReturnDate(returnDateTimestamp.toDate());
-                            trip.setVisitedPlace((String) document.get("place"));
-                            trip.setVisitedCountry((String) document.get("country"));
-                            trip.setVisitedCity((String) document.get("city"));
+                            trip.setVisitedPlace(document.get("visitedCity") + ", " + document.get("visitedCountry"));
+                            trip.setVisitedCountry((String) document.get("visitedCountry"));
+                            trip.setVisitedCity((String) document.get("visitedCity"));
+                            trip.setHomePlace(document.get("homeCity") + ", " + document.get("homeCountry"));
+                            trip.setHomeCountry((String) document.get("homeCountry"));
+                            trip.setHomeCity((String) document.get("homeCity"));
                             trip.setUserUid((String) document.get("userUid"));
+                            trip.setUid(document.getId());
 
                             trips.add(trip);
                         }

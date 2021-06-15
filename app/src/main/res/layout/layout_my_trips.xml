@@ -7,6 +7,9 @@
         <import type="com.example.trabalho.utils.Helper"/>
         <import type="com.example.trabalho.utils.Converter"/>
         <variable
+            name="presenter"
+            type="com.example.trabalho.presenter.MyTripsPresenter" />
+        <variable
             name="tripModel"
             type="com.example.trabalho.models.Trip" />
         <variable
@@ -17,6 +20,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_my_trips"
         android:layout_width="280dp"
+        android:tag="@{tripModel}"
         android:layout_height="110dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="0dp"
@@ -103,7 +107,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/my_trips_see_details"
                 app:layout_constraintEnd_toEndOf="parent" />
 
-            <Button
+            <TextView
                 android:id="@+id/my_trips_see_details"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"

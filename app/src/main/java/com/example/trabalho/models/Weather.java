@@ -2,8 +2,12 @@ package com.example.trabalho.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.ImageView;
+
+import androidx.databinding.BindingAdapter;
 
 import com.example.trabalho.presenter.contracts.ModelContract;
+import com.squareup.picasso.Picasso;
 
 import java.util.Map;
 
@@ -45,12 +49,7 @@ public class Weather implements Parcelable {
         this.icon = icon;
     }
 
-    //    int id, String main, String description, String icon
     public Weather() {
-//        this.id = id;
-//        this.main = main;
-//        this.description = description;
-//        this.icon = icon;
     }
 
     protected Weather(Parcel in) {

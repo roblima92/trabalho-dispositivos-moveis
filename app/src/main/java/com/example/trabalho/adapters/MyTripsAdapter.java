@@ -1,13 +1,19 @@
 package com.example.trabalho.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.trabalho.MyTripsActivity;
+import com.example.trabalho.TripDetailsActivity;
 import com.example.trabalho.databinding.LayoutMyTripsBinding;
 import com.example.trabalho.models.Trip;
+import com.example.trabalho.presenter.MyTripsPresenter;
+import com.example.trabalho.presenter.contracts.ActivityContract;
 import com.example.trabalho.presenter.contracts.ModelContract;
 
 import java.util.List;
@@ -40,6 +46,15 @@ public class MyTripsAdapter extends RecyclerView.Adapter<MyTripsAdapter.MyTripsV
     public void onBindViewHolder(@NonNull MyTripsViewHolder holder, int position) {
         Trip obj = (Trip) this.tripList.get(position);
         holder.viewMyTrips.setTripModel(obj);
+        holder.viewMyTrips.cardMyTrips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Trip tripSelected = (Trip) v.getTag();
+                Intent intent = new Intent(v.getContext(), TripDetailsActivity.class);
+                intent.putExtra("uId", tripSelected.getUid());
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
