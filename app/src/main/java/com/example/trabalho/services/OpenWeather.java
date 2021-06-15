@@ -27,6 +27,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class OpenWeather implements Response.Listener<JSONObject>,
                                     Response.ErrorListener {
@@ -88,12 +89,11 @@ public class OpenWeather implements Response.Listener<JSONObject>,
                 weather.setDescription(json.getJSONArray("weather").getJSONObject(0).getString("description"));
                 weather.setIcon(json.getJSONArray("weather").getJSONObject(0).getString("icon"));
 
-                Instant instant = Instant.ofEpochSecond(Long.parseLong(json.getString("dt")));
                 BigDecimal maxForecast = new BigDecimal(json.getJSONObject("temp").getDouble("max") - CONSTANT_KELVIN);
                 BigDecimal minForecast = new BigDecimal(json.getJSONObject("temp").getDouble("min") - CONSTANT_KELVIN);
 
                 Forecast obj = new Forecast();
-                obj.setDate(brazilianFormat.parse(brazilianFormat.format(Date.from(instant))));
+                obj.setDate(new Date(TimeUnit.SECONDS.toMillis(Long.parseLong(json.getString("dt")))));
                 obj.setMax((int) Math.round(maxForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()));
                 obj.setMin((int) Math.round(minForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()));
                 obj.setAverage((int) Math.round((double) obj.getMax() / (double) obj.getMin()));
@@ -106,7 +106,7 @@ public class OpenWeather implements Response.Listener<JSONObject>,
 
             this.forecastPresenter.getForecast(this.forecastArrayList, this.type);
             if (callBack != null) callBack.onSuccess();
-        } catch (JSONException | ParseException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
