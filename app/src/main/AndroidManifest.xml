@@ -43,6 +43,7 @@
             android:parentActivityName=".LoginActivity" />
         <activity android:name=".TripDetailsActivity" />
         <activity android:name=".ForecastActivity" />
+        <activity android:name=".services.SensorTemperature" />
     </application>
 
 </manifest>

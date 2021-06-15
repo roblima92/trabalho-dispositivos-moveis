@@ -15,6 +15,7 @@ import com.example.trabalho.databinding.ActivityHomeBinding;
 import com.example.trabalho.models.User;
 import com.example.trabalho.presenter.HomePresenter;
 import com.example.trabalho.presenter.contracts.ActivityContract;
+import com.example.trabalho.services.SensorTemperature;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,7 +38,7 @@ public class HomeActivity extends AppCompatActivity implements ActivityContract.
     public void bindUser(User user) {
         homeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         homeBinding.setPresenter((HomePresenter) homePresenter);
-        homeBinding.setForecastActivity(ForecastActivity.class);
+        homeBinding.setForecastActivity(SensorTemperature.class);
         homeBinding.setMyTripsActivity(MyTripsActivity.class);
         homeBinding.setProfileActivity(ProfileActivity.class);
         homeBinding.setNewTripActivity(NewTripActivity.class);
