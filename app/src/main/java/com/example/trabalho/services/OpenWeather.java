@@ -97,8 +97,8 @@ public class OpenWeather implements Response.Listener<JSONObject>,
                 obj.setMax((int) Math.round(maxForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()));
                 obj.setMin((int) Math.round(minForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()));
                 obj.setAverage((int) Math.round((double) obj.getMax() / (double) obj.getMin()));
-                obj.setHumidity(json.getInt("pressure"));
-                obj.setPressure(json.getInt("humidity"));
+                obj.setPressure(json.getInt("pressure"));
+                obj.setHumidity(json.getInt("humidity"));
                 obj.setWeather(weather);
 
                 this.forecastArrayList.add(obj);
