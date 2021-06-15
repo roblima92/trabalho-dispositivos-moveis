@@ -18,11 +18,11 @@
 
     <!-- Register -->
     <string name="register_label_name">Nome</string>
-    <string name="register_hint_name">Ex: Maria</string>
+    <string name="register_hint_name">Maria</string>
     <string name="register_label_surname">Sobrenome</string>
-    <string name="register_hint_surname">Ex: Silva</string>
+    <string name="register_hint_surname">Silva</string>
     <string name="register_label_email">E-mail</string>
-    <string name="register_hint_email">Ex: mariasilva@email.com</string>
+    <string name="register_hint_email">mariasilva@email.com</string>
     <string name="register_label_password">Senha</string>
     <string name="register_hint_password">8 &#8211; 16 caracteres</string>
     <string name="register_label_phone">Celular</string>
@@ -79,7 +79,7 @@
     <string name="new_trip_current_city">CIDADE ATUAL</string>
     <string name="new_trip_departure_date">Data de partida</string>
     <string name="new_trip_destination_section">DESTINO</string>
-    <string name="new_trip_destination_city">Cidade</string>
+    <string name="new_trip_destination_label">Cidade, País</string>
     <string name="new_trip_city_hint">Ex: Buenos Aires, Argentina</string>
     <string name="new_trip_arrival_date">Data de chegada</string>
     <string name="new_trip_return_section">VOLTA</string>

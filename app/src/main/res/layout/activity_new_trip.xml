@@ -44,7 +44,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp">
 
                 <TextView
                     android:id="@+id/new_trip_current_city"
@@ -163,7 +164,7 @@
                     android:layout_marginStart="48dp"
                     android:layout_marginLeft="48dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/new_trip_destination_city"
+                    android:text="@string/new_trip_destination_label"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -200,7 +201,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="8dp"
-                    android:contentDescription="@string/new_trip_destination_city"
+                    android:contentDescription="@string/new_trip_destination_label"
                     android:src="@drawable/pin_icon"
                     app:layout_constraintBottom_toBottomOf="@+id/new_trip_destination_city_input"
                     app:layout_constraintEnd_toEndOf="@+id/new_trip_destination_city_input"
@@ -362,34 +363,33 @@
                         app:layout_constraintBottom_toBottomOf="@+id/new_trip_return_date_input"
                         app:layout_constraintEnd_toEndOf="@+id/new_trip_return_date_input"
                         app:layout_constraintTop_toTopOf="@+id/new_trip_return_date_input" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/new_trip_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginEnd="48dp"
+                    android:layout_marginRight="48dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/primary_button"
+                    android:insetLeft="1dp"
+                    android:insetTop="1dp"
+                    android:insetRight="1dp"
+                    android:insetBottom="1dp"
+                    android:padding="8dp"
+                    android:text="@string/new_trip_button"
+                    android:textColor="#FFFFFF"
+                    android:onClick="@{() -> presenter.submit(trip)}"
+                    app:backgroundTint="#4A90E2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/new_trip_return_date_constraint_layout" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
-
-        <Button
-            android:id="@+id/new_trip_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginLeft="48dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginRight="48dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/primary_button"
-            android:insetLeft="1dp"
-            android:insetTop="1dp"
-            android:insetRight="1dp"
-            android:insetBottom="1dp"
-            android:padding="8dp"
-            android:text="@string/new_trip_button"
-            android:textColor="#FFFFFF"
-            android:onClick="@{() -> presenter.submit(trip)}"
-            app:backgroundTint="#4A90E2"
-            app:cornerRadius="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

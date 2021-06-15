@@ -13,7 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyTripsActivity" />
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/AppTheme.Fullscreen">
@@ -27,8 +26,16 @@
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.Fullscreen" />
         <activity
+            android:name=".RegisterActivity"
+            android:label="Cadastro"
+            android:parentActivityName=".LoginActivity" />
+        <activity
             android:name=".HomeActivity"
             android:theme="@style/AppTheme.Fullscreen" />
+        <activity
+            android:name=".ForecastActivity"
+            android:label="Previsão do tempo"
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".ProfileActivity"
             android:label="Meu perfil"
@@ -38,11 +45,13 @@
             android:label="Nova viagem"
             android:parentActivityName=".HomeActivity" />
         <activity
-            android:name=".RegisterActivity"
-            android:label="Cadastro"
-            android:parentActivityName=".LoginActivity" />
-        <activity android:name=".TripDetailsActivity" />
-        <activity android:name=".ForecastActivity" />
+            android:name=".MyTripsActivity"
+            android:label="Minhas viagens"
+            android:parentActivityName=".HomeActivity"/>
+        <activity
+            android:name=".TripDetailsActivity"
+            android:label="Minha viagem"
+            android:parentActivityName=".MyTripsActivity"/>
         <activity android:name=".services.SensorTemperature" />
     </application>
 
