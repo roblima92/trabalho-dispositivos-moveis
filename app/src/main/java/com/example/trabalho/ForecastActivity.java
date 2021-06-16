@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trabalho.adapters.ForecastAdapter;
 import com.example.trabalho.adapters.HourlyAdapter;
+import com.example.trabalho.adapters.NextDaysAdapter;
 import com.example.trabalho.databinding.ActivityForecastBinding;
 import com.example.trabalho.models.Forecast;
 import com.example.trabalho.models.Hourly;
@@ -74,8 +75,8 @@ public class ForecastActivity extends AppCompatActivity implements ActivityContr
             LinearLayoutManager linearLayoutManagerHorinzontal = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
             recyclerView.setLayoutManager(linearLayoutManagerHorinzontal);
 
-            ForecastAdapter forecastAdapter = new ForecastAdapter(forecastArrayList);
-            recyclerView.setAdapter(forecastAdapter);
+            NextDaysAdapter nextDaysAdapter = new NextDaysAdapter(forecastArrayList);
+            recyclerView.setAdapter(nextDaysAdapter);
         } catch (Exception e) {
             e.printStackTrace();
         }

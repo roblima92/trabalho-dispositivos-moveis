@@ -15,6 +15,12 @@ public class Hourly implements Parcelable {
         return hour;
     }
 
+    public String getHourWithoutSeconds() {
+        if (hour == null) return hour;
+        String[] hourArray = hour.split(":");
+        return hourArray[0] + ":" + hourArray[1];
+    }
+
     public void setHour(String hour) {
         this.hour = hour;
     }
