@@ -85,7 +85,7 @@
             android:contentDescription="@string/home_title"
             android:gravity="center"
             android:text="@{user.welcomeMessage}"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/color_texts"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -140,7 +140,7 @@
             android:layout_marginTop="8dp"
             android:contentDescription="@string/home_label_forecast"
             android:text="@string/home_label_forecast"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/color_texts"
             app:layout_constraintEnd_toEndOf="@+id/home_forecast_card"
             app:layout_constraintStart_toStartOf="@+id/home_forecast_card"
             app:layout_constraintTop_toBottomOf="@+id/home_forecast_card" />
@@ -187,7 +187,7 @@
             android:layout_marginTop="8dp"
             android:contentDescription="@string/home_label_profile"
             android:text="@string/home_label_profile"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/color_texts"
             app:layout_constraintEnd_toEndOf="@+id/home_profile_card"
             app:layout_constraintStart_toStartOf="@+id/home_profile_card"
             app:layout_constraintTop_toBottomOf="@+id/home_profile_card" />
@@ -239,7 +239,7 @@
             android:layout_marginTop="8dp"
             android:contentDescription="@string/home_label_new_trip"
             android:text="@string/home_label_new_trip"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/color_texts"
             app:layout_constraintEnd_toEndOf="@+id/home_new_trip_card"
             app:layout_constraintStart_toStartOf="@+id/home_new_trip_card"
             app:layout_constraintTop_toBottomOf="@+id/home_new_trip_card" />
@@ -291,7 +291,7 @@
             android:layout_marginTop="8dp"
             android:contentDescription="@string/home_label_my_trips"
             android:text="@string/home_label_my_trips"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/color_texts"
             app:layout_constraintEnd_toEndOf="@+id/home_my_trips_card"
             app:layout_constraintStart_toStartOf="@+id/home_my_trips_card"
             app:layout_constraintTop_toBottomOf="@+id/home_my_trips_card" />

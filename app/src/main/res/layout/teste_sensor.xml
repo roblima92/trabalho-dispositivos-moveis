@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.trabalho.services.SensorTemperature">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_home" />
+
     <TextView
         android:id="@+id/myTemp"
         android:layout_width="wrap_content"
@@ -11,8 +16,9 @@
         android:layout_centerInParent="true"
         android:singleLine="false"
         android:text="@string/teste"
-        android:textColor="#FF0f00"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
 </RelativeLayout>

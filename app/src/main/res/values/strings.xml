@@ -1,6 +1,6 @@
 <resources>
     <!-- General -->
-    <string name="app_name">Trabalho</string>
+    <string name="app_name">Jean, não passe frio</string>
     <string name="icon">Ícone</string>
     <string name="background">Imagem de fundo</string>
     <string name="show_password">Exibir senha</string>
@@ -30,11 +30,12 @@
     <string name="register_label_gender">Gênero</string>
     <string name="register_label_female">Feminino</string>
     <string name="register_label_male">Masculino</string>
+    <string name="register_label_undefined">Indefinido</string>
     <string name="register_button">Finalizar cadastro</string>
 
     <!-- Home -->
     <string name="home_title">Boas vindas</string>
-    <string name="home_label_forecast">Previsão do tempo</string>
+    <string name="home_label_forecast">Sensor de temperatura</string>
     <string name="home_label_profile">Meu perfil</string>
     <string name="home_label_new_trip">Nova viagem</string>
     <string name="home_label_my_trips">Minhas viagens</string>
@@ -121,5 +122,5 @@
     <string name="male">Masculino</string>
     <string name="female">Feminino</string>
     <string name="confirm">Confirmar</string>
-    <string name="teste">Trabalho D. Móveis!!!!!</string>
+    <string name="teste">Trabalho Dispositivos Móveis!!!!!</string>
 </resources>

@@ -16,6 +16,11 @@
         <variable
             name="registerActivity"
             type="Class" />
+
+        <variable
+            name="sensorActivity"
+            type="Class" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,6 +48,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="48dp"
             android:contentDescription="@string/icon"
+            android:onClick="@{(v) -> presenter.onClickCardView(sensorActivity)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -56,7 +62,7 @@
             android:layout_marginTop="32dp"
             android:contentDescription="@string/login_title"
             android:text="@string/login_title"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/color_texts"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +78,7 @@
             android:layout_marginLeft="48dp"
             android:layout_marginTop="32dp"
             android:text="@string/login_label_email"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/color_texts"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_title" />
@@ -95,7 +101,7 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:text="@={user.email}"
-            android:textColorHint="#80FFFFFF"
+            android:textColorHint="@color/color_hints"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_label_email" />
@@ -109,7 +115,7 @@
             android:layout_marginLeft="48dp"
             android:layout_marginTop="16dp"
             android:text="@string/login_label_password"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/color_texts"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_input_email" />
@@ -132,7 +138,7 @@
             android:paddingStart="16dp"
             android:paddingEnd="32dp"
             android:text="@={user.password}"
-            android:textColorHint="#80FFFFFF"
+            android:textColorHint="@color/color_hints"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_label_password"
@@ -190,7 +196,7 @@
             android:onClick="@{(v) -> presenter.submit(user)}"
             android:padding="8dp"
             android:text="@string/login_button"
-            android:textColor="#272727"
+            android:textColor="@color/color_primary"
             app:backgroundTint="#FFFFFF"
             app:cornerRadius="8dp"
             app:elevation="0dp"
@@ -216,9 +222,9 @@
             android:insetBottom="1dp"
             android:padding="8dp"
             android:text="@string/login_register_button"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/color_texts"
             android:onClick="@{(v) -> presenter.onClickCardView(registerActivity)}"
-            app:backgroundTint="#4A90E2"
+            app:backgroundTint="@color/color_button"
             app:cornerRadius="8dp"
             app:elevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"

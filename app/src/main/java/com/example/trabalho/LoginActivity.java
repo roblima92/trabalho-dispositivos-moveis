@@ -12,6 +12,7 @@ import com.example.trabalho.databinding.ActivityLoginBinding;
 import com.example.trabalho.models.User;
 import com.example.trabalho.presenter.LoginPresenter;
 import com.example.trabalho.presenter.contracts.ActivityContract;
+import com.example.trabalho.services.SensorTemperature;
 
 public class LoginActivity extends AppCompatActivity implements ActivityContract.ActivityView {
 
@@ -29,6 +30,8 @@ public class LoginActivity extends AppCompatActivity implements ActivityContract
         loginBinding.setPresenter((LoginPresenter) loginPresenter);
         loginBinding.setUser(new User());
         loginBinding.setRegisterActivity(RegisterActivity.class);
+
+        loginBinding.setSensorActivity(SensorTemperature.class);
 
         ((LoginPresenter) loginPresenter).loginBinding = loginBinding;
     }
