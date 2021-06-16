@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity implements ActivityContract.
     public void bindUser(User user) {
         homeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         homeBinding.setPresenter((HomePresenter) homePresenter);
-        homeBinding.setForecastActivity(ForecastActivity.class);
+        homeBinding.setForecastActivity(SensorTemperature.class);
         homeBinding.setMyTripsActivity(MyTripsActivity.class);
         homeBinding.setProfileActivity(ProfileActivity.class);
         homeBinding.setNewTripActivity(NewTripActivity.class);

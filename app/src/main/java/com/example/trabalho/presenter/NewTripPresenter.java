@@ -145,7 +145,8 @@ public class NewTripPresenter implements ActivityContract.ActivityFormPresenter,
                     if (forecast.getDate().compareTo(trip.getDepartureDate()) <= 0) {
                         this.forecasthome.add(forecast);
                     }
-                } else if (forecast.getDate().compareTo(trip.getReturnDate()) >= 0) {
+                } else if (forecast.getDate().compareTo(trip.getDepartureDate()) <= 0 ||
+                        forecast.getDate().compareTo(trip.getReturnDate()) >= 0) {
                     this.forecasthome.add(forecast);
                 }
             }

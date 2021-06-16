@@ -30,7 +30,7 @@ public class User implements Parcelable, ModelContract.Model {
     private String gender;
 
     public String getWelcomeMessage() {
-        String message = this.getGender().equals("Masculino") ? "Bem-vindo" : "Bem-vinda";
+        String message = this.getGender().equals("Masculino") ? "Bem-vindo" : (this.getGender().equals("Feminino") ? "Bem-vinda" : "Bem-vindx");
         message = message + ", " + this.getFirstName();
         return message;
     }
