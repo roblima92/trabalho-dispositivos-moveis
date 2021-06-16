@@ -16,6 +16,11 @@
         <variable
             name="registerActivity"
             type="Class" />
+
+        <variable
+            name="sensorActivity"
+            type="Class" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,6 +48,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="48dp"
             android:contentDescription="@string/icon"
+            android:onClick="@{(v) -> presenter.onClickCardView(sensorActivity)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
