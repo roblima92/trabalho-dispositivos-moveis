@@ -30,6 +30,7 @@
     <string name="register_label_gender">Gênero</string>
     <string name="register_label_female">Feminino</string>
     <string name="register_label_male">Masculino</string>
+    <string name="register_label_undefined">Indefinido</string>
     <string name="register_button">Finalizar cadastro</string>
 
     <!-- Home -->
