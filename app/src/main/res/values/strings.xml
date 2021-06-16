@@ -35,7 +35,7 @@
 
     <!-- Home -->
     <string name="home_title">Boas vindas</string>
-    <string name="home_label_forecast">Sensor de temperatura</string>
+    <string name="home_label_forecast">Previsão do tempo</string>
     <string name="home_label_profile">Meu perfil</string>
     <string name="home_label_new_trip">Nova viagem</string>
     <string name="home_label_my_trips">Minhas viagens</string>
