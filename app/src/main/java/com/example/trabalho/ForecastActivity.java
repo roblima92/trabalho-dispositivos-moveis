@@ -8,49 +8,86 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.trabalho.adapters.MyRecyclerViewAdapter;
+import com.example.trabalho.adapters.ForecastAdapter;
+import com.example.trabalho.adapters.HourlyAdapter;
+import com.example.trabalho.databinding.ActivityForecastBinding;
+import com.example.trabalho.models.Forecast;
+import com.example.trabalho.models.Hourly;
+import com.example.trabalho.presenter.ForecastPresenter;
+import com.example.trabalho.presenter.TripDetailsPresenter;
 import com.example.trabalho.presenter.contracts.ActivityContract;
+import com.example.trabalho.presenter.contracts.RequestForecastContract;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ForecastActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
-    private MyRecyclerViewAdapter adapter;
+public class ForecastActivity extends AppCompatActivity implements ActivityContract.ActivityView,
+        RequestForecastContract.RequestForecastView,
+        RequestForecastContract.RequestHourlyView {
+
+    private ForecastPresenter forecastPresenter;
+    private ActivityForecastBinding forecastBinding;
+    private Forecast forecast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forecast);
+        forecastPresenter = new ForecastPresenter(this);
+    }
 
-        // data to populate the RecyclerView with
-        ArrayList<Integer> viewColors = new ArrayList<>();
-        viewColors.add(Color.BLUE);
-        viewColors.add(Color.YELLOW);
-        viewColors.add(Color.MAGENTA);
-        viewColors.add(Color.RED);
-        viewColors.add(Color.BLACK);
-
-        ArrayList<String> animalNames = new ArrayList<>();
-        animalNames.add("Horse");
-        animalNames.add("Cow");
-        animalNames.add("Camel");
-        animalNames.add("Sheep");
-        animalNames.add("Goat");
-
-        // set up the RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.forecast_rv_today);
-        LinearLayoutManager horizontalLayoutManager
-                = new LinearLayoutManager(ForecastActivity.this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(horizontalLayoutManager);
-        adapter = new MyRecyclerViewAdapter(this, animalNames);
-        adapter.setClickListener(this);
-        recyclerView.setAdapter(adapter);
+    public void bindForecast(Forecast forecast) {
+        forecastBinding = DataBindingUtil.setContentView(this, R.layout.activity_forecast);
+        forecastBinding.setPresenter(forecastPresenter);
+        forecastBinding.setForecast(forecast);
     }
 
     @Override
-    public void onItemClick(View view, int position) {
-        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on item position " + position, Toast.LENGTH_SHORT).show();
+    public void bindHourlyList(List<Hourly> hourlyArrayList, RecyclerView recyclerViewHourly) {
+        try {
+            RecyclerView recyclerView = recyclerViewHourly;
+            LinearLayoutManager linearLayoutManagerHorinzontal = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
+            recyclerView.setLayoutManager(linearLayoutManagerHorinzontal);
+
+            HourlyAdapter hourlyAdapter = new HourlyAdapter(hourlyArrayList);
+            recyclerView.setAdapter(hourlyAdapter);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    @Override
+    public void bindList(List<Forecast> forecastArrayList, RecyclerView recyclerViewForecast) {
+        try {
+            RecyclerView recyclerView = recyclerViewForecast;
+            LinearLayoutManager linearLayoutManagerVertical = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+            recyclerView.setLayoutManager(linearLayoutManagerVertical);
+
+            ForecastAdapter forecastAdapter = new ForecastAdapter(forecastArrayList);
+            recyclerView.setAdapter(forecastAdapter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Context getContext() {
+        return this.getApplicationContext();
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(this.getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void navigate(Intent intent) {
+        startActivity(intent);
+    }
+
 }
