@@ -182,6 +182,97 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/forecast_more_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/forecast_more_details"
+                android:textColor="@color/color_texts"
+                android:layout_marginTop="32dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/forecast_next_days" />
+
+            <ImageView
+                android:id="@+id/forecast_more_details_card"
+                android:layout_width="0dp"
+                android:layout_height="95dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginRight="48dp"
+                android:autofillHints="@string/forecast_more_details"
+                android:background="@drawable/black_opacity_35"
+                android:contentDescription="@string/forecast_more_details"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="date"
+                android:paddingStart="16dp"
+                android:paddingLeft="16dp"
+                android:paddingEnd="32dp"
+                android:paddingRight="32dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#80FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/forecast_more_details" />
+
+            <TextView
+                android:id="@+id/forecast_humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/forecast_humidity"
+                android:textColor="@color/color_texts"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/forecast_more_details_card"
+                app:layout_constraintTop_toTopOf="@+id/forecast_more_details_card" />
+
+            <TextView
+                android:id="@+id/forecast_humidity_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/forecast_humidity_info"
+                android:textColor="@color/color_texts"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/forecast_more_details_card"
+                app:layout_constraintTop_toTopOf="@+id/forecast_humidity"
+                app:layout_constraintBottom_toBottomOf="@+id/forecast_humidity" />
+
+            <TextView
+                android:id="@+id/forecast_pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/forecast_pressure"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/forecast_more_details_card"
+                app:layout_constraintTop_toBottomOf="@+id/forecast_humidity" />
+
+
+            <TextView
+                android:id="@+id/forecast_pressure_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/forecast_pressure_info"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/forecast_more_details_card"
+                app:layout_constraintTop_toTopOf="@+id/forecast_pressure"
+                app:layout_constraintBottom_toBottomOf="@+id/forecast_pressure" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
