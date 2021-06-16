@@ -21,6 +21,7 @@ import com.example.trabalho.presenter.ForecastPresenter;
 import com.example.trabalho.presenter.TripDetailsPresenter;
 import com.example.trabalho.presenter.contracts.ActivityContract;
 import com.example.trabalho.presenter.contracts.RequestForecastContract;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,10 +41,15 @@ public class ForecastActivity extends AppCompatActivity implements ActivityContr
         forecastPresenter = new ForecastPresenter(this);
     }
 
-    public void bindForecast(Forecast forecast) {
+    public void bindForecast(Forecast forecast, List<Hourly> hourlyArrayList, List<Forecast> forecastArrayList, String place) {
         forecastBinding = DataBindingUtil.setContentView(this, R.layout.activity_forecast);
         forecastBinding.setPresenter(forecastPresenter);
         forecastBinding.setForecast(forecast);
+        forecastBinding.setActualTemperature(((int) hourlyArrayList.get(0).getTemperature()) + "°");
+        forecastBinding.setPlace(place);
+        Picasso.get().load("http://openweathermap.org/img/w/"+forecast.getWeather().getIcon() + ".png").resize(350,350).into(forecastBinding.forecastWeather);
+        this.bindList(forecastArrayList, forecastBinding.forecastRvNextDays);
+        this.bindHourlyList(hourlyArrayList, forecastBinding.forecastRvToday);
     }
 
     @Override
@@ -65,8 +71,8 @@ public class ForecastActivity extends AppCompatActivity implements ActivityContr
     public void bindList(List<Forecast> forecastArrayList, RecyclerView recyclerViewForecast) {
         try {
             RecyclerView recyclerView = recyclerViewForecast;
-            LinearLayoutManager linearLayoutManagerVertical = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
-            recyclerView.setLayoutManager(linearLayoutManagerVertical);
+            LinearLayoutManager linearLayoutManagerHorinzontal = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
+            recyclerView.setLayoutManager(linearLayoutManagerHorinzontal);
 
             ForecastAdapter forecastAdapter = new ForecastAdapter(forecastArrayList);
             recyclerView.setAdapter(forecastAdapter);

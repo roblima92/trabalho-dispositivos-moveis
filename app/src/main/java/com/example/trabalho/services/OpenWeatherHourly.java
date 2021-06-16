@@ -15,6 +15,7 @@ import com.example.trabalho.models.Forecast;
 import com.example.trabalho.models.Hourly;
 import com.example.trabalho.models.Weather;
 import com.example.trabalho.presenter.contracts.RequestForecastContract;
+import com.example.trabalho.utils.Converter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,20 +55,24 @@ public class OpenWeatherHourly implements Response.Listener<JSONObject>,
 
             for (int i = 0; i < hourly.length(); i++) {
                 JSONObject json = hourly.getJSONObject(i);
-//                Weather weather = new Weather();
-//                weather.setId(json.getJSONArray("weather").getJSONObject(0).getInt("id"));
-//                weather.setMain(json.getJSONArray("weather").getJSONObject(0).getString("main"));
-//                weather.setDescription(json.getJSONArray("weather").getJSONObject(0).getString("description"));
-//                weather.setIcon(json.getJSONArray("weather").getJSONObject(0).getString("icon"));
+                Weather weather = new Weather();
+                weather.setId(json.getJSONArray("weather").getJSONObject(0).getInt("id"));
+                weather.setMain(json.getJSONArray("weather").getJSONObject(0).getString("main"));
+                weather.setDescription(json.getJSONArray("weather").getJSONObject(0).getString("description"));
+                weather.setIcon(json.getJSONArray("weather").getJSONObject(0).getString("icon"));
 
                 Hourly obj = new Hourly();
                 String[] arrayDate = json.getString("dt_txt").split(" ");
+                String[] brazilianFormatArray = arrayDate[0].split("-");
+                String brazilianFormatString = brazilianFormatArray[2] + "/" + brazilianFormatArray[1] + "/" + brazilianFormatArray[0];
 
-                obj.setHour(arrayDate[1]);
-                obj.setHumidity(json.getJSONArray("main").getJSONObject(0).getInt("humidity"));
-                obj.setTemperature((int) Math.round(json.getJSONArray("main").getJSONObject(0).getDouble("temp")));
-
-                this.hourlyArrayList.add(obj);
+                if (brazilianFormatString.equals(Converter.dateToString(new Date()))) {
+                    obj.setHour(arrayDate[1]);
+                    obj.setHumidity(json.getJSONObject("main").getInt("humidity"));
+                    obj.setTemperature((int) Math.round(json.getJSONObject("main").getDouble("temp")));
+                    obj.setWeather(weather);
+                    this.hourlyArrayList.add(obj);
+                }
             }
 
             this.hourlyPresenter.getHourly(this.hourlyArrayList);

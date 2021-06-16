@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trabalho.databinding.LayoutHourlyBinding;
 import com.example.trabalho.models.Hourly;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class HourlyAdapter extends RecyclerView.Adapter<HourlyAdapter.HourlyView
     public void onBindViewHolder(@NonNull HourlyAdapter.HourlyViewHolder holder, int position) {
         Hourly obj = (Hourly) this.hourlyList.get(position);
         holder.viewHourly.setHourlyModel(obj);
-//        Picasso.get().load("http://openweathermap.org/img/w/"+obj.getWeather().getIcon() + ".png").into(holder.viewForecast.tripDepartureIcon);
+        Picasso.get().load("http://openweathermap.org/img/w/"+obj.getWeather().getIcon() + ".png").into(holder.viewHourly.imageView3);
     }
 
     @Override

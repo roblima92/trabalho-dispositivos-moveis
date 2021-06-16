@@ -142,10 +142,10 @@ public class NewTripPresenter implements ActivityContract.ActivityFormPresenter,
         if (type == "home") {
             for (Forecast forecast : forecastArrayList) {
                 if (trip.getReturnDate() == null) {
-                    if (forecast.getDate().compareTo(trip.getDepartureDate()) <= 0) {
+                    if (forecast.getDate().compareTo(trip.getArrivalDate()) <= 0) {
                         this.forecasthome.add(forecast);
                     }
-                } else if (forecast.getDate().compareTo(trip.getDepartureDate()) <= 0 ||
+                } else if (forecast.getDate().compareTo(trip.getArrivalDate()) <= 0 ||
                         forecast.getDate().compareTo(trip.getReturnDate()) >= 0) {
                     this.forecasthome.add(forecast);
                 }

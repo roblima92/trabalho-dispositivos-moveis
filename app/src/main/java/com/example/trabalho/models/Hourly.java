@@ -9,6 +9,7 @@ public class Hourly implements Parcelable {
     private String hour;
     private double temperature;
     private int humidity;
+    private Weather weather;
 
     public String getHour() {
         return hour;
@@ -32,6 +33,14 @@ public class Hourly implements Parcelable {
 
     public void setHumidity(int humidity) {
         this.humidity = humidity;
+    }
+
+    public Weather getWeather() {
+        return weather;
+    }
+
+    public void setWeather(Weather weather) {
+        this.weather = weather;
     }
 
     public Hourly() {

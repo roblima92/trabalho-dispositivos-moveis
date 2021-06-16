@@ -26,6 +26,10 @@ public class ForecastPresenter implements ActivityContract.ActivityPresenter,
 
     private ActivityContract.ActivityView forecastView;
     private LocationGeo locationGeo;
+    private String place;
+    private List<Forecast> forecastArrayList = new ArrayList<>();
+    private List<Hourly> hourlyArrayList = new ArrayList<>();
+    private static int countRequests = 0;
     public ActivityForecastBinding forecastBinding;
 
     public ForecastPresenter(ActivityContract.ActivityView view) {
@@ -51,13 +55,22 @@ public class ForecastPresenter implements ActivityContract.ActivityPresenter,
 
     @Override
     public void getHourly(List<Hourly> hourlyArrayList) {
-        ((RequestForecastContract.RequestHourlyView) forecastView).bindHourlyList(hourlyArrayList, forecastBinding.forecastRvToday);
+        this.hourlyArrayList = hourlyArrayList;
+        countRequests++;
+        this.finish();
     }
 
     @Override
     public void getForecast(List<Forecast> forecastArrayList, String type) {
-        ((ForecastActivity) forecastView).bindForecast(forecastArrayList.get(0));
-//        ((RequestForecastContract.RequestForecastView) forecastView).bindList(forecastArrayList, forecastBinding.forecastRvNextDays);
+        this.forecastArrayList = forecastArrayList;
+        countRequests++;
+        this.finish();
+    }
+
+    public void finish() {
+        if (countRequests >= 2) {
+            ((ForecastActivity) forecastView).bindForecast(forecastArrayList.get(0), hourlyArrayList, forecastArrayList, place);
+        }
     }
 
     @Override

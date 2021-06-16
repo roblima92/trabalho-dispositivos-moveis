@@ -8,6 +8,14 @@
             type="com.example.trabalho.models.Forecast" />
 
         <variable
+            name="place"
+            type="String" />
+
+        <variable
+            name="actualTemperature"
+            type="String" />
+
+        <variable
             name="presenter"
             type="com.example.trabalho.presenter.ForecastPresenter" />
     </data>
@@ -43,7 +51,7 @@
                 android:layout_marginLeft="48dp"
                 android:layout_marginTop="24dp"
                 android:contentDescription="@string/forecast_city"
-                android:text="@string/forecast_city"
+                android:text="@{place}"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -71,7 +79,7 @@
                 android:layout_marginLeft="48dp"
                 android:layout_marginTop="16dp"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="@string/forecast_temperature"
+                android:text="@{actualTemperature}"
                 android:textColor="#FFFFFF"
                 android:textSize="80sp"
                 android:textStyle="bold"
@@ -83,12 +91,12 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="56dp"
+                android:elevation="0dp"
                 android:contentDescription="@string/icon"
                 app:layout_constraintEnd_toEndOf="@+id/forecast_weather_text"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/forecast_weather_text"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/forecast_icon" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/forecast_weather_text"
@@ -97,7 +105,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
-                android:text="@string/forecast_weather"
+                android:text="@{forecast.weather.description}"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -189,7 +197,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="725dp"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintTop_toBottomOf="@+id/forecast_next_days"/>
 
             <ImageView
                 android:id="@+id/forecast_more_details_card"
@@ -235,7 +243,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@string/forecast_feeling_info"
+                android:text=""
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/forecast_more_details_card"
@@ -261,38 +269,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@string/forecast_humidity_info"
+                android:text="@{forecast.humidity + `%`}"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/forecast_more_details_card"
                 app:layout_constraintTop_toTopOf="@+id/forecast_humidity"
                 app:layout_constraintBottom_toBottomOf="@+id/forecast_humidity" />
-
-            <TextView
-                android:id="@+id/forecast_precipitation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/forecast_precipitation"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/forecast_more_details_card"
-                app:layout_constraintTop_toBottomOf="@+id/forecast_humidity" />
-
-            <TextView
-                android:id="@+id/forecast_precipitation_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/forecast_precipitation_info"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/forecast_more_details_card"
-                app:layout_constraintTop_toTopOf="@+id/forecast_precipitation"
-                app:layout_constraintBottom_toBottomOf="@+id/forecast_precipitation" />
 
             <TextView
                 android:id="@+id/forecast_pressure"
@@ -305,7 +287,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/forecast_more_details_card"
-                app:layout_constraintTop_toBottomOf="@+id/forecast_precipitation" />
+                app:layout_constraintTop_toBottomOf="@+id/forecast_humidity" />
 
 
             <TextView
@@ -314,38 +296,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@string/forecast_pressure_info"
+                android:text="@{forecast.pressure + `mBar`}"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/forecast_more_details_card"
                 app:layout_constraintTop_toTopOf="@+id/forecast_pressure"
                 app:layout_constraintBottom_toBottomOf="@+id/forecast_pressure" />
 
-            <TextView
-                android:id="@+id/forecast_UV_index"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/forecast_UV_index"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/forecast_more_details_card"
-                app:layout_constraintTop_toBottomOf="@+id/forecast_pressure" />
-
-            <TextView
-                android:id="@+id/forecast_UV_index_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/forecast_UV_index_info"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/forecast_more_details_card"
-                app:layout_constraintTop_toTopOf="@+id/forecast_UV_index"
-                app:layout_constraintBottom_toBottomOf="@+id/forecast_UV_index" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
