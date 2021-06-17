@@ -46,7 +46,9 @@ public class ForecastActivity extends AppCompatActivity implements ActivityContr
         forecastBinding = DataBindingUtil.setContentView(this, R.layout.activity_forecast);
         forecastBinding.setPresenter(forecastPresenter);
         forecastBinding.setForecast(forecast);
-        forecastBinding.setActualTemperature(((int) hourlyArrayList.get(0).getTemperature()) + "°");
+        if (hourlyArrayList.size() > 0) {
+            forecastBinding.setActualTemperature((int) (hourlyArrayList.get(0).getTemperature()) + "°");
+        }
         forecastBinding.setPlace(place);
         Picasso.get().load("http://openweathermap.org/img/w/"+forecast.getWeather().getIcon() + ".png").resize(350,350).into(forecastBinding.forecastWeather);
         this.bindList(forecastArrayList, forecastBinding.forecastRvNextDays);
