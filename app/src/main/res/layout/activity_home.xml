@@ -1,267 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="presenter"
+            type="com.example.trabalho.presenter.HomePresenter" />
 
-    <!-- Background -->
-    <ImageView
-        android:id="@+id/background_home"
-        android:layout_width="550dp"
-        android:layout_height="1000dp"
-        android:contentDescription="@string/background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.501"
-        app:srcCompat="@drawable/background_login_home" />
+        <variable
+            name="user"
+            type="com.example.trabalho.models.User" />
 
-    <!-- Logout -->
-    <ImageView
-        android:id="@+id/logout"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:contentDescription="@string/logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logout_icon" />
+        <variable
+            name="forecastActivity"
+            type="Class" />
 
-    <!-- Logo -->
-    <ImageView
-        android:id="@+id/app_icon_login"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="48dp"
-        android:contentDescription="@string/icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/app_icon" />
+        <variable
+            name="newTripActivity"
+            type="Class" />
 
-    <!-- Welcome text -->
-    <TextView
-        android:id="@+id/welcome_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
-        android:contentDescription="@string/welcome"
-        android:gravity="center"
-        android:text="Bem-vindo (a), @Nome"
-        android:textColor="#FFFFFF"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_icon_login" />
+        <variable
+            name="profileActivity"
+            type="Class" />
 
-    <!-- Forecast card -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/forecast_card"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="32dp"
-        app:cardBackgroundColor="#00FFFFFF"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_text">
+        <variable
+            name="myTripsActivity"
+            type="Class" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".HomeActivity">
 
-        <!-- Forecast card bg -->
-
+        <!-- Background -->
         <ImageView
-            android:id="@+id/forecast_card_bg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/bg_home"
+            android:layout_width="550dp"
+            android:layout_height="1000dp"
             android:contentDescription="@string/background"
-            app:srcCompat="@drawable/black_opacity_35" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.501"
+            app:srcCompat="@drawable/bg_home" />
 
-        <!-- Forecast icon -->
+        <!-- Logout -->
         <ImageView
-            android:id="@+id/forecast_icon"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
+            android:id="@+id/home_logout"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:contentDescription="@string/logout"
+            android:onClick="@{() -> presenter.logout()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logout_icon" />
+
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/home_app_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="48dp"
+            android:contentDescription="@string/icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/app_icon" />
+
+        <!-- Welcome text -->
+        <TextView
+            android:id="@+id/home_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginLeft="80dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="32dp"
-            android:contentDescription="@string/icon"
-            app:srcCompat="@drawable/forecast_icon" />
-    </androidx.cardview.widget.CardView>
+            android:layout_marginEnd="80dp"
+            android:layout_marginRight="80dp"
+            android:contentDescription="@string/home_title"
+            android:gravity="center"
+            android:text="@{user.welcomeMessage}"
+            android:textColor="@color/color_texts"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_app_icon" />
 
-    <!-- Forecast text -->
-    <TextView
-        android:id="@+id/forecast_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/forecast"
-        android:text="@string/forecast"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/forecast_card"
-        app:layout_constraintStart_toStartOf="@+id/forecast_card"
-        app:layout_constraintTop_toBottomOf="@+id/forecast_card" />
+        <!-- Forecast card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/home_forecast_card"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginTop="32dp"
+            android:onClick="@{(v) -> presenter.onClickCardView(forecastActivity)}"
+            app:cardBackgroundColor="#00FFFFFF"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_title">
 
-    <!-- My profile card -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/my_profile_card"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="64dp"
-        app:cardBackgroundColor="#00FFFFFF"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_text">
+            <!-- Forecast card bg -->
 
-        <!-- My profile card bg -->
-        <ImageView
-            android:id="@+id/my_profile_card_bg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/background"
-            app:srcCompat="@drawable/black_opacity_35" />
+            <ImageView
+                android:id="@+id/home_forecast_card_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/background"
+                app:srcCompat="@drawable/black_opacity_35" />
 
-        <!-- My profile icon -->
-        <ImageView
-            android:id="@+id/my_profile_icon"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="32dp"
-            android:contentDescription="@string/icon"
-            app:srcCompat="@drawable/my_profile_icon" />
-    </androidx.cardview.widget.CardView>
+            <!-- Forecast icon -->
+            <ImageView
+                android:id="@+id/home_forecast_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginBottom="32dp"
+                android:contentDescription="@string/icon"
+                app:srcCompat="@drawable/forecast_icon" />
+        </androidx.cardview.widget.CardView>
 
-    <!-- My profile text-->
-    <TextView
-        android:id="@+id/my_profile_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/my_profile"
-        android:text="@string/my_profile"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/my_profile_card"
-        app:layout_constraintStart_toStartOf="@+id/my_profile_card"
-        app:layout_constraintTop_toBottomOf="@+id/my_profile_card" />
+        <!-- Forecast text -->
+        <TextView
+            android:id="@+id/home_forecast_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/home_label_forecast"
+            android:text="@string/home_label_forecast"
+            android:textColor="@color/color_texts"
+            app:layout_constraintEnd_toEndOf="@+id/home_forecast_card"
+            app:layout_constraintStart_toStartOf="@+id/home_forecast_card"
+            app:layout_constraintTop_toBottomOf="@+id/home_forecast_card" />
 
-    <!-- New trip card -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/new_trip_card"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="24dp"
-        app:cardBackgroundColor="#00FFFFFF"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forecast_text">
+        <!-- My profile card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/home_profile_card"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginRight="64dp"
+            android:onClick="@{(v) -> presenter.onClickCardView(profileActivity)}"
+            app:cardBackgroundColor="#00FFFFFF"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_title">
 
-        <!-- New trip card bg -->
-        <ImageView
-            android:id="@+id/new_trip_card_bg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/background"
-            app:srcCompat="@drawable/black_opacity_35" />
+            <!-- My profile card bg -->
+            <ImageView
+                android:id="@+id/home_profile_card_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/background"
+                app:srcCompat="@drawable/black_opacity_35" />
 
-        <!-- New trip icon -->
-        <ImageView
-            android:id="@+id/new_trip_icon"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
+            <!-- My profile icon -->
+            <ImageView
+                android:id="@+id/home_profile_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="32dp"
+                android:contentDescription="@string/icon"
+                app:srcCompat="@drawable/profile_icon" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- My profile text-->
+        <TextView
+            android:id="@+id/home_profile_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/home_label_profile"
+            android:text="@string/home_label_profile"
+            android:textColor="@color/color_texts"
+            app:layout_constraintEnd_toEndOf="@+id/home_profile_card"
+            app:layout_constraintStart_toStartOf="@+id/home_profile_card"
+            app:layout_constraintTop_toBottomOf="@+id/home_profile_card" />
+
+        <!-- New trip card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/home_new_trip_card"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginLeft="64dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="32dp"
-            android:contentDescription="@string/icon"
-            app:srcCompat="@drawable/new_trip_icon" />
-    </androidx.cardview.widget.CardView>
+            android:onClick="@{(v) -> presenter.onClickCardView(newTripActivity)}"
+            app:cardBackgroundColor="#00FFFFFF"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_forecast_text">
 
-    <!-- New trip text -->
-    <TextView
-        android:id="@+id/new_trip_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/new_trip"
-        android:text="@string/new_trip"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/new_trip_card"
-        app:layout_constraintStart_toStartOf="@+id/new_trip_card"
-        app:layout_constraintTop_toBottomOf="@+id/new_trip_card" />
+            <!-- New trip card bg -->
+            <ImageView
+                android:id="@+id/home_new_trip_card_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/background"
+                app:srcCompat="@drawable/black_opacity_35" />
 
-    <!-- My trips card -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/my_trips_card"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="64dp"
-        app:cardBackgroundColor="#00FFFFFF"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_profile_text">
+            <!-- New trip icon -->
+            <ImageView
+                android:id="@+id/home_new_trip_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginBottom="32dp"
+                android:contentDescription="@string/icon"
+                app:srcCompat="@drawable/new_trip_icon" />
+        </androidx.cardview.widget.CardView>
 
-        <!-- My trips card bg -->
-        <ImageView
-            android:id="@+id/my_trips_card_bg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/background"
-            app:srcCompat="@drawable/black_opacity_35" />
+        <!-- New trip text -->
+        <TextView
+            android:id="@+id/home_new_trip_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/home_label_new_trip"
+            android:text="@string/home_label_new_trip"
+            android:textColor="@color/color_texts"
+            app:layout_constraintEnd_toEndOf="@+id/home_new_trip_card"
+            app:layout_constraintStart_toStartOf="@+id/home_new_trip_card"
+            app:layout_constraintTop_toBottomOf="@+id/home_new_trip_card" />
 
-        <!-- My trips icon -->
-        <ImageView
-            android:id="@+id/my_trips_icon"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
+        <!-- My trips card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/home_my_trips_card"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="32dp"
-            android:contentDescription="@string/icon"
-            app:srcCompat="@drawable/my_trips_icon" />
-    </androidx.cardview.widget.CardView>
+            android:layout_marginEnd="64dp"
+            android:layout_marginRight="64dp"
+            android:onClick="@{(v) -> presenter.onClickCardView(myTripsActivity)}"
+            app:cardBackgroundColor="#00FFFFFF"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_profile_text">
 
-    <!-- My trips text -->
-    <TextView
-        android:id="@+id/my_trips_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/my_trips"
-        android:text="@string/my_trips"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/my_trips_card"
-        app:layout_constraintStart_toStartOf="@+id/my_trips_card"
-        app:layout_constraintTop_toBottomOf="@+id/my_trips_card" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- My trips card bg -->
+            <ImageView
+                android:id="@+id/home_my_trips_card_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/background"
+                app:srcCompat="@drawable/black_opacity_35" />
+
+            <!-- My trips icon -->
+            <ImageView
+                android:id="@+id/home_my_trips_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginBottom="32dp"
+                android:contentDescription="@string/icon"
+                app:srcCompat="@drawable/my_trips_icon" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- My trips text -->
+        <TextView
+            android:id="@+id/home_my_trips_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/home_label_my_trips"
+            android:text="@string/home_label_my_trips"
+            android:textColor="@color/color_texts"
+            app:layout_constraintEnd_toEndOf="@+id/home_my_trips_card"
+            app:layout_constraintStart_toStartOf="@+id/home_my_trips_card"
+            app:layout_constraintTop_toBottomOf="@+id/home_my_trips_card" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

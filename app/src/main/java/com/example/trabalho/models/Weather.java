@@ -2,8 +2,14 @@ package com.example.trabalho.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.ImageView;
 
-import java.util.Date;
+import androidx.databinding.BindingAdapter;
+
+import com.example.trabalho.presenter.contracts.ModelContract;
+import com.squareup.picasso.Picasso;
+
+import java.util.Map;
 
 public class Weather implements Parcelable {
     private int id;
@@ -27,11 +33,23 @@ public class Weather implements Parcelable {
         return icon;
     }
 
-    public Weather(int id, String main, String description, String icon) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public void setMain(String main) {
         this.main = main;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public Weather() {
     }
 
     protected Weather(Parcel in) {
@@ -65,4 +83,5 @@ public class Weather implements Parcelable {
         parcel.writeString(description);
         parcel.writeString(icon);
     }
+
 }

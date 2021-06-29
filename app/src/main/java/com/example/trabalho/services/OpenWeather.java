@@ -2,6 +2,7 @@ package com.example.trabalho.services;
 
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -26,6 +27,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class OpenWeather implements Response.Listener<JSONObject>,
                                     Response.ErrorListener {
@@ -35,6 +37,7 @@ public class OpenWeather implements Response.Listener<JSONObject>,
     private RequestForecastContract.RequestForecastPresenter forecastPresenter;
     private Context context;
     private String type;
+    private RequestForecastContract.VolleyCallBack callBack;
 
     public OpenWeather(RequestForecastContract.RequestForecastPresenter forecastPresenter, Context context, String type) {
         this.forecastPresenter = forecastPresenter;
@@ -49,12 +52,24 @@ public class OpenWeather implements Response.Listener<JSONObject>,
     }
 
     public void startByCity(String country, String city) {
-        String url = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "," + country + "&cnt=16&appid=8118ed6ee68db2debfaaa5a44c832918&lang=pt_br";
+        String url = "https://pro.openweathermap.org/data/2.5/forecast/climate?q=" + city + "," + country + "&cnt=16&appid=f2713eeac08f8eed423cfcb9d47dee25&lang=pt_br";
         this.start(url);
     }
 
     public void startByCoordinates(double lat, double lon) {
-        String url = "https://api.openweathermap.org/data/2.5/forecast/daily?lat="+lat+"&lon="+lon+"&cnt=16&appid=8118ed6ee68db2debfaaa5a44c832918&lang=pt_br";
+        String url = "https://pro.openweathermap.org/data/2.5/forecast/climate?lat="+lat+"&lon="+lon+"&cnt=16&appid=f2713eeac08f8eed423cfcb9d47dee25&lang=pt_br";
+        this.start(url);
+    }
+
+    public void startByCoordinatesPromise(double lat, double lon, final RequestForecastContract.VolleyCallBack callBack) {
+        String url = "https://pro.openweathermap.org/data/2.5/forecast/climate?lat="+lat+"&lon="+lon+"&cnt=16&appid=f2713eeac08f8eed423cfcb9d47dee25&lang=pt_br";
+        this.callBack = callBack;
+        this.start(url);
+    }
+
+    public void startByCityPromise(String country, String city, final RequestForecastContract.VolleyCallBack callBack) {
+        String url = "https://pro.openweathermap.org/data/2.5/forecast/climate?q=" + city + "," + country + "&cnt=16&appid=f2713eeac08f8eed423cfcb9d47dee25&lang=pt_br";
+        this.callBack = callBack;
         this.start(url);
     }
 
@@ -62,37 +77,36 @@ public class OpenWeather implements Response.Listener<JSONObject>,
     @Override
     public void onResponse(JSONObject response) {
         try {
-
             JSONArray forecasts = response.getJSONArray("list");
 
             SimpleDateFormat brazilianFormat = new SimpleDateFormat("dd/MM/yyyy");
 
             for (int i = 0; i < forecasts.length(); i++) {
                 JSONObject json = forecasts.getJSONObject(i);
-                Weather weather = new Weather(
-                        json.getJSONArray("weather").getJSONObject(0).getInt("id"),
-                        json.getJSONArray("weather").getJSONObject(0).getString("main"),
-                        json.getJSONArray("weather").getJSONObject(0).getString("description"),
-                        json.getJSONArray("weather").getJSONObject(0).getString("icon")
-                );
+                Weather weather = new Weather();
+                weather.setId(json.getJSONArray("weather").getJSONObject(0).getInt("id"));
+                weather.setMain(json.getJSONArray("weather").getJSONObject(0).getString("main"));
+                weather.setDescription(json.getJSONArray("weather").getJSONObject(0).getString("description"));
+                weather.setIcon(json.getJSONArray("weather").getJSONObject(0).getString("icon"));
 
-                Instant instant = Instant.ofEpochSecond(Long.parseLong(json.getString("dt")));
                 BigDecimal maxForecast = new BigDecimal(json.getJSONObject("temp").getDouble("max") - CONSTANT_KELVIN);
                 BigDecimal minForecast = new BigDecimal(json.getJSONObject("temp").getDouble("min") - CONSTANT_KELVIN);
 
-                Forecast obj = new Forecast(
-                        brazilianFormat.parse(brazilianFormat.format(Date.from(instant))),
-                        (int) Math.round(maxForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()),
-                        (int) Math.round(minForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()),
-                        json.getInt("pressure"),
-                        json.getInt("humidity"),
-                        weather);
+                Forecast obj = new Forecast();
+                obj.setDate(new Date(TimeUnit.SECONDS.toMillis(Long.parseLong(json.getString("dt")))));
+                obj.setMax((int) Math.round(maxForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()));
+                obj.setMin((int) Math.round(minForecast.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()));
+                obj.setAverage((int) Math.round(( (double) obj.getMax() + (double) obj.getMin()) / 2));
+                obj.setPressure(json.getInt("pressure"));
+                obj.setHumidity(json.getInt("humidity"));
+                obj.setWeather(weather);
 
                 this.forecastArrayList.add(obj);
             }
 
             this.forecastPresenter.getForecast(this.forecastArrayList, this.type);
-        } catch (JSONException | ParseException e) {
+            if (callBack != null) callBack.onSuccess();
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }

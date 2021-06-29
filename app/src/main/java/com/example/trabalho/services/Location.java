@@ -13,6 +13,8 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.io.IOException;
+
 public class Location {
 
     private FusedLocationProviderClient fusedLocationClient;
@@ -54,7 +56,11 @@ public class Location {
                                     location.getAccuracy()
                             );
 
-                            presenter.getLocation(locationGeo);
+                            try {
+                                presenter.getLocation(locationGeo);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 });

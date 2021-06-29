@@ -2,14 +2,23 @@ package com.example.trabalho.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.ImageView;
+
+import androidx.databinding.BindingAdapter;
+
+import com.example.trabalho.presenter.contracts.ModelContract;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import java.util.Map;
 
 public class Forecast implements Parcelable {
     private Date date;
     private int max;
     private int min;
+    private int average;
     private int pressure;
     private int humidity;
     private Weather weather;
@@ -26,6 +35,10 @@ public class Forecast implements Parcelable {
         return min;
     }
 
+    public int getAverage() {
+        return average;
+    }
+
     public int getPressure() {
         return pressure;
     }
@@ -36,18 +49,45 @@ public class Forecast implements Parcelable {
 
     public Weather getWeather() { return weather; }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setMax(int max) {
+        this.max = max;
+    }
+
+    public void setMin(int min) {
+        this.min = min;
+    }
+
+    public void setAverage(int average) {
+        this.average = average;
+    }
+
+    public void setPressure(int pressure) {
+        this.pressure = pressure;
+    }
+
+    public void setHumidity(int humidity) {
+        this.humidity = humidity;
+    }
+
+    public void setWeather(Weather weather) {
+        this.weather = weather;
+    }
+
     public String getFormattedDate() {
         SimpleDateFormat brazilianFormat = new SimpleDateFormat("dd/MM/yyyy");
         return brazilianFormat.format(this.date);
     }
 
-    public Forecast(Date date, int max, int min, int pressure, int humidity, Weather weather) {
-        this.date = date;
-        this.max = max;
-        this.min = min;
-        this.pressure = pressure;
-        this.humidity = humidity;
-        this.weather = weather;
+//    @BindingAdapter({"imageUrl", "picasso"})
+//    public static void setImageUrl(ImageView view, String poserPath, Picasso picasso){
+//        picasso.get().load("http://openweathermap.org/img/w/"+ poserPath + ".png").into(view);
+//    }
+
+    public Forecast() {
     }
 
     protected Forecast(Parcel in) {

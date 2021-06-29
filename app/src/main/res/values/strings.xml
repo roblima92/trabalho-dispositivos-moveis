@@ -1,19 +1,120 @@
 <resources>
-    <string name="app_name">Trabalho</string>
+    <!-- General -->
+    <string name="app_name">Jean, não passe frio</string>
     <string name="icon">Ícone</string>
     <string name="background">Imagem de fundo</string>
-    <string name="login">Login</string>
-    <string name="login_button">Entrar</string>
-    <string name="register">Cadastrar</string>
-    <string name="register_button">Cadastrar</string>
-    <string name="email">E-mail</string>
-    <string name="password">Senha</string>
     <string name="show_password">Exibir senha</string>
     <string name="hide_password">Ocultar senha</string>
-    <string name="welcome">Bem-vindo (a)</string>
-    <string name="forecast">Previsão do tempo</string>
-    <string name="my_profile">Meu perfil</string>
-    <string name="new_trip">Nova viagem</string>
-    <string name="my_trips">Minhas viagens</string>
     <string name="logout">Sair</string>
+
+    <!-- Login -->
+    <string name="login_title">Faça seu login</string>
+    <string name="login_label_email">E-mail</string>
+    <string name="login_hint_email">Insira seu e-mail</string>
+    <string name="login_label_password">Senha</string>
+    <string name="login_hint_password">Insira sua senha</string>
+    <string name="login_button">Entrar</string>
+    <string name="login_register_button">Cadastrar</string>
+
+    <!-- Register -->
+    <string name="register_label_name">Nome</string>
+    <string name="register_hint_name">Maria</string>
+    <string name="register_label_surname">Sobrenome</string>
+    <string name="register_hint_surname">Silva</string>
+    <string name="register_label_email">E-mail</string>
+    <string name="register_hint_email">mariasilva@email.com</string>
+    <string name="register_label_password">Senha</string>
+    <string name="register_hint_password">8 &#8211; 16 caracteres</string>
+    <string name="register_label_phone">Celular</string>
+    <string name="register_hint_phone">51 9XXXXXXXX</string>
+    <string name="register_label_gender">Gênero</string>
+    <string name="register_label_female">Feminino</string>
+    <string name="register_label_male">Masculino</string>
+    <string name="register_label_undefined">Indefinido</string>
+    <string name="register_button">Finalizar cadastro</string>
+
+    <!-- Home -->
+    <string name="home_title">Boas vindas</string>
+    <string name="home_label_forecast">Previsão do tempo</string>
+    <string name="home_label_profile">Meu perfil</string>
+    <string name="home_label_new_trip">Nova viagem</string>
+    <string name="home_label_my_trips">Minhas viagens</string>
+
+    <!-- Forecast -->
+    <string name="forecast_city">CIDADE ATUAL</string>
+    <string name="forecast_temperature">Temperatura</string>
+    <string name="forecast_weather">Clima</string>
+    <string name="forecast_see_more">Ver mais</string>
+    <string name="forecast_more_details">Mais detalhes</string>
+    <string name="forecast_today">Hoje</string>
+    <string name="forecast_next_days">Próximos dias</string>
+    <string name="forecast_today_weather">Clima de hoje</string>
+    <string name="forecast_today_temperature">Temperaturas mínima e máxima de hoje</string>
+    <string name="forecast_tomorrow_weather">Clima de amanhã</string>
+    <string name="forecast_tomorrow_temperature">Temperaturas mínima e máxima de amanhã</string>
+    <string name="forecast_after_weather">Clima daqui uns dias</string>
+    <string name="forecast_after_temperature">Temperaturas mínima e máxima daqui uns dias</string>
+    <string name="forecast_humidity">Umidade</string>
+    <string name="forecast_pressure">Pressão</string>
+    <string name="forecast_humidity_info">Taxa de umidade</string>
+    <string name="forecast_pressure_info">Pressão</string>
+
+    <!-- Profile -->
+    <string name="profile_personal_section">Dados pessoais</string>
+    <string name="profile_label_name">Nome</string>
+    <string name="profile_label_surname">Sobrenome</string>
+    <string name="profile_label_gender">Gênero</string>
+    <string name="profile_contact_section">Informações de contato</string>
+    <string name="profile_label_email">E-mail</string>
+    <string name="profile_label_phone">Celular</string>
+    <string name="profile_security_section">Segurança</string>
+    <string name="profile_label_password">Senha</string>
+
+    <!-- New trip -->
+    <string name="new_trip_current_city">CIDADE ATUAL</string>
+    <string name="new_trip_departure_date">Data de partida</string>
+    <string name="new_trip_destination_section">DESTINO</string>
+    <string name="new_trip_destination_label">Cidade, País</string>
+    <string name="new_trip_city_hint">Ex: Buenos Aires, Argentina</string>
+    <string name="new_trip_arrival_date">Data de chegada</string>
+    <string name="new_trip_return_section">VOLTA</string>
+    <string name="new_trip_switch_return">Retorno para cidade de partida</string>
+    <string name="new_trip_return_date">Data de retorno</string>
+    <string name="new_trip_button">Adicionar nova viagem</string>
+
+    <!--    My Trips-->
+    <string name="my_trips_departure_city">Porto Alegre, BRA</string>
+    <string name="my_trips_arrival_city">Buenos Aires, ARG</string>
+    <string name="my_trips_departure_date">Data de partida</string>
+    <string name="my_trips_arrival_date">Data de chegada</string>
+    <string name="my_trips_return_date">Data de retorno</string>
+    <string name="my_trips_see_details">VER DETALHES</string>
+
+    <!-- apagar esse -->
+    <string name="see_details">VER DETALHES</string>
+
+    <!-- Trip -->
+    <string name="trip_departure_city">CIDADE DA PARTIDA</string>
+    <string name="trip_arrival_city">DESTINO</string>
+    <string name="trip_departure_date">Data de partida</string>
+    <string name="trip_departure_temperature">Temperatura atual</string>
+    <string name="trip_departure_weather">Clima atual</string>
+    <string name="trip_departure_min_label">Mínima</string>
+    <string name="trip_departure_min_value">Temperatura mínima</string>
+    <string name="trip_departure_max_label">Máxima</string>
+    <string name="trip_departure_max_value">Temperatura máxima</string>
+    <string name="trip_departure_humidity_label">Umidade</string>
+    <string name="trip_departure_humidity_value">Taxa de umidade</string>
+    <string name="trip_departure_pressure_label">Pressão</string>
+    <string name="trip_departure_pressure_value">Pressão atual</string>
+    <string name="trip_button_share">Compartilhar viagem</string>
+
+    <!--Register-->
+    <string name="name">Nome</string>
+    <string name="surname">Sobrenome</string>
+    <string name="phone">Telefone</string>
+    <string name="male">Masculino</string>
+    <string name="female">Feminino</string>
+    <string name="confirm">Confirmar</string>
+    <string name="teste">Trabalho Dispositivos Móveis</string>
 </resources>

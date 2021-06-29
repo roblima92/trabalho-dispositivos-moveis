@@ -3,6 +3,10 @@ package com.example.trabalho.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.trabalho.presenter.contracts.ModelContract;
+
+import java.util.Map;
+
 public class LocationGeo implements Parcelable {
 
     private double latitude;
@@ -64,4 +68,5 @@ public class LocationGeo implements Parcelable {
         parcel.writeFloat(bearing);
         parcel.writeFloat(accuracy);
     }
+
 }

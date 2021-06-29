@@ -20,42 +20,51 @@ import com.example.trabalho.presenter.TripDetailsPresenter;
 
 import java.util.List;
 
-public class TripDetailsActivity extends AppCompatActivity implements RequestForecastContract.RequestForecastView, ActivityContract.ActivityView {
+public class TripDetailsActivity extends AppCompatActivity implements ActivityContract.ActivityView, RequestForecastContract.RequestForecastView {
 
-    private RequestForecastContract.RequestForecastPresenter tripDetailsPresenter;
+    private TripDetailsPresenter tripDetailsPresenter;
     private ActivityTripDetailsBinding tripDetailsBinding;
     private Trip trip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.tripDetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_trip_details);
+        setContentView(R.layout.activity_trip_details);
 
         Intent intent = getIntent();
-        this.trip = intent.getParcelableExtra("objTrip");
-        this.tripDetailsBinding.setTrip(trip);
+        this.trip = new Trip();
+        this.trip.setUid(intent.getExtras().getString("uId"));
 
-        tripDetailsPresenter = new TripDetailsPresenter(this, this, this, trip);
+        tripDetailsPresenter = new TripDetailsPresenter(this, trip);
+    }
+
+    public void bindTrip(Trip trip, List<Forecast> forecastsHome, List<Forecast> forecastsDestine) {
+
+        tripDetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_trip_details);
+        tripDetailsBinding.setPresenter(tripDetailsPresenter);
+        tripDetailsBinding.setTrip(trip);
+        bindList(forecastsHome, tripDetailsBinding.tripRvDeparture);
+        bindList(forecastsDestine, tripDetailsBinding.tripRvArrival);
     }
 
     @Override
-    public void bindList(List<Forecast> forecastArrayList) {
+    public void bindList(List<Forecast> forecastArrayList, RecyclerView recyclerViewForecast) {
         try {
-            RecyclerView recyclerView = findViewById(R.id.recyclerViewForecast);
+            RecyclerView recyclerView = recyclerViewForecast;
             LinearLayoutManager linearLayoutManagerHorinzontal = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
             recyclerView.setLayoutManager(linearLayoutManagerHorinzontal);
 
             ForecastAdapter forecastAdapter = new ForecastAdapter(forecastArrayList);
             recyclerView.setAdapter(forecastAdapter);
 
-            Forecast forecastDeparture = this.tripDetailsPresenter.findForecast(this.trip.getDepartureDate(), "Actual");
-            Forecast forecastArrival = this.tripDetailsPresenter.findForecast(this.trip.getArrivalDate(), "Destiny");
-
-            this.tripDetailsBinding.setForecastArrival(forecastArrival);
-            this.tripDetailsBinding.setForecastDeparture(forecastDeparture);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void navigate(Intent intent) {
+        startActivity(intent);
     }
 
     @Override

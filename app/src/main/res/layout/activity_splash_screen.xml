@@ -7,7 +7,6 @@
     android:contentDescription="@string/icon"
     tools:context=".SplashScreenActivity">
 
-    <!-- Background -->
     <ImageView
         android:id="@+id/background_splash_screen"
         android:layout_width="550dp"
@@ -18,10 +17,9 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029"
-        app:srcCompat="@drawable/background_splash_screen" />
+        app:layout_constraintVertical_bias="0.542"
+        app:srcCompat="@drawable/bg_splash_screen" />
 
-    <!-- Logo -->
     <ImageView
         android:id="@+id/app_icon"
         android:layout_width="100dp"
@@ -41,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/app_name"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/color_texts"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
